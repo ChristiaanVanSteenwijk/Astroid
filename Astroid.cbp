@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Astroid" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Astroid" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Astroid" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DSFML_STATIC" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics-s" />
+					<Add library="sfml-window-s" />
+					<Add library="sfml-system-s" />
+					<Add library="gdi32" />
+					<Add library="winmm" />
+					<Add library="opengl32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=gnu++17" />
+			<Add option="-Wattributes" />
+			<Add directory="D:/Programs/SFML/SFML/include" />
+			<Add directory="../../../Programs/sqlite/bin" />
+		</Compiler>
+		<Linker>
+			<Add library="libsqlite3.a" />
+			<Add directory="D:/Programs/SFML/SFML/lib" />
+			<Add directory="../../../Programs/sqlite/bin" />
+		</Linker>
+		<Unit filename="include/BackGround.hpp" />
+		<Unit filename="include/CollisionObject.hpp" />
+		<Unit filename="include/DataBase.hpp" />
+		<Unit filename="include/Enemy.hpp" />
+		<Unit filename="include/GameObject.hpp" />
+		<Unit filename="include/GameObjectManager.hpp" />
+		<Unit filename="include/Gun.hpp" />
+		<Unit filename="include/Health.hpp" />
+		<Unit filename="include/IntroState.hpp" />
+		<Unit filename="include/MassEngine.hpp" />
+		<Unit filename="include/MenuState.hpp" />
+		<Unit filename="include/Missile.hpp" />
+		<Unit filename="include/MissileLauncher.hpp" />
+		<Unit filename="include/PlayState.hpp" />
+		<Unit filename="include/Player.hpp" />
+		<Unit filename="include/QuadTree.hpp" />
+		<Unit filename="include/RandomNeuron.hpp" />
+		<Unit filename="include/Shield.hpp" />
+		<Unit filename="include/Ship.hpp" />
+		<Unit filename="include/Shot.hpp" />
+		<Unit filename="include/State.hpp" />
+		<Unit filename="include/StateMachine.hpp" />
+		<Unit filename="include/Status.hpp" />
+		<Unit filename="include/TileMap.hpp" />
+		<Unit filename="include/Visibility.hpp" />
+		<Unit filename="include/WeaponEmplacement.hpp" />
+		<Unit filename="include/WeaponSystem.hpp" />
+		<Unit filename="include/neuralnetwork.hpp" />
+		<Unit filename="include/neuron.hpp" />
+		<Unit filename="include/sigmoid.hpp" />
+		<Unit filename="include/sqlite3.h" />
+		<Unit filename="include/stepneuron.hpp" />
+		<Unit filename="src/BackGround.cpp" />
+		<Unit filename="src/DataBase.cpp" />
+		<Unit filename="src/Enemy.cpp" />
+		<Unit filename="src/GameObject.cpp" />
+		<Unit filename="src/GameObjectManager.cpp" />
+		<Unit filename="src/Gun.cpp" />
+		<Unit filename="src/Health.cpp" />
+		<Unit filename="src/IntroState.cpp" />
+		<Unit filename="src/MassEngine.cpp" />
+		<Unit filename="src/MenuState.cpp" />
+		<Unit filename="src/Missile.cpp" />
+		<Unit filename="src/MissileLauncher.cpp" />
+		<Unit filename="src/PlayState.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/QuadTree.cpp" />
+		<Unit filename="src/RandomNeuron.cpp" />
+		<Unit filename="src/Shield.cpp" />
+		<Unit filename="src/Ship.cpp" />
+		<Unit filename="src/Shot.cpp" />
+		<Unit filename="src/State.cpp" />
+		<Unit filename="src/StateMachine.cpp" />
+		<Unit filename="src/TileMap.cpp" />
+		<Unit filename="src/Visibility.cpp" />
+		<Unit filename="src/WeaponEmplacement.cpp" />
+		<Unit filename="src/WeaponSystem.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/neuralnetwork.cpp" />
+		<Unit filename="src/neuron.cpp" />
+		<Unit filename="src/sigmoid.cpp" />
+		<Unit filename="src/stepneuron.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

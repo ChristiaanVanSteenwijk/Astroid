@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1532380339 source:d:\documenten\bgp\astroid\main.cpp
+	<iostream>
+	<iomanip>
+	<numeric>
+	"neuralnetwork.hpp"
+	"RandomNeuron.hpp"
+	"sigmoid.hpp"
+	"stepneuron.hpp"
+
+1532034806 d:\documenten\bgp\astroid\include\neuralnetwork.hpp
+	<map>
+	<vector>
+	<memory>
+	"neuron.hpp"
+
+1530995220 d:\documenten\bgp\astroid\include\neuron.hpp
+	<vector>
+
+1530970048 d:\documenten\bgp\astroid\include\randomneuron.hpp
+	"neuron.hpp"
+
+1530973041 d:\documenten\bgp\astroid\include\sigmoid.hpp
+	"neuron.hpp"
+
+1530970384 d:\documenten\bgp\astroid\include\stepneuron.hpp
+	"neuron.hpp"
+
+1531335901 source:d:\documenten\bgp\astroid\src\neuralnetwork.cpp
+	"neuralnetwork.hpp"
+	<iostream>
+
+1530741420 source:d:\documenten\bgp\astroid\src\neuron.cpp
+	"neuron.hpp"
+	<iostream>
+	<numeric>
+
+1530970132 source:d:\documenten\bgp\astroid\src\randomneuron.cpp
+	<random>
+	<ctime>
+	"RandomNeuron.hpp"
+
+1532379581 source:d:\documenten\bgp\astroid\src\sigmoid.cpp
+	"sigmoid.hpp"
+	<cmath>
+
+1532378787 source:d:\documenten\bgp\astroid\src\stepneuron.cpp
+	"stepneuron.hpp"
+
