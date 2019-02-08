@@ -6,6 +6,7 @@ BackGround::BackGround(GameObjectManager& context, std::string filename) : GameO
     //ctor
     _visibility = std::unique_ptr<Visibility> (new Visibility(filename));
 
+    //nothing but a background picture
     Width  = _visibility->GetWidth();
     Height = _visibility->GetHeight();
 }
@@ -17,8 +18,5 @@ BackGround::~BackGround()
 
 void BackGround::Update(sf::Time t)
 {
-	/*if (m_alpha.a<255)
-        m_alpha.r++;
-	SetColour(m_alpha);
-	ColourSprite();*/
+
 }

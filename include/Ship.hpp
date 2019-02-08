@@ -7,6 +7,7 @@
 #include "GameObjectManager.hpp"
 
 #include "Health.hpp"
+#include "Auras.hpp"
 
 class Ship : public GameObject
 {
@@ -16,30 +17,18 @@ class Ship : public GameObject
 
         virtual void Update(sf::Time elapsedTime);
 
-        float GetVelocity() const;
-        float GetDirection() const;
         void setID(unsigned long int id);
 
-        void SetPosition(sf::Vector2f pos);
-
-        virtual void TriggerPrimary(sf::Vector2f mouse);
-        virtual void TriggerSecundary(sf::Vector2f mouse);
-        virtual void SetCoordinate(sf::Vector2f direction);
+      //  virtual void SetPosition(sf::Vector2f pos);
 
     protected:
         std::list<std::shared_ptr<GameObject>> _collisionGeometry;
-
+        std::list<std::shared_ptr<GameObject>> targets;
         void HandleCollissions();
-        float _velocity;
-        float _max_velocity;
-        float _min_velocity;
+
         float _rotation;
         float _angle;
-        float _accelaration;
-        float _direction;
         int Width;
-        int _intelect;
-
 };
 
 #endif // SHIP_HPP

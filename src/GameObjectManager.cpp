@@ -1,12 +1,12 @@
 #include "GameObjectManager.hpp"
 #include <iostream>
-
-GameObjectManager::GameObjectManager() : QuadTree(1, sf::FloatRect(0,0,1,1), *this)
+/*
+GameObjectManager::GameObjectManager() : QuadTree(1, sf::FloatRect(0,0,1,1), *this), OuterBounds(sf::FloatRect(0,0,1,1))
 {
     //ctor
 }
-
-GameObjectManager::GameObjectManager(sf::FloatRect rect) : QuadTree(1, rect, *this)
+*/
+GameObjectManager::GameObjectManager(sf::FloatRect rect) : QuadTree(1, rect, *this), OuterBounds(rect)
 {
     //ctor
 }
@@ -43,55 +43,74 @@ GameObjectManager& GameObjectManager::operator=(GameObjectManager other)
 }
 
 GameObjectManager::GameObjectManager(GameObjectManager&& other)
-   : GameObjectManager() // initialize via default constructor, C++11 only
+   : GameObjectManager(QuadTree::getBounds()) // initialize via default constructor, C++11 and later
 {
     swap(*this, other);
 }
 
-void GameObjectManager::Draw(sf::View& view, sf::RenderWindow& renderWindow)
+void GameObjectManager::reSize(sf::FloatRect rect)
 {
-    sf::Vector2f tl = view.getCenter()-sf::Vector2f(view.getSize().x/2, view.getSize().y/2);
-    sf::FloatRect rect = sf::FloatRect(tl, view.getSize());
-    renderWindow.clear();
-
-    std::multimap<int, std::shared_ptr<GameObject>> temp = RetrieveOrderd(rect);
-    //    std::cout << temp.size();
-    renderWindow.setView(view);
-    for (auto it : temp)
-    {
-        it.second->_visibility->Draw(renderWindow);
-    }
-    renderWindow.display();
+    OuterBounds=rect;
+    QuadTree::reSize(rect);
 }
 
-void GameObjectManager::UpdateAll(sf::Time timeDelta)
+void GameObjectManager::Draw(sf::View& view, sf::RenderTarget& _target)
+{
+    // get the size of the viewport that needs to be displayed
+    sf::Vector2f tl = view.getCenter()-sf::Vector2f(view.getSize().x/2, view.getSize().y/2);
+    sf::FloatRect rect = sf::FloatRect(tl, view.getSize());
+   // _target.clear();
+
+    //RetrieveOrdered stores the objects by the Z value to determine what gets drawn first
+    std::multimap<int, std::shared_ptr<GameObject>> temp = RetrieveOrderd(rect);
+    //    std::cout << temp.size();
+    _target.setView(view);
+
+    // draw the objects in order
+    for (auto it : temp)
+    {
+        it.second->_visibility->Draw(_target);
+    }
+    // display the view graphics cards are optimized for a clear draw display order
+   // _target.display();
+}
+
+void GameObjectManager::UpdateAll(sf::Time dt)
 {
     for (auto _Iterator : _Objects)
     {
-         _Iterator.second->Update(timeDelta);
+          _Iterator.second->Update(dt);
     }
+    // objects are destoryed after the update cycle to avoid memory leaks
     Destroy();
 }
 
-void GameObjectManager::Insert(std::string name, std::shared_ptr<GameObject> visi)
+void GameObjectManager::Insert(sf::Vector2f centre, std::shared_ptr<GameObject> visi)
 {
-    visi->setID(_ID);
-    _IDs.insert(std::make_pair(name,_ID));
-    QuadTree::Insert(_ID,visi);
-    _ID++;
-}
 
-void GameObjectManager::Insert(std::shared_ptr<GameObject> visi)
-{
+        if (centre.y>OuterBounds.top+OuterBounds.height)
+            centre = sf::Vector2f(centre.x, OuterBounds.top+OuterBounds.height);
+        if (centre.x>OuterBounds.left+OuterBounds.width)
+            centre = sf::Vector2f(OuterBounds.left+OuterBounds.width, centre.y);
+        if (centre.y<OuterBounds.top)
+            centre = sf::Vector2f(centre.x, OuterBounds.top);
+        if (centre.x<OuterBounds.left)
+            centre = sf::Vector2f(OuterBounds.left, centre.y);
+        visi->SetPosition(centre);
     visi->setID(_ID);
+	_Objects.emplace(std::make_pair(_ID, _Object));
     QuadTree::Insert(_ID,visi);
     _ID++;
 }
 
 std::shared_ptr<GameObject> GameObjectManager::Access(std::string name)
 {
-    unsigned long int id = _IDs.find(name)->second;
-    return _Objects.find(id)->second;
+    std::shared_ptr<GameObject> temp = nullptr;
+    std::map<std::string, unsigned long int>::iterator it = _IDs.find(name);
+    if (it != _IDs.end())
+        temp = _Objects.find(it->second)->second;
+
+    return temp;
 }
 
 std::shared_ptr<GameObject> GameObjectManager::Access(unsigned long int id)
@@ -101,6 +120,7 @@ std::shared_ptr<GameObject> GameObjectManager::Access(unsigned long int id)
 
 bool GameObjectManager::Check(std::string name)
 {
+    // checks if an object exists
     std::map <std::string, unsigned long int>::iterator id =_IDs.find(name);
 
     if (id==_IDs.end())
@@ -122,23 +142,25 @@ std::shared_ptr<GameObject> GameObjectManager::Find(unsigned long int id)
 
 void GameObjectManager::MarkForDestruction(unsigned long int id)
 {
+    // used to list objects that need to be destroyed at the end of the update cycle
     Destruction.push_front(id);
 }
 
 void GameObjectManager::Destroy()
 {
+    // clears all objects from the list of objects that need to be destroyed
     for (unsigned long int i : Destruction)
         Remove(i);
 
-    Destruction.clear();
+    Destruction.clear();    //Don't try to destroy something twice
 }
 
 void GameObjectManager::Remove(std::string name)
 {
-    std::map<std::string, unsigned long int>::iterator temp = _IDs.find(name);
-    if (temp  != _IDs.end())
+    auto _Iterator = _IDs.find(name);
+    if (_Iterator  != _IDs.end())
     {
-        unsigned long int id = temp->second;
+        unsigned long int id = _Iterator->second;
         _Objects.erase(id);
         QuadTree::_Remove(id);
         _IDs.erase(name);
@@ -171,36 +193,8 @@ unsigned long int GameObjectManager::getLastID()
     return _ID;
 }
 
-void GameObjectManager::AddCollision(unsigned long int id)
+sf::FloatRect GameObjectManager::GetOuterBounds()
 {
-    collisionGeom.push_front(id);
+    return OuterBounds;
 }
 
-void GameObjectManager::Collision()
-{
-/*
-Contact con = contacts[i];
-Vector2 n = con.m_normal;
-
-// get all of relative normal velocity
-double relNv = (con.m_b.m_Vel-con.m_a.m_Vel).Dot(n);
-
-// we want to remove only the amount which leaves them touching next frame
-double remove = relNv + con.m_dist/Constants.kTimeStep;
-
-// compute impulse
-double imp = remove / (con.m_a.m_InvMass + con.m_b.m_InvMass);
-
-// accumulate
-double newImpulse = Math.Min(imp + con.m_impulse, 0);
-
-// compute change
-double change = newImpulse - con.m_impulse;
-
-// store accumulated impulse
-con.m_impusle = newImpulse;
-
-// apply impulse
-con.m_a.m_Vel += change * n * con.m_a.m_InvMass;
-con.m_b.m_Vel -= change * n * con.m_b.m_InvMass;*/
-}

@@ -29,13 +29,14 @@ class QuadTree
         std::shared_ptr<GameObject> Find(unsigned long int id);
         sf::FloatRect getBounds();
         void setBounds(sf::FloatRect rect);
+        void reSize(sf::FloatRect rect);
         int getIndex(sf::FloatRect rect);
         int getIndex(sf::Vector2f punt);
         void Clear();
 
     protected:
     private:
-        unsigned int maxObjects;
+        unsigned int maxObjects;        // objects stored in a quad before the split is triggered
         unsigned int maxLevels;
         unsigned int Currentlevel;
         bool split = false;
@@ -46,16 +47,18 @@ class QuadTree
 
         sf::FloatRect Bounds;
 
-        std::unique_ptr<QuadTree> NW;
-        std::unique_ptr<QuadTree> NE;
-        std::unique_ptr<QuadTree> SW;
-        std::unique_ptr<QuadTree> SE;
+        std::unique_ptr<QuadTree> NW = nullptr;
+        std::unique_ptr<QuadTree> NE = nullptr;
+        std::unique_ptr<QuadTree> SW = nullptr;
+        std::unique_ptr<QuadTree> SE = nullptr;
         QuadTree& parent;
 
         void Split();
         bool Collapse();
         bool Full();
         bool Empty();
+        std::map <unsigned long int, std::shared_ptr<GameObject>> getObjects();
+
 };
 
 #endif // QUADTREE_H

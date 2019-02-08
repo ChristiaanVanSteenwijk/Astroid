@@ -14,11 +14,11 @@ Gun::~Gun()
     //dtor
 }
 
-void Gun::fire(sf::Vector2f dir)
+void Gun::Fire(sf::Vector2f dir)
 {
     if (readyToFire)
     {
-        m_context.Emplace<Shot>(m_context, "img/shot.png", position, dir, m_owner, 5, 2);
+        m_context.Emplace<Shot>(position, m_context, "img/shot.png", position, dir, m_owner, 5, 2);
         readyToFire=false;
     }
 }

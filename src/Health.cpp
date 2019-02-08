@@ -14,9 +14,9 @@ Health::~Health() noexcept
 void Health::collision(unsigned int damage, unsigned int armorpenetration, bool unused)
 {
     if (armorpenetration > _armor)
-        _health -= damage;
+        DecreaseHealth(damage);
     else
-        _armor -= damage/10;
+        DecreaseArmor(damage);
 }
 
 void Health::setRegen(unsigned int health, unsigned int armor)
@@ -28,7 +28,7 @@ void Health::setRegen(unsigned int health, unsigned int armor)
 void Health::Update(sf::Time dt)
 {
     _timer+=dt;
-    if (_timer<sf::Time::Zero)
+    if (_timer>_reset)
     {
         IncreaseHealth(h_regen);
         IncreaseArmor(a_regen);
@@ -49,6 +49,8 @@ void Health::Sethealth(unsigned int val)
 void Health::IncreaseHealth (unsigned int val)
 {
     _health += val;
+    if (_health > max_health)
+        _health = max_health;
 }
 
 void Health::DecreaseHealth (unsigned int val)
@@ -67,11 +69,15 @@ unsigned int Health::GetArmor()
 void Health::SetArmor(unsigned int val)
 {
     _armor = val;
+    if (_armor > max_armor)
+        _armor= max_armor;
 }
 
 void Health::IncreaseArmor(unsigned int val)
 {
     _armor += val;
+    if (_armor > max_armor)
+        _armor= max_armor;
 }
 
 void Health::DecreaseArmor(unsigned int val)

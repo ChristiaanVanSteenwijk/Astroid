@@ -9,7 +9,7 @@
 
 int main()
 {
-    neuralnetwork nn({5}, 1);
+    neuralnetwork nn(1, {5});
     std::vector<float> out(nn.GetSizeOutput(),1.f);
 
     nn.Emplace<sigmoid>(0,5);
@@ -19,7 +19,7 @@ int main()
     nn.setWeights(0,3,{.5});
     nn.setWeights(0,4,{1});
 
-    out=nn.Run({1});
+    out=nn.Run({9});
 
     std::cout << std::fixed << std::setprecision(2);
     for (float it : out)

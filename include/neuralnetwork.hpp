@@ -9,7 +9,7 @@
 class neuralnetwork
 {
     public:
-        neuralnetwork(std::vector<unsigned int> form, unsigned int in);
+        neuralnetwork(unsigned int in, std::vector<unsigned int> form);
         ~neuralnetwork();
         friend void swap(neuralnetwork& first, neuralnetwork& second); // nothrow
         neuralnetwork& operator=(neuralnetwork other); // (1)
@@ -20,19 +20,19 @@ class neuralnetwork
         unsigned int GetSizeOutput(){return format.back();}
         std::vector<unsigned int> GetSize(){return format;}
 
-        template <typename N>
+        template <typename N>   // not needed for linear neurons, these are the base class that the constructor calls
             void Emplace(unsigned int layer, unsigned int amount);
 
-        void setWeights(unsigned int layer, unsigned int number, std::vector<float> diet);
 
-    protected:
+        void setWeights(unsigned int layer, unsigned int number, std::vector<float> diet);
+        void setBias(unsigned int layer, unsigned int number, float b);
 
     private:
         std::map<std::pair<int, int>, std::unique_ptr<neuron>> brain;
         std::vector<float> input;
-        std::vector<std::vector<float>> halfwit;
-        std::vector<unsigned int> format;
-        std::vector<unsigned int> normal;
+        std::vector<std::vector<float>> halfwit;    // stores results between layers
+        std::vector<unsigned int> format;           // size of the different layers in order
+        std::vector<unsigned int> normal;           // number of normal, linear, neurons in each layer
 };
 
 template <typename N>
@@ -42,11 +42,11 @@ template <typename N>
     {
         std::unique_ptr<neuron> NE;
 
-        if (layer==0)
+        if (layer==0)   // use the input of the network as the input for the neuron
         {
             NE = std::unique_ptr<N>(new N(input.size()));
         }
-        else
+        else    // use the output from the preveious layer as input
         {
             NE = std::unique_ptr<N>(new N(format[layer-1]));
         }

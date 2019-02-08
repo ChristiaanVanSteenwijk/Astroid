@@ -38,6 +38,10 @@ void MassEngine::Update(sf::Time dt)
 
     c_Amoment=m_Rudder*m_RudderSetting/m_maxRsetting;
     c_angle += c_Amoment*dt.asSeconds()/(m_Mass*m_Radius*m_Radius);
+    if (c_angle>360)
+        c_angle-=360;
+    if (c_angle < 0 )
+        c_angle += 360;
 
     float dx= cos(c_angle*M_PI/180);
     float dy= sin(c_angle*M_PI/180);
@@ -45,20 +49,12 @@ void MassEngine::Update(sf::Time dt)
     _speed.x = c_velocity*-dx + c_strave*-dy ;
     _speed.y = c_velocity*-dy + c_strave*dx ;
 
-    if (timeRudder < sf::Time::Zero)
-        m_RudderSetting=0;
-    else
-        timeRudder-=dt;
+    // updated after the settings are modified by either the AI or the player so it's on when it counts
+    m_RudderSetting=0;
 
-    if (timeEninge < sf::Time::Zero)
-        m_EngineSetting=0;
-    else
-        timeEninge-=dt;
+    m_EngineSetting=0;
 
-    if (timeStrave < sf::Time::Zero)
-        s_Setting=0;
-    else
-        timeStrave-=dt;
+    s_Setting=0;
 }
 
 void MassEngine::Output()

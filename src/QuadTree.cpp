@@ -1,4 +1,5 @@
 #include "QuadTree.hpp"
+#include <iostream>
 
 QuadTree::QuadTree(int pLevel, sf::FloatRect Bound, QuadTree& dad):parent(dad)
 {
@@ -7,10 +8,6 @@ QuadTree::QuadTree(int pLevel, sf::FloatRect Bound, QuadTree& dad):parent(dad)
     maxObjects =10;
     Currentlevel = pLevel;
     Bounds = Bound;
-    NW = nullptr;
-    NE = nullptr;
-    SW = nullptr;
-    SE = nullptr;
 
     _number=0;
 }
@@ -69,11 +66,13 @@ QuadTree::QuadTree(QuadTree&& other)
 
 void QuadTree::Split()
 {
+    // divide the area in four equally sized parts
     float subWidth = Bounds.width;
     float subHeight = Bounds.height;
     float x = Bounds.left;
     float y = Bounds.top;
 
+    // create new quads by dividing the area in four equally sized parts
     NW = std::unique_ptr<QuadTree> (new QuadTree(Currentlevel+1, sf::FloatRect(x,y,x+subWidth/2,y+subHeight/2), *this));
     NE = std::unique_ptr<QuadTree> (new QuadTree(Currentlevel+1, sf::FloatRect(x+subWidth/2,y,x+subWidth,y+subHeight/2), *this));
     SW = std::unique_ptr<QuadTree> (new QuadTree(Currentlevel+1, sf::FloatRect(x,y+subHeight/2,x+subWidth/2,y+subHeight), *this));
@@ -111,6 +110,8 @@ void QuadTree::Split()
     Objects.swap(lijst);
     }
     split=true;
+
+    std::cout << "split " << std::endl;
 }
 
 int QuadTree::getIndex(sf::FloatRect rect)
@@ -152,8 +153,10 @@ int QuadTree::getIndex(sf::Vector2f punt)
 void QuadTree::Insert(unsigned long int id, std::shared_ptr<GameObject> visi)
 {
         int index = -1;
+        sf::FloatRect rect = visi->_visibility->GetBoundingRect();
+
         if (split == true)
-            index = getIndex(visi->_visibility->GetBoundingRect());
+            index = getIndex(rect);
 
         switch (index)
         {
@@ -208,28 +211,10 @@ std::list<std::shared_ptr<GameObject>> QuadTree::Retrieve(sf::FloatRect rect)
 
     if (split==true)
     {
-        switch (getIndex(rect))
-        {
-        case 0:
-            anser.merge(NW->Retrieve(rect));
-            break;
-        case 1:
-            anser.merge(NE->Retrieve(rect));
-            break;
-        case 2:
-            anser.merge(SW->Retrieve(rect));
-            break;
-        case 3:
-            anser.merge(SE->Retrieve(rect));
-            break;
-        case -1:
-        default:
-            anser.merge(NW->Retrieve(rect));
-            anser.merge(NE->Retrieve(rect));
-            anser.merge(SW->Retrieve(rect));
-            anser.merge(SE->Retrieve(rect));
-        break;
-        }
+        anser.merge(NW->Retrieve(rect));
+        anser.merge(NE->Retrieve(rect));
+        anser.merge(SW->Retrieve(rect));
+        anser.merge(SE->Retrieve(rect));
     }
     return anser;
 }
@@ -247,34 +232,18 @@ std::list<std::shared_ptr<GameObject>> QuadTree::Retrieve(sf::Vector2f punt)
 
     if (split==true)
     {
-        switch (getIndex(punt))
-        {
-        case 0:
-            anser.merge(NW->Retrieve(punt));
-            break;
-        case 1:
-            anser.merge(NE->Retrieve(punt));
-            break;
-        case 2:
-            anser.merge(SW->Retrieve(punt));
-            break;
-        case 3:
-            anser.merge(SE->Retrieve(punt));
-            break;
-        case -1:
-        default:
-            anser.merge(NW->Retrieve(punt));
-            anser.merge(NE->Retrieve(punt));
-            anser.merge(SW->Retrieve(punt));
-            anser.merge(SE->Retrieve(punt));
-        break;
-        }
+        anser.merge(NW->Retrieve(punt));
+        anser.merge(NE->Retrieve(punt));
+        anser.merge(SW->Retrieve(punt));
+        anser.merge(SE->Retrieve(punt));
+
     }
     return anser;
 }
+
 std::multimap<int,std::shared_ptr<GameObject>> QuadTree::RetrieveOrderd(sf::FloatRect rect)
 {
-    std::multimap<int,std::shared_ptr<GameObject>> anser;
+    std::multimap<int,std::shared_ptr<GameObject>> anser;   // sorts the objects by Z value, analogues to the altitude for the painters algorithm
 
     for (std::pair<unsigned long int, std::shared_ptr<GameObject>> element : Objects)
     {
@@ -364,6 +333,7 @@ void  QuadTree::_Remove(unsigned long int id)
 
 bool QuadTree::Collapse()
 {
+    // Empty quads are deleted
     bool filled = true;
     if (split == true)
     {
@@ -423,4 +393,49 @@ sf::FloatRect QuadTree::getBounds()
 void QuadTree::setBounds(sf::FloatRect rect)
 {
     Bounds=rect;
+}
+
+void QuadTree::reSize(sf::FloatRect rect)
+{
+    Bounds=rect;
+    std::map <unsigned long int, std::shared_ptr<GameObject>> Temp=getObjects();
+
+    for (std::pair <unsigned long int, std::shared_ptr<GameObject>> it : Temp)
+        Insert(it.first, std::move(it.second));
+}
+
+std::map <unsigned long int, std::shared_ptr<GameObject>> QuadTree::getObjects()
+{
+    std::map <unsigned long int, std::shared_ptr<GameObject>> Temp=Objects;
+    if (split)
+    {
+        if (NW)
+        {
+            std::map <unsigned long int, std::shared_ptr<GameObject>> it=NW->getObjects();
+            Temp.insert(it.begin(),it.end());
+            NW.reset(nullptr);
+        }
+
+        if (NE)
+        {
+            std::map <unsigned long int, std::shared_ptr<GameObject>> it=NE->getObjects();
+            Temp.insert(it.begin(),it.end());
+            NE.reset(nullptr);
+        }
+
+        if (SW)
+        {
+            std::map <unsigned long int, std::shared_ptr<GameObject>> it=SW->getObjects();
+            Temp.insert(it.begin(),it.end());
+            SW.reset(nullptr);
+        }
+
+        if (SE)
+        {
+            std::map <unsigned long int, std::shared_ptr<GameObject>> it=SE->getObjects();
+            Temp.insert(it.begin(),it.end());
+            SE.reset(nullptr);
+        }
+    }
+    return Temp;
 }

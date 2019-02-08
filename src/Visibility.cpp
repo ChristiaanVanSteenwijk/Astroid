@@ -1,5 +1,6 @@
 #include "Visibility.hpp"
 #include "GameObject.hpp"
+#include <iostream>
 
 Visibility::Visibility(std::string filename)
 {
@@ -24,9 +25,9 @@ Visibility::~Visibility()
     //dtor
 }
 
-void Visibility::Draw(sf::RenderWindow& window)
+void Visibility::Draw( sf::RenderTarget& _target)
 {
-    window.draw(_sprite);
+    _target.draw(_sprite);
 }
 
 void Visibility::Move(sf::Vector2f X)
@@ -40,12 +41,15 @@ void Visibility::SetPosition(sf::Vector2f X)
         _sprite.setPosition(X);
 }
 
-void Visibility::setRotation(float angle)
+void Visibility::SetRotation(float angle)
 {
     if(_isLoaded)
         _sprite.setRotation(angle);
 }
-
+float Visibility::GetRotation()
+{
+    return _sprite.getRotation();
+}
 sf::Vector2f Visibility::GetPosition() const
 {
     if(_isLoaded)

@@ -9,6 +9,9 @@ class MassEngine
         MassEngine(float mass, float Power, float Rudder, float radius = 100);
         MassEngine();
         ~MassEngine();
+
+        virtual void Update(sf::Time dt);
+
     //    MassEngine(const MassEngine& other);
         MassEngine& operator=(const MassEngine& other);
         float Getm_Mass() { return m_Mass; };
@@ -23,6 +26,7 @@ class MassEngine
         void Inc_SideEngineSetting(int val=1);
         void Dec_SideEngineSetting(int val=1);
         int GetSideEngineSetting(){return s_Setting;};
+        void SetMaxSpeed(float v){max_velocity=v;};
 
         void Setm_SideEnginePower(float val) { S_EnginePower = val; }; // to the right is positive
         float Getm_Radius() { return m_Radius; };
@@ -34,9 +38,9 @@ class MassEngine
         void IncRudderSetting(int val=1) ;
         void DecRudderSetting(int val=1) ;
         float GetSpeed();
+        void SetSpeed(float val){c_velocity=val;};
         float GetRotation();
         void SetRotation(int val);
-        void Update(sf::Time dt);
         void SetMaxEsetting(int val) {m_MaxEsetting = val;};
         void SetMinEsetting(int val) {m_MinEsetting = val;};
         void SetMaxRsetting(int val) {m_maxRsetting = val;};

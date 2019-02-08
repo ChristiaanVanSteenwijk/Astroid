@@ -27,16 +27,12 @@ void WeaponEmplacement::Update(sf::Time dt, sf::Vector2f vec)
 {
     position+=vec;
     _timer+=dt;
-    if (_timer<sf::Time::Zero)
+    if (_timer>_reload)
     {
         UpdateFunction();
+        readyToFire=true;
         _timer-=_reload;
     }
-}
-
-void WeaponEmplacement::UpdateFunction()
-{
-    readyToFire=true;
 }
 
 void WeaponEmplacement::SetPosition(sf::Vector2f pos)
@@ -49,7 +45,7 @@ void WeaponEmplacement::SetRelPosition(sf::Vector2f pos)
     relposition=pos;
 }
 
-void WeaponEmplacement::fire(sf::Vector2f dir)
+void WeaponEmplacement::Fire(sf::Vector2f dir)
 {
     std::cout << "Firing weapon" << std::endl;
     readyToFire=false;

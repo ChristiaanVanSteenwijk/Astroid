@@ -2,32 +2,33 @@
 #include "State.hpp"
 #include "Player.hpp"
 #include "Enemy.hpp"
-#include "Shot.hpp"
+#include "Cruiser.hpp"
 
-PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool replace )
-: State{ machine, window, view, _context, replace }
+PlayState::PlayState( StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace )
+: State{ machine, _window, _view, next, _context, _replace }
 {
 	std::cout << "PlayState Init" << std::endl;
-    unsigned int Width = 4500;//machine.getWidth();
-    unsigned int Height =3000;//machine.getHeight();
+    float Width  = 1000;
+    float Height = 1000;
+    m_context.reSize(sf::FloatRect(0.f,0.f,Height,Width));
 
-    m_context.EmplaceName<Player>("Player", m_context,"img/blue1.png", 270, machine);
-    sf::Vector2f temp=sf::Vector2f((Width/3),Height-32);
-    m_context.Access("Player")->SetPosition(temp);
+    m_context.EmplaceName<Player>("Player", sf::Vector2f(500, 500), m_context,"img/blue1.png", 270, machine);
 
-    m_context.EmplaceName<Enemy>("test", m_context, "img/cruiser.png", 180);
-    m_context.Access("test")->SetPosition(sf::Vector2f((Width/2)+5,Height-32));
+ //   m_context.EmplaceName<Cruiser>("Cruiser", sf::Vector2f((Width*2/3), Height*.5), m_context, "img/cruiser.png", 180); 1366, 768
 
-    m_context.EmplaceName<Enemy>("Enemy1", m_context, "img/alien4.png", 270);
-    m_context.Access("Enemy1")->SetPosition(sf::Vector2f(Width*2/3,Height-64));
+ //   m_context.EmplaceName<Enemy>("Enemy", sf::Vector2f(Width*2/3,Height*.2), m_context, "img/alien4.png", 270);
+
+    m_view.reset(sf::FloatRect(0, 0, 1000, 2000));
+
 }
 
 PlayState::~PlayState()
 {
     m_context.Remove("Player");
 
-    m_context.Remove("test");
-    m_context.Remove("Enemy1");
+   // m_context.Remove("Cruiser");
+    m_context.Remove("Enemy");
+
 }
 
 void PlayState::pause()
@@ -58,7 +59,7 @@ void PlayState::handleEvent(sf::Event event)
                     break;
                 case sf::Keyboard::Right:
                 case sf::Keyboard::D:
-                    m_context.Access("Player")->_me->IncRudderSetting(2);
+                    m_context.Access("Player")->_me->IncRudderSetting(3);
                     break;
                 case sf::Keyboard::Q:
                     m_context.Access("Player")->_me->Inc_SideEngineSetting(1);
@@ -94,25 +95,9 @@ void PlayState::handleEvent(sf::Event event)
         }
             break;
         case sf::Event::MouseButtonPressed:
-            switch (sf::Mouse::ButtonCount)
-            {
-                case sf::Mouse::Left:
-                    direction=m_window.mapPixelToCoords(sf::Mouse::getPosition());
-                    m_context.Access("Player")->_weapons->Fire(direction);
-                    break;
-                case sf::Mouse::Right:
-                    direction=m_window.mapPixelToCoords(sf::Mouse::getPosition());
-                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::RShift) || sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-                    {
-                        m_context.Access("Player")->_weapons->SetCoordinate(direction);
-                    }
-                    else
-                    {
-                        m_context.Access("Player")->_weapons->Fire(direction);
-                    }
-                    break;
-                default:
-                    break;
+           {
+            direction=m_window.mapPixelToCoords(sf::Mouse::getPosition(m_window)); //sf::Mouse::GetPosition(TestWindow).x
+            m_context.Access("Player")->_weapons->Fire(direction);
             }
             break;
 

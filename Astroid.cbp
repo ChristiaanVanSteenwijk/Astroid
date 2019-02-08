@@ -36,9 +36,10 @@
 					<Add library="sfml-graphics-s" />
 					<Add library="sfml-window-s" />
 					<Add library="sfml-system-s" />
-					<Add library="gdi32" />
-					<Add library="winmm" />
 					<Add library="opengl32" />
+					<Add library="winmm" />
+					<Add library="gdi32" />
+					<Add library="freetype" />
 				</Linker>
 			</Target>
 		</Build>
@@ -54,8 +55,11 @@
 			<Add directory="D:/Programs/SFML/SFML/lib" />
 			<Add directory="../../../Programs/sqlite/bin" />
 		</Linker>
+		<Unit filename="include/Aura.hpp" />
+		<Unit filename="include/Auras.hpp" />
 		<Unit filename="include/BackGround.hpp" />
 		<Unit filename="include/CollisionObject.hpp" />
+		<Unit filename="include/Cruiser.hpp" />
 		<Unit filename="include/DataBase.hpp" />
 		<Unit filename="include/Enemy.hpp" />
 		<Unit filename="include/GameObject.hpp" />
@@ -70,6 +74,7 @@
 		<Unit filename="include/PlayState.hpp" />
 		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/QuadTree.hpp" />
+		<Unit filename="include/Radar.hpp" />
 		<Unit filename="include/RandomNeuron.hpp" />
 		<Unit filename="include/Shield.hpp" />
 		<Unit filename="include/Ship.hpp" />
@@ -86,7 +91,10 @@
 		<Unit filename="include/sigmoid.hpp" />
 		<Unit filename="include/sqlite3.h" />
 		<Unit filename="include/stepneuron.hpp" />
+		<Unit filename="src/Aura.cpp" />
+		<Unit filename="src/Auras.cpp" />
 		<Unit filename="src/BackGround.cpp" />
+		<Unit filename="src/Cruiser.cpp" />
 		<Unit filename="src/DataBase.cpp" />
 		<Unit filename="src/Enemy.cpp" />
 		<Unit filename="src/GameObject.cpp" />
@@ -101,6 +109,7 @@
 		<Unit filename="src/PlayState.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/QuadTree.cpp" />
+		<Unit filename="src/Radar.cpp" />
 		<Unit filename="src/RandomNeuron.cpp" />
 		<Unit filename="src/Shield.cpp" />
 		<Unit filename="src/Ship.cpp" />

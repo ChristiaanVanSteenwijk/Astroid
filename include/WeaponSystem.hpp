@@ -4,7 +4,6 @@
 #include <map>
 #include <memory>
 
-
 class WeaponSystem
 {
     public:
@@ -19,34 +18,26 @@ class WeaponSystem
 
         virtual void Fire(sf::Vector2f direction);
                 void ChangeState(unsigned int slot);
-     //   virtual void FireSecundaries(sf::Vector2f direction, float range);
 
         template <typename W, typename... Args>
             void Emplace(unsigned int slot, Args&&... args);
-
-     //   template <typename W, typename... Args>
-       //     void EmplaceSecundary(float range, Args&&... args);
+        // can handle different weapon types, hence the template
 
     protected:
+        // store weapons by slot so the can be fired independently or in groups
+        // effectively a finite state machine
         std::multimap<unsigned int, std::shared_ptr<WeaponEmplacement>> _weapons;
-   //     std::multimap<float, std::shared_ptr<WeaponEmplacement>> s_weapons;
-        unsigned int _state;
-    //    float _range;
+        // started this class as weapon-emplacement itself, hence the odd naming
+
+        unsigned int _state=1;
     private:
         bool fire = false;
-    //    bool s_fire = false;
 };
 
 template <typename W, typename... Args>
-    void WeaponSystem::EmplacePrimary(unsigned int slot, Args&&... args)
+    void WeaponSystem::Emplace(unsigned int slot, Args&&... args)
     {
-            p_weapons.emplace(std::make_pair(slot, std::shared_ptr<W>(new W(args...))));
+            _weapons.emplace(std::make_pair(slot, std::shared_ptr<W>(new W(args...))));
     }
-/*
-template <typename W, typename... Args>
-    void WeaponSystem::EmplaceSecundary(float range, Args&&... args)
-    {
-        s_weapons.emplace(std::make_pair(range ,std::shared_ptr<W>(new W(args...))));
-    }
-*/
+
 #endif // WEAPONSYSTEM_H

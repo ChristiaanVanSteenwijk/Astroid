@@ -19,6 +19,7 @@ class Player : public Ship
 
         float GetVelocity() const;
         float GetDirection() const;
+        void SetPosition(sf::Vector2f vec);
     protected:
         std::list<std::shared_ptr<GameObject>> _collisionGeometry;
 

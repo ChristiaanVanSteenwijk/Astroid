@@ -17,8 +17,8 @@ class WeaponEmplacement
         bool GetActive(){return m_active;}
 
         void Update(sf::Time dt, sf::Vector2f vec= sf::Vector2f(0,0));
-        virtual void UpdateFunction();
-        virtual void fire(sf::Vector2f dir = sf::Vector2f(0,0));
+
+        virtual void Fire(sf::Vector2f dir = sf::Vector2f(0,0));
         virtual void SetCoordinate(sf::Vector2f destination){};
 
         void SetPosition(sf::Vector2f pos= sf::Vector2f(0,0));
@@ -35,6 +35,9 @@ class WeaponEmplacement
         sf::Time _reload= sf::seconds(1);
         sf::Time _timer= sf::seconds(1);
         bool readyToFire=false;
+
+//        template <typename... Args>
+            virtual void UpdateFunction(){};
 };
 
 #endif // WEAPONEMPLACEMENT_H

@@ -10,11 +10,7 @@ class Gun : public WeaponEmplacement
         Gun(GameObjectManager& context, sf::Vector2f vec, sf::Time reload);
         ~Gun();
 
-        void fire(sf::Vector2f vec);
-    protected:
-    private:
-        bool readyToFire=false;
-
+        void Fire(sf::Vector2f vec);
 };
 
 #endif // GUN_H

@@ -9,10 +9,10 @@
 #include <memory>
 #include <iostream>
 
-MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool replace )
-: State{ machine, window, view, _context, replace }
+MenuState::MenuState( StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace )
+: State{ machine, _window, _view, next, _context, _replace }
 {
-    m_context.EmplaceName<BackGround> ("Menupic", m_context, "img/menu.bmp");
+    m_context.EmplaceName<BackGround> ("Menupic", sf::Vector2f(0.f,0.f), m_context, "img/menu.bmp");
 	std::cout << "MenuState Init" << std::endl;
 }
 
@@ -34,8 +34,6 @@ void MenuState::handleEvent(sf::Event event)
 {
     switch( event.type )
 		{
-
-
 			case sf::Event::KeyPressed:
 				switch( event.key.code )
 				{

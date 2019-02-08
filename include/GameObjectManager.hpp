@@ -9,7 +9,7 @@
 class GameObjectManager : public QuadTree
 {
     public:
-        GameObjectManager();
+      //  GameObjectManager();
         GameObjectManager(sf::FloatRect rect);
         ~GameObjectManager();
 
@@ -17,37 +17,54 @@ class GameObjectManager : public QuadTree
         GameObjectManager& operator=(GameObjectManager other); // (1)
         GameObjectManager(GameObjectManager&& other);// move constructor
 
-        void Draw(sf::View& view, sf::RenderWindow& renderWindow);
+        void reSize(sf::FloatRect rect);
+
+        void Draw(sf::View& view, sf::RenderTarget& _target);
         void UpdateAll(sf::Time dt);
 
-        void Insert(std::string name, std::shared_ptr<GameObject> visi);
-        void Insert(std::shared_ptr<GameObject> visi);
+        void Insert(sf::Vector2f centre, std::shared_ptr<GameObject> visi);
 
+        // Acces provides acces to  on object directly
         std::shared_ptr<GameObject> Access(std::string name);
         std::shared_ptr<GameObject> Access(unsigned long int id);
+
+        // check if an object exists
         bool Check(std::string name);
+
+        // find an object in the quad tree
         std::shared_ptr<GameObject> Find(std::string name);
         std::shared_ptr<GameObject> Find(unsigned long int id);
+
         void Remove(std::string name);
         void Remove(unsigned long int id);
 
+        // used to store an object out of the quad tree for movement
+        //
         void Store(unsigned long int id);
         void UnStore();
 
+        // Marks an object for destruction at the end of the update cycle to prevent memory leaks
         void MarkForDestruction(unsigned long int id);
+        // destroys objects at the end of the update cycle
         void Destroy();
         unsigned long int getLastID();
-
+/*
+        Could be used for more advanced collision detection
+        decided to let the objects themselves handle it
+        which doesn't allow for iterative methods as far as I know
         void Collision();
         void AddCollision(unsigned long int id);
+*/
+        // add objects to the system with or without a name
+        template <typename V, typename... Args>
+            void Emplace(sf::Vector2f vec, Args&&... args);
 
         template <typename V, typename... Args>
-            void Emplace(Args&&... args);
+            void EmplaceName(std::string name, sf::Vector2f vec, Args&&... args);
 
-        template <typename V, typename... Args>
-            void EmplaceName(std::string name, Args&&... args);
-
+            sf::FloatRect GetOuterBounds();
     private:
+        // keeps track of the identity numbers of named objects
         std::map <std::string, unsigned long int> _IDs;
 
         std::shared_ptr<GameObject> _Object;
@@ -60,28 +77,26 @@ class GameObjectManager : public QuadTree
 
         std::list<unsigned long int> collisionGeom;
         std::list<unsigned long int> Destruction;
+
+        sf::FloatRect OuterBounds;
 };
 
 template <typename V, typename... Args>
-void GameObjectManager::Emplace(Args&&... args)
+void GameObjectManager::Emplace(sf::Vector2f vec, Args&&... args)
 {
-	_Object = std::shared_ptr<V>(new V(args...));
-	_Objects.insert(std::make_pair(_ID, _Object));
-	_Object->setID(_ID);
-	QuadTree::Insert(_ID, _Object);
-	_ID++;
-	_Object.reset();
+	_Object = std::shared_ptr<V>(new V(args...));   // Create a new object with a smart pointer
+	Insert(vec, _Object);                 // insert the object to the quad tree
+	_Object.reset();                                // reset the temporary object
 }
 
 template <typename V, typename... Args>
-void GameObjectManager::EmplaceName(std::string name, Args&&... args)
+void GameObjectManager::EmplaceName(std::string name, sf::Vector2f vec, Args&&... args)
 {
+    // somewhat similar to the above function
 	_Object = std::shared_ptr<V>(new V(args...));
-	_Object->setID(_ID);
-	_Objects.emplace(std::make_pair(_ID, _Object));
-	QuadTree::Insert(_ID, _Object);
-	_IDs.insert(std::make_pair(name, _ID));
-	_ID++;
+    _IDs.insert(std::make_pair(name,_ID));
+	Insert(vec, _Object);                 // insert the object to the quad tree
+
 	_Object.reset();
 }
 
