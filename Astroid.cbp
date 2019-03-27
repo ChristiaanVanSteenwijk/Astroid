@@ -55,6 +55,7 @@
 			<Add directory="D:/Programs/SFML/SFML/lib" />
 			<Add directory="../../../Programs/sqlite/bin" />
 		</Linker>
+		<Unit filename="include/Armor.hpp" />
 		<Unit filename="include/Aura.hpp" />
 		<Unit filename="include/Auras.hpp" />
 		<Unit filename="include/BackGround.hpp" />
@@ -86,11 +87,13 @@
 		<Unit filename="include/Visibility.hpp" />
 		<Unit filename="include/WeaponEmplacement.hpp" />
 		<Unit filename="include/WeaponSystem.hpp" />
+		<Unit filename="include/WeaponSystemWithFeedback.hpp" />
 		<Unit filename="include/neuralnetwork.hpp" />
 		<Unit filename="include/neuron.hpp" />
 		<Unit filename="include/sigmoid.hpp" />
 		<Unit filename="include/sqlite3.h" />
 		<Unit filename="include/stepneuron.hpp" />
+		<Unit filename="src/Armor.cpp" />
 		<Unit filename="src/Aura.cpp" />
 		<Unit filename="src/Auras.cpp" />
 		<Unit filename="src/BackGround.cpp" />
@@ -120,6 +123,7 @@
 		<Unit filename="src/Visibility.cpp" />
 		<Unit filename="src/WeaponEmplacement.cpp" />
 		<Unit filename="src/WeaponSystem.cpp" />
+		<Unit filename="src/WeaponSystemWithFeedback.cpp" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/neuralnetwork.cpp" />
 		<Unit filename="src/neuron.cpp" />

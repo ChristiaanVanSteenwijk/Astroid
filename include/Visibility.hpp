@@ -36,12 +36,18 @@ class Visibility
         virtual sf::Color GetColour();
 
         virtual void ColourSprite();
+
+     //   virtual sf::Vector2u GetSize() const;
+    //    virtual sf::Image& GetImage();
     protected:
 
         std::string _filename;
 
-        sf::Texture _image;
+    //    sf::Image _image;
+     //   sf::Vector2u _size;
+        sf::Texture _texture;
         sf::Sprite _sprite;
+        sf::Vector2f location;
         bool _isLoaded;
         int _z;
         sf::Color _colour;

@@ -44,7 +44,7 @@ public:
     void changeState();
 
 	template <typename _state>
-	static std::unique_ptr<_state> build( StateMachine& machine, sf::RenderWindow& window, sf::View& view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace = true );
+	static std::unique_ptr<_state> build( StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace = true );
 
     unsigned int getHeight();
     unsigned int getWidth();
@@ -57,8 +57,8 @@ private:
     Status NextState=Status::_null;
 
     sf::RenderWindow m_window;
-    sf::RenderTexture r_next;
-    sf::Sprite s_next, s_previous, s_GUI;
+    sf::RenderTexture r_next, r_gui;
+    sf::Sprite s_next, s_previous, s_gui;
     sf::View m_view, n_view;
     GameObjectManager m_context;
 
@@ -80,9 +80,9 @@ private:
 };
 
 template <typename _state>
-std::unique_ptr<_state> StateMachine::build(StateMachine& machine, sf::RenderWindow& window, sf::View& view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace )
+std::unique_ptr<_state> StateMachine::build(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace )
 {
-	return std::unique_ptr<_state>( new _state( machine, window, view, next, _context, _replace ) );
+	return std::unique_ptr<_state>( new _state( machine, window, view, _context, _replace ) );
 }
 
 #endif // GAMEENGINE_HPP

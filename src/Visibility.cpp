@@ -5,7 +5,7 @@
 Visibility::Visibility(std::string filename)
 {
     //ctor
-        if(_image.loadFromFile(filename) ==  false)
+        if(_texture.loadFromFile(filename) ==  false)
     {
         _filename = "";
         _isLoaded =  false;
@@ -13,18 +13,34 @@ Visibility::Visibility(std::string filename)
     else
     {
         _filename = filename;
-        _sprite.setTexture(_image);
+        _sprite.setTexture(_texture);
         _isLoaded =  true;
         sf::FloatRect temp = _sprite.getLocalBounds();
         _sprite.setOrigin(float(temp.width)*.5, float(temp.height*.5));
     }
+ /*   if (_image.loadFromFile(filename) ==  false)
+    {
+        _filename = "";
+        _isLoaded =  false;
+    }
+    else
+    {
+        _filename = filename;
+        _isLoaded = true;
+        _size = _image.getSize();
+    } */
 }
 
 Visibility::~Visibility()
 {
     //dtor
 }
-
+/*
+sf::Vector2u Visibility::GetSize() const
+{
+    return _size;
+}
+*/
 void Visibility::Draw( sf::RenderTarget& _target)
 {
     _target.draw(_sprite);
@@ -33,6 +49,7 @@ void Visibility::Draw( sf::RenderTarget& _target)
 void Visibility::Move(sf::Vector2f X)
 {
     _sprite.move(X);
+  //  location+=X;
 }
 
 void Visibility::SetPosition(sf::Vector2f X)
@@ -68,7 +85,12 @@ sf::Sprite& Visibility::GetSprite()
 {
     return _sprite;
 }
-
+/*
+sf::Image& Visibility::GetImage()
+{
+    return _image;
+}
+*/
 bool Visibility::IsLoaded() const
 {
     return _isLoaded;

@@ -62,17 +62,25 @@ void GameObjectManager::Draw(sf::View& view, sf::RenderTarget& _target)
    // _target.clear();
 
     //RetrieveOrdered stores the objects by the Z value to determine what gets drawn first
-    std::multimap<int, std::shared_ptr<GameObject>> temp = RetrieveOrderd(rect);
+    _visible = RetrieveOrderd(rect);
     //    std::cout << temp.size();
     _target.setView(view);
 
     // draw the objects in order
-    for (auto it : temp)
+    for (auto it : _visible)
     {
-        it.second->_visibility->Draw(_target);
+        it.second->Draw(_target);
     }
     // display the view graphics cards are optimized for a clear draw display order
    // _target.display();
+}
+
+void GameObjectManager::DrawFeedBack(sf::RenderTarget& _target)
+{
+    for (auto it : _visible)
+    {
+        it.second->DrawFeedback(_target);
+    }
 }
 
 void GameObjectManager::UpdateAll(sf::Time dt)
@@ -81,7 +89,7 @@ void GameObjectManager::UpdateAll(sf::Time dt)
     {
           _Iterator.second->Update(dt);
     }
-    // objects are destoryed after the update cycle to avoid memory leaks
+    // objects are destroyed after the update cycle to avoid memory leaks
     Destroy();
 }
 

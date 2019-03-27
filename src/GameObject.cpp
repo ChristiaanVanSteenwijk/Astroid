@@ -26,6 +26,9 @@ void GameObject::SetPosition(sf::Vector2f vec)
 
     if(_auras)
         _auras->SetPosition(vec);
+
+    if(_healt)
+        _healt->SetPosition(vec);
 }
 
 void GameObject::Update(sf::Time elapsedTime)
@@ -49,11 +52,24 @@ std::list<std::shared_ptr<GameObject>> GameObject::Move(sf::Vector2f X)
     m_context.Store(_ID);
 
     // next step is to move the object
-    _visibility->Move(X);
+    _visibility->Move(X);   // moves the object itself
+    if(_healt)
+        _healt->Move(X);    // moves the health bars
 
     // un-store or put it back in the quad-tree at the new location
     m_context.UnStore();
 
     // Checks the boundary of the object for other objects for collision detection
     return m_context.Retrieve(_visibility->GetBoundingRect());
+}
+
+void GameObject::Draw(sf::RenderTarget& _target)
+{
+    if(_visibility)
+        _visibility->Draw(_target);
+}
+void GameObject::DrawFeedback(sf::RenderTarget& _target)
+{
+    if (_healt && _visibility)
+        _healt->DrawFeedback(_target);
 }

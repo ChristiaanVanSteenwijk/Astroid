@@ -13,6 +13,8 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
     //ctor
     // see GameObject for the different parts
     _healt = std::unique_ptr<Health> (new Health(50, 3));
+    _healt->EmplaceArmor<Armor>(50, 10);
+
     _me = std::unique_ptr<MassEngine> (new MassEngine(40, 50, 50, 0.3));
     _me->SetRotation(90+angle);
 
@@ -102,7 +104,7 @@ void Enemy::Update(sf::Time elapsedTime)
 
     Ship::Update(elapsedTime);
 
-    if (_healt->Gethealth()<0)
+    if (_healt->GetHealth()<0)
         m_context.MarkForDestruction(_ID);
 
 }

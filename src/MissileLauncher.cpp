@@ -4,11 +4,13 @@
 #include "Missile.hpp"
 #include <iostream>
 
-MissileLauncher::MissileLauncher(GameObjectManager& context, sf::Vector2f vec, sf::Time reload, unsigned int ammo, unsigned int damage, unsigned int armorpen)
-    :WeaponEmplacement(context, vec, reload), m_damage(damage), m_armorpen(armorpen)
+MissileLauncher::MissileLauncher(GameObjectManager& context, sf::Vector2f vec, unsigned int ammo, unsigned int damage, unsigned int armorpen)
+    :WeaponEmplacement(context, vec, sf::Time::Zero, weaponFeedback::ammo), m_damage(damage), m_armorpen(armorpen)
 {
     //ctor
     m_ammo = ammo;
+    max_ammo=ammo;
+    maximalControl=true;
 }
 
 MissileLauncher::~MissileLauncher()

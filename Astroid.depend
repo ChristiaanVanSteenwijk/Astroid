@@ -14,11 +14,11 @@
 	"GameObjectManager.hpp"
 	"DataBase.hpp"
 
-1549115882 d:\documenten\bgp\astroid\include\introstate.hpp
+1553718951 d:\documenten\bgp\astroid\include\introstate.hpp
 	"State.hpp"
 	"BackGround.hpp"
 
-1549115470 d:\documenten\bgp\astroid\include\state.hpp
+1553718951 d:\documenten\bgp\astroid\include\state.hpp
 	<memory>
 	"SFML/System/Time.hpp"
 	"SFML/Graphics.hpp"
@@ -127,7 +127,7 @@
 1484252197 d:\programs\sfml\sfml-2.4.1\include\sfml\system\noncopyable.hpp
 	<SFML/System/Export.hpp>
 
-1549483740 d:\documenten\bgp\astroid\include\statemachine.hpp
+1553719577 d:\documenten\bgp\astroid\include\statemachine.hpp
 	<memory>
 	<stack>
 	<string>
@@ -135,7 +135,7 @@
 	"Status.hpp"
 	"IntroState.hpp"
 
-1540719635 d:\documenten\bgp\astroid\include\gameobjectmanager.hpp
+1553720049 d:\documenten\bgp\astroid\include\gameobjectmanager.hpp
 	<memory>
 	"SFML/System/Clock.hpp"
 	"GameObject.hpp"
@@ -443,11 +443,11 @@
 	"Ship.hpp"
 	"Gun.hpp"
 
-1549115338 source:d:\documenten\bgp\astroid\src\gameobjectmanager.cpp
+1553633994 source:d:\documenten\bgp\astroid\src\gameobjectmanager.cpp
 	"GameObjectManager.hpp"
 	<iostream>
 
-1549115833 source:d:\documenten\bgp\astroid\src\introstate.cpp
+1553718951 source:d:\documenten\bgp\astroid\src\introstate.cpp
 	"IntroState.hpp"
 	"StateMachine.hpp"
 	<SFML/Graphics/RenderWindow.hpp>
@@ -455,7 +455,7 @@
 	<iostream>
 	<memory>
 
-1549115882 d:\documenten\bgp\astroid\include\playstate.hpp
+1553718951 d:\documenten\bgp\astroid\include\playstate.hpp
 	<memory>
 	<iostream>
 	"StateMachine.hpp"
@@ -467,7 +467,7 @@
 1526324016 source:d:\documenten\bgp\astroid\src\main.cpp
 	"StateMachine.hpp"
 
-1549314579 source:d:\documenten\bgp\astroid\src\menustate.cpp
+1553718951 source:d:\documenten\bgp\astroid\src\menustate.cpp
 	"MenuState.hpp"
 	<SFML/Graphics/RenderWindow.hpp>
 	<SFML/Window/Event.hpp>
@@ -476,31 +476,32 @@
 	<memory>
 	<iostream>
 
-1549115882 d:\documenten\bgp\astroid\include\menustate.hpp
+1553718951 d:\documenten\bgp\astroid\include\menustate.hpp
 	"BackGround.hpp"
 	"State.hpp"
 
-1545160807 source:d:\documenten\bgp\astroid\src\player.cpp
+1552850959 source:d:\documenten\bgp\astroid\src\player.cpp
 	"Player.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
 	<iostream>
 	"Shield.hpp"
 	"MissileLauncher.hpp"
+	"WeaponSystemWithFeedback.hpp"
 
-1549570861 source:d:\documenten\bgp\astroid\src\playstate.cpp
+1553718951 source:d:\documenten\bgp\astroid\src\playstate.cpp
 	"PlayState.hpp"
 	"State.hpp"
 	"Player.hpp"
 	"Enemy.hpp"
 	"Cruiser.hpp"
 
-1549311284 source:d:\documenten\bgp\astroid\src\state.cpp
+1553719037 source:d:\documenten\bgp\astroid\src\state.cpp
 	"State.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
 
-1549635049 source:d:\documenten\bgp\astroid\src\statemachine.cpp
+1553718567 source:d:\documenten\bgp\astroid\src\statemachine.cpp
 	"StateMachine.hpp"
 	<iostream>
 	<memory>
@@ -523,7 +524,7 @@
 	"Health.hpp"
 	"Auras.hpp"
 
-1548103274 source:d:\documenten\bgp\astroid\src\ship.cpp
+1552947899 source:d:\documenten\bgp\astroid\src\ship.cpp
 	"Ship.hpp"
 	"GameObjectManager.hpp"
 	"CollisionObject.hpp"
@@ -975,7 +976,7 @@
 
 1526235714 d:\documenten\bgp\astroid\include\status.hpp
 
-1548187159 source:d:\documenten\bgp\astroid\src\enemy.cpp
+1552947747 source:d:\documenten\bgp\astroid\src\enemy.cpp
 	"Enemy.hpp"
 	<iostream>
 	"stepneuron.hpp"
@@ -993,11 +994,17 @@
 
 1538828414 d:\documenten\bgp\astroid\include\collisionobject.hpp
 
-1534796302 d:\documenten\bgp\astroid\include\health.hpp
-	<SFML/System/Time.hpp>
+1553633860 d:\documenten\bgp\astroid\include\health.hpp
+	<memory>
+	<SFML\System\Time.hpp>
+	<SFML\Graphics.hpp>
+	"Armor.hpp"
+	"Shield.hpp"
 
-1537528130 source:d:\documenten\bgp\astroid\src\health.cpp
+1553633966 source:d:\documenten\bgp\astroid\src\health.cpp
 	"Health.hpp"
+	"Armor.hpp"
+	"Shield.hpp"
 
 1525812018 d:\programs\sfml\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -1420,11 +1427,11 @@
 	<cmath>
 	<iostream>
 
-1538824845 d:\documenten\bgp\astroid\include\weaponemplacement.hpp
+1551818253 d:\documenten\bgp\astroid\include\weaponemplacement.hpp
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Time.hpp>
 
-1539808422 source:d:\documenten\bgp\astroid\src\weaponemplacement.cpp
+1551818257 source:d:\documenten\bgp\astroid\src\weaponemplacement.cpp
 	"WeaponEmplacement.hpp"
 	"GameObjectManager.hpp"
 	<iostream>
@@ -1439,14 +1446,14 @@
 	"Shot.hpp"
 	<iostream>
 
-1549637181 source:d:\documenten\bgp\astroid\src\missilelauncher.cpp
+1552855984 source:d:\documenten\bgp\astroid\src\missilelauncher.cpp
 	"MissileLauncher.hpp"
 	"GameObject.hpp"
 	"GameObjectManager.hpp"
 	"Missile.hpp"
 	<iostream>
 
-1546894604 d:\documenten\bgp\astroid\include\missilelauncher.hpp
+1550522924 d:\documenten\bgp\astroid\include\missilelauncher.hpp
 	<deque>
 	<SFML/Graphics.hpp>
 	<SFML/System/Clock.hpp>
@@ -1492,10 +1499,10 @@
 1530966784 d:\documenten\bgp\astroid\include\stepneuron.hpp
 	"neuron.hpp"
 
-1534796295 d:\documenten\bgp\astroid\include\shield.hpp
-	"Health.hpp"
+1552947786 d:\documenten\bgp\astroid\include\shield.hpp
+	<SFML/System/Time.hpp>
 
-1534796274 source:d:\documenten\bgp\astroid\src\shield.cpp
+1552946112 source:d:\documenten\bgp\astroid\src\shield.cpp
 	"Shield.hpp"
 
 1536088361 source:d:\documenten\bgp\astroid\src\tilemap.cpp
@@ -1504,7 +1511,7 @@
 1536089192 d:\documenten\bgp\astroid\include\tilemap.hpp
 	<Visibility.hpp>
 
-1547995037 d:\documenten\bgp\astroid\include\gameobject.hpp
+1553630321 d:\documenten\bgp\astroid\include\gameobject.hpp
 	<string>
 	<list>
 	<vector>
@@ -1518,24 +1525,24 @@
 	"WeaponSystem.hpp"
 	"Auras.hpp"
 
-1545160849 d:\documenten\bgp\astroid\include\visibility.hpp
+1550088658 d:\documenten\bgp\astroid\include\visibility.hpp
 	<SFML/Graphics.hpp>
 	<list>
 	<string>
 	<memory>
 
-1547587308 source:d:\documenten\bgp\astroid\src\gameobject.cpp
+1553633692 source:d:\documenten\bgp\astroid\src\gameobject.cpp
 	<iostream>
 	<SFML/Graphics/Transform.hpp>
 	"GameObject.hpp"
 	"GameObjectManager.hpp"
 
-1545160830 source:d:\documenten\bgp\astroid\src\visibility.cpp
+1550088693 source:d:\documenten\bgp\astroid\src\visibility.cpp
 	"Visibility.hpp"
 	"GameObject.hpp"
 	<iostream>
 
-1547670866 source:d:\documenten\bgp\astroid\src\missile.cpp
+1552947874 source:d:\documenten\bgp\astroid\src\missile.cpp
 	<math.h>
 	"Missile.hpp"
 	<iostream>
@@ -1548,17 +1555,17 @@
 1546893061 d:\documenten\bgp\astroid\include\missile.hpp
 	"GameObject.hpp"
 
-1537611702 d:\documenten\bgp\astroid\include\weaponsystem.hpp
-	"WeaponEmplacement.hpp"
+1551904108 d:\documenten\bgp\astroid\include\weaponsystem.hpp
 	<map>
 	<memory>
+	"WeaponEmplacement.hpp"
 
-1537611661 source:d:\documenten\bgp\astroid\src\weaponsystem.cpp
+1551608036 source:d:\documenten\bgp\astroid\src\weaponsystem.cpp
 	"WeaponSystem.hpp"
 	<math.h>
 	<iostream>
 
-1542747616 source:d:\documenten\bgp\astroid\src\cruiser.cpp
+1552947747 source:d:\documenten\bgp\astroid\src\cruiser.cpp
 	"Cruiser.hpp"
 	<iostream>
 	"stepneuron.hpp"
@@ -1597,4 +1604,20 @@
 
 1547996081 d:\documenten\bgp\astroid\include\radar.hpp
 	"Aura.hpp"
+
+1551821260 source:d:\documenten\bgp\astroid\src\weaponsystemwithfeedback.cpp
+	"WeaponSystemWithFeedback.hpp"
+	<list>
+	<SFML/Graphics/RectangleShape.hpp>
+
+1551821075 d:\documenten\bgp\astroid\include\weaponsystemwithfeedback.hpp
+	<Vector>
+	<SFML\Graphics.hpp>
+	"WeaponSystem.hpp"
+
+1552944890 source:d:\documenten\bgp\astroid\src\armor.cpp
+	"Armor.hpp"
+
+1552947689 d:\documenten\bgp\astroid\include\armor.hpp
+	<SFML/System/Time.hpp>
 

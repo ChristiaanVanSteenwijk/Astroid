@@ -19,12 +19,14 @@ StateMachine::StateMachine()
 	sf::Vector2u _size = sf::Vector2u(1040, 768);
 	m_window.setSize(_size);
     r_next.create(1040, 768);
+    r_gui.create(1040, 768);
     //set the boundaries for the view
     s_next.setTexture(r_next.getTexture());
+    s_gui.setTexture(r_gui.getTexture());
 
     n_view.reset(s_next.getLocalBounds());
 	// Initialize the engine;
-	m_states.push(std::move( build<PlayState>(*this, m_window, m_view, r_next, m_context, false)));// should be intro state unless debugging an other state or debugging with another state.
+	m_states.push(std::move( build<PlayState>(*this, m_window, m_view, m_context, false)));// should be intro state unless debugging an other state or debugging with another state.
 	// send the first state to the stack
     m_running = true;
     setNextState(Status::_null);
@@ -76,10 +78,14 @@ void StateMachine::Draw()
     // first part of the render cycle
    // move the existing view to the previous one
     s_previous.setTexture(r_next.getTexture());
-    r_next.clear();
-    m_states.top()->draw();    // Let the state draw to the r_next texture as states keep track of the view
+    r_next.clear(sf::Color(0,0,0,0));
+    m_states.top()->draw(r_next);    // Let the state draw to the r_next texture as states keep track of the view
     r_next.display();
     s_next.setTexture(r_next.getTexture());
+    r_gui.clear(sf::Color(0,0,0,0));
+    m_states.top()->drawFeedback(r_gui);
+    r_gui.display();
+    s_gui.setTexture(r_gui.getTexture());
 }
 
 void StateMachine::Render()
@@ -92,7 +98,7 @@ void StateMachine::Render()
     m_window.clear();                // clear the window, standard part of the drawing cycle
     m_window.draw(s_previous);      // draw the previous view here
     m_window.draw(s_next);         // draw the next frame with transparency "alpha"
- // m_window.draw(s_GUI);         // not implemented yet
+    m_window.draw(s_gui);         // not working yet
     m_window.display();          // display the scene, standard part of the cycle
 }
 
@@ -116,15 +122,15 @@ void StateMachine::changeState()
     switch (NextState)
     {
     case Status::_intro:
-        temp = build<IntroState>(*this, m_window, m_view, r_next, m_context, false);
+        temp = build<IntroState>(*this, m_window, m_view, m_context, false);
         newstate=true;
         break;
     case Status::_play:
-       temp = build<PlayState>(*this, m_window, m_view, r_next, m_context, false);
+       temp = build<PlayState>(*this, m_window, m_view, m_context, false);
        newstate=true;
         break;
     case Status::_menu:
-        temp = build<MenuState>(*this, m_window, m_view, r_next, m_context, false);
+        temp = build<MenuState>(*this, m_window, m_view, m_context, false);
         newstate=true;
         break;
     case Status::_null:

@@ -80,7 +80,7 @@ void Missile::Update(sf::Time dt)
     _collisionGeometry = Move(_me->getVvector());
     HandleCollissions();
 
-    if (_healt->Gethealth() < 0)
+    if (_healt->GetHealth() < 0)
         m_context.MarkForDestruction(_ID);
 }
 

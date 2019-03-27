@@ -1,7 +1,8 @@
 #include "Shield.hpp"
 
-Shield::Shield(unsigned int health, unsigned int armor, unsigned int shield)
-    :Health(health, armor), _shield(shield), max_shield(shield)
+
+Shield::Shield(unsigned int Shield, unsigned int hp, unsigned int regen):
+    _shield(Shield), max_shield(Shield), _hitpoints(hp), s_regen(regen)
 {
     //ctor
 }
@@ -14,6 +15,11 @@ Shield::~Shield()
 unsigned int Shield::GetShield()
 {
     return _shield;
+}
+
+unsigned int Shield::GetMaxShield()
+{
+    return max_shield;
 }
 
 void Shield::SetShield(unsigned int val)
@@ -38,42 +44,28 @@ void Shield::DecreaseShield(unsigned int val)
         _shield=0;
 }
 
-void Shield::collision(unsigned int damage, unsigned int armorpen, bool ignoreShield)
+unsigned int Shield::collision(unsigned int damage, bool ignoreShield)
 {
-    bool ShieldEffective = true;
-    if (ignoreShield)
-        ShieldEffective=false;
-
-    if (ShieldEffective)
+    unsigned int temp = damage;
+    if (shieldEffective && !ignoreShield )
     {
-        if (_shield>damage)
-            _shield-=damage;
+       DecreaseShield(damage);
+        if (damage > _hitpoints)
+            damage-=_hitpoints;
         else
-        {
-            _shield=0;
-            ShieldEffective=false;
-            Health::collision(damage, armorpen);
-        }
+            damage=0;
     }
-    else
-        Health::collision(damage, armorpen);
+    return temp;
 }
 
-void Shield::setRegen(unsigned int health, unsigned int armor, unsigned int shield)
+void Shield::setRegen(unsigned int regen)
 {
-    h_regen=health;
-    a_regen=armor;
-    s_regen=shield;
+    s_regen=regen;
 }
 
 void Shield::Update(sf::Time dt)
 {
-    _timer-=dt;
-    if (_timer<sf::Time::Zero)
-    {
-        IncreaseHealth(h_regen);
-        IncreaseArmor(a_regen);
-        IncreaseShield(s_regen);
-        _timer=_reset;
-    }
+    IncreaseShield(s_regen*dt.asMicroseconds());
+    if (s_regen>0)
+        shieldEffective = true;
 }

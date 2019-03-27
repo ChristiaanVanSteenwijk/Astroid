@@ -41,6 +41,8 @@ class GameObject
         CollisionObject Type;
         Stealth getStealth(){return _stealth;};
         void    setStealth(Stealth s){_stealth=s;};
+        void Draw(sf::RenderTarget& _target);
+        virtual void DrawFeedback(sf::RenderTarget& _target);
 
         virtual std::list<std::shared_ptr<GameObject>> Move(sf::Vector2f X);
         /*

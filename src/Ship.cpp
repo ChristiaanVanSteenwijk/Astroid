@@ -39,7 +39,7 @@ void Ship::Update(sf::Time dt)
 
     HandleCollissions();
 
-    if (_healt->Gethealth()==0)
+    if (_healt->GetHealth()==0)
         m_context.MarkForDestruction(_ID);
 
     m_position = _visibility->GetPosition();
@@ -49,19 +49,19 @@ void Ship::HandleCollissions()
 {
     for (std::shared_ptr<GameObject> _collision : _collisionGeometry)
     {
-     if(_collision->getID()!=_ID)
-    {
-    switch (_collision->Type)
+        if(_collision->getID()!=_ID)
         {
-        case CollisionObject::_Ship:
-            _healt->collision(5,100);
-            _collision->_healt->collision(5,100);
-            break;
-        case CollisionObject::_None:
-        default:
-            break;
+        switch (_collision->Type)
+            {
+            case CollisionObject::_Ship:
+                _healt->collision(5,100);
+                _collision->_healt->collision(5,100);
+                break;
+            case CollisionObject::_None:
+            default:
+                break;
+            }
         }
-    }
     }
     _collisionGeometry.clear();
 }

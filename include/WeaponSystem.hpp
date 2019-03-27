@@ -1,8 +1,10 @@
 #ifndef WEAPONSYSTEM_H
 #define WEAPONSYSTEM_H
-#include "WeaponEmplacement.hpp"
+
 #include <map>
 #include <memory>
+
+#include "WeaponEmplacement.hpp"
 
 class WeaponSystem
 {
@@ -18,13 +20,14 @@ class WeaponSystem
 
         virtual void Fire(sf::Vector2f direction);
                 void ChangeState(unsigned int slot);
+        virtual void setUp(){};
 
         template <typename W, typename... Args>
             void Emplace(unsigned int slot, Args&&... args);
         // can handle different weapon types, hence the template
 
     protected:
-        // store weapons by slot so the can be fired independently or in groups
+         // store weapons by slot so they can be fired independently
         // effectively a finite state machine
         std::multimap<unsigned int, std::shared_ptr<WeaponEmplacement>> _weapons;
         // started this class as weapon-emplacement itself, hence the odd naming
@@ -37,7 +40,7 @@ class WeaponSystem
 template <typename W, typename... Args>
     void WeaponSystem::Emplace(unsigned int slot, Args&&... args)
     {
-            _weapons.emplace(std::make_pair(slot, std::shared_ptr<W>(new W(args...))));
+        _weapons.emplace(std::make_pair(slot,  std::shared_ptr<W>(new W(args...))));
     }
 
 #endif // WEAPONSYSTEM_H

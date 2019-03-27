@@ -21,7 +21,7 @@ void WeaponSystem::SetPosition(sf::Vector2f pos)
 void WeaponSystem::Fire(sf::Vector2f w_direction)
 {
     auto range = _weapons.equal_range(_state);
-    for (auto it = range.first; it != range.second; ++it) // something here doesn't work
+    for (auto it = range.first; it != range.second; ++it)
         it->second->Fire(w_direction);
 }
 
@@ -41,9 +41,10 @@ void WeaponSystem::SetCoordinate(sf::Vector2f direction)
 void WeaponSystem::Update(sf::Time dt, sf::Vector2f pos)
 {
     for (auto it = _weapons.begin(); it != _weapons.end(); it++)
-        it->second->Update(dt, pos);
+         it->second->Update(dt, pos);
         //needs to move with the ship or entity that caries the weapon
 }
+
 
 void WeaponSystem::SetOwner(unsigned long int id)
 {

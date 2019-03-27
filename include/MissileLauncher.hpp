@@ -12,7 +12,7 @@
 class MissileLauncher : public WeaponEmplacement
 {
 public:
-    MissileLauncher(GameObjectManager& context, sf::Vector2f vec, sf::Time reload, unsigned int ammo, unsigned int damage, unsigned int armorpen);
+    MissileLauncher(GameObjectManager& context, sf::Vector2f vec, unsigned int ammo, unsigned int damage, unsigned int armorpen);
     ~MissileLauncher();
     void Fire(sf::Vector2f location);
     void SetCoordinate(sf::Vector2f location);
@@ -22,7 +22,6 @@ public:
     void Reload();
 protected:
     std::deque<sf::Vector2f> m_destinations;
-    bool reloaded = true;
     std::shared_ptr<GameObject> target = nullptr;
     unsigned int m_damage, m_armorpen;
 };

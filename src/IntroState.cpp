@@ -7,8 +7,8 @@
 #include <iostream>
 #include <memory>
 
-IntroState::IntroState(StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace)
-: State{ machine, _window, _view, next, _context, _replace }
+IntroState::IntroState(StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace)
+: State{ machine, _window, _view, _context, _replace }
 {
     m_context.EmplaceName<BackGround>("Intro", sf::Vector2f(0.f,0.f), m_context, "img/intro.bmp");
 	sf::FloatRect rect = m_context.Find("Intro")->_visibility->GetBoundingRect();

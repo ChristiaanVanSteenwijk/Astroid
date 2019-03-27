@@ -7,7 +7,7 @@
 class IntroState : public State
 {
 public:
-	IntroState(StateMachine& machine, sf::RenderWindow& m_window, sf::View& m_view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace = false);
+	IntroState(StateMachine& machine, sf::RenderWindow& m_window, sf::View& m_view, GameObjectManager& _context, bool _replace = false);
     ~IntroState();
 	void pause();
 	void resume();

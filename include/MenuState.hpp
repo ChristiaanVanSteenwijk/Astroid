@@ -9,7 +9,7 @@ class StateMachine;
 class MenuState : public State
 {
 public:
-	MenuState(StateMachine& machine, sf::RenderWindow& m_window, sf::View& m_view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace = false);
+	MenuState(StateMachine& machine, sf::RenderWindow& m_window, sf::View& m_view, GameObjectManager& _context, bool _replace = false);
     ~MenuState();
 	void pause();
 	void resume();

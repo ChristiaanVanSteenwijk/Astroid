@@ -4,8 +4,8 @@
 #include "Enemy.hpp"
 #include "Cruiser.hpp"
 
-PlayState::PlayState( StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, sf::RenderTexture& next, GameObjectManager& _context, bool _replace )
-: State{ machine, _window, _view, next, _context, _replace }
+PlayState::PlayState( StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace )
+: State{ machine, _window, _view, _context, _replace }
 {
 	std::cout << "PlayState Init" << std::endl;
     float Width  = 1000;

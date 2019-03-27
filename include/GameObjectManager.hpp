@@ -20,6 +20,7 @@ class GameObjectManager : public QuadTree
         void reSize(sf::FloatRect rect);
 
         void Draw(sf::View& view, sf::RenderTarget& _target);
+        void DrawFeedBack(sf::RenderTarget& _target);
         void UpdateAll(sf::Time dt);
 
         void Insert(sf::Vector2f centre, std::shared_ptr<GameObject> visi);
@@ -50,7 +51,7 @@ class GameObjectManager : public QuadTree
         unsigned long int getLastID();
 /*
         Could be used for more advanced collision detection
-        decided to let the objects themselves handle it
+        decided to let the objects themselves handle it for simplicity sake
         which doesn't allow for iterative methods as far as I know
         void Collision();
         void AddCollision(unsigned long int id);
@@ -62,7 +63,10 @@ class GameObjectManager : public QuadTree
         template <typename V, typename... Args>
             void EmplaceName(std::string name, sf::Vector2f vec, Args&&... args);
 
-            sf::FloatRect GetOuterBounds();
+        sf::FloatRect GetOuterBounds();
+
+     //   void ClearTexture();
+
     private:
         // keeps track of the identity numbers of named objects
         std::map <std::string, unsigned long int> _IDs;
@@ -71,7 +75,7 @@ class GameObjectManager : public QuadTree
         std::pair<unsigned long int, std::shared_ptr<GameObject>> m_object;
         std::map <unsigned long int, std::shared_ptr<GameObject>> _Objects;
         std::map <unsigned long int, std::shared_ptr<GameObject>>::iterator _Iterator;
-
+        std::multimap<int, std::shared_ptr<GameObject>> _visible;
         unsigned long int _ID=0;
         unsigned long int _moving_ID;
 
@@ -79,13 +83,20 @@ class GameObjectManager : public QuadTree
         std::list<unsigned long int> Destruction;
 
         sf::FloatRect OuterBounds;
+   //     sf::Texture tex;
+     //   std::map<unsigned long int , std::pair<unsigned int, unsigned int>> TextureStorage;
+    //    unsigned int length;
 };
 
 template <typename V, typename... Args>
 void GameObjectManager::Emplace(sf::Vector2f vec, Args&&... args)
 {
-	_Object = std::shared_ptr<V>(new V(args...));   // Create a new object with a smart pointer
-	Insert(vec, _Object);                 // insert the object to the quad tree
+	_Object = std::shared_ptr<V>(new V(args...));     // Create a new object with a smart pointer
+/*	sf::Vector2u _size=_Object->_visibility->GetSize();
+	sf::Image _img = _Object->_visibility->GetImage();
+	tex.update(_img,length,0);
+	length+=_size.x;
+*/	Insert(vec, _Object);                            // insert the object to the quad tree
 	_Object.reset();                                // reset the temporary object
 }
 
@@ -94,9 +105,8 @@ void GameObjectManager::EmplaceName(std::string name, sf::Vector2f vec, Args&&..
 {
     // somewhat similar to the above function
 	_Object = std::shared_ptr<V>(new V(args...));
-    _IDs.insert(std::make_pair(name,_ID));
-	Insert(vec, _Object);                 // insert the object to the quad tree
-
+    _IDs.insert(std::make_pair(name,_ID));  // store the name
+	Insert(vec, _Object);                  // insert the object to the quad tree
 	_Object.reset();
 }
 

@@ -10,11 +10,12 @@ Cruiser::Cruiser(GameObjectManager& context, std::string filename, float angle) 
     //ctor
     // see GameObject for the different parts
     _healt = std::unique_ptr<Health> (new Health(51, 3));
+    _healt->EmplaceArmor<Armor>(3, 2);
     _me = std::unique_ptr<MassEngine> (new MassEngine(40, 50, 50, 0.3));
     _me->SetRotation(90+angle);
 
     _weapons = std::unique_ptr<WeaponSystem> (new WeaponSystem());
-    _weapons->Emplace<MissileLauncher>(1, m_context, sf::Vector2f(0,0), sf::seconds(5), 10, 50, 3);
+    _weapons->Emplace<MissileLauncher>(1, m_context, sf::Vector2f(0,0), 10, 50, 3);
     _weapons->ChangeState(1);
 
     _brain= std::unique_ptr<neuralnetwork> (new neuralnetwork(4, {3,5}));
@@ -64,6 +65,6 @@ void Cruiser::Update(sf::Time elapsedTime)
 
     Ship::Update(elapsedTime);
 
-    if (_healt->Gethealth()<0)
+    if (_healt->GetHealth()<0)
         m_context.MarkForDestruction(_ID);
 }
