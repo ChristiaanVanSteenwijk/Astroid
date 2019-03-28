@@ -33,5 +33,5 @@ void State::draw(sf::RenderTarget& target)
 
 void  State::drawFeedback(sf::RenderTarget& target)
 {
-    m_context.DrawFeedBack(target);
+    m_context.DrawFeedBack(m_view, target);
 }

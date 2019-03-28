@@ -4,7 +4,7 @@
 
 
 Health::Health(unsigned int health, unsigned int regen)
-    :_health(health), max_health(health), h_regen(regen), feedback(100.f,20.f),
+    :_health(health), max_health(health), h_regen(regen), feedback(50.f,10.f),
     ShowHealth(feedback), ShowArmor(feedback), ShowShield(feedback),
     DisplayHealth(feedback), DisplayArmor(feedback), DisplayShield(feedback)
 {
@@ -34,10 +34,12 @@ void Health::SetPosition(sf::Vector2f vec)
 {
     ShowHealth.setPosition(vec);
     DisplayHealth.setPosition(vec);
-    vec -= sf::Vector2f(0,20);
+
+    vec -= sf::Vector2f(10,2);
     ShowArmor.setPosition(vec);
     DisplayArmor.setPosition(vec);
-    vec -= sf::Vector2f(0,20);
+
+    vec -= sf::Vector2f(10,2);
     ShowShield.setPosition(vec);
     DisplayShield.setPosition(vec);
 }

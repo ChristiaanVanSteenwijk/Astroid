@@ -20,7 +20,7 @@ class GameObjectManager : public QuadTree
         void reSize(sf::FloatRect rect);
 
         void Draw(sf::View& view, sf::RenderTarget& _target);
-        void DrawFeedBack(sf::RenderTarget& _target);
+        void DrawFeedBack(sf::View& view, sf::RenderTarget& _target);
         void UpdateAll(sf::Time dt);
 
         void Insert(sf::Vector2f centre, std::shared_ptr<GameObject> visi);
@@ -92,11 +92,7 @@ template <typename V, typename... Args>
 void GameObjectManager::Emplace(sf::Vector2f vec, Args&&... args)
 {
 	_Object = std::shared_ptr<V>(new V(args...));     // Create a new object with a smart pointer
-/*	sf::Vector2u _size=_Object->_visibility->GetSize();
-	sf::Image _img = _Object->_visibility->GetImage();
-	tex.update(_img,length,0);
-	length+=_size.x;
-*/	Insert(vec, _Object);                            // insert the object to the quad tree
+	Insert(vec, _Object);                            // insert the object to the quad tree
 	_Object.reset();                                // reset the temporary object
 }
 

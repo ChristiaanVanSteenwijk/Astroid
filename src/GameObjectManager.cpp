@@ -32,7 +32,7 @@ void swap(GameObjectManager& first, GameObjectManager& second)
         swap(first._ID, second._ID);
         swap(first._moving_ID, second._moving_ID);
         swap(first.Destruction, second.Destruction);
-     //   swap(first.QuadTree, second.QuadTree);
+      //  swap(first.QuadTree, second.QuadTree);
 }
 
 GameObjectManager& GameObjectManager::operator=(GameObjectManager other)
@@ -59,7 +59,6 @@ void GameObjectManager::Draw(sf::View& view, sf::RenderTarget& _target)
     // get the size of the viewport that needs to be displayed
     sf::Vector2f tl = view.getCenter()-sf::Vector2f(view.getSize().x/2, view.getSize().y/2);
     sf::FloatRect rect = sf::FloatRect(tl, view.getSize());
-   // _target.clear();
 
     //RetrieveOrdered stores the objects by the Z value to determine what gets drawn first
     _visible = RetrieveOrderd(rect);
@@ -75,12 +74,14 @@ void GameObjectManager::Draw(sf::View& view, sf::RenderTarget& _target)
    // _target.display();
 }
 
-void GameObjectManager::DrawFeedBack(sf::RenderTarget& _target)
+void GameObjectManager::DrawFeedBack(sf::View& view, sf::RenderTarget& _target)
 {
+    _target.setView(view);
     for (auto it : _visible)
     {
         it.second->DrawFeedback(_target);
     }
+    _visible.clear();
 }
 
 void GameObjectManager::UpdateAll(sf::Time dt)
@@ -95,7 +96,6 @@ void GameObjectManager::UpdateAll(sf::Time dt)
 
 void GameObjectManager::Insert(sf::Vector2f centre, std::shared_ptr<GameObject> visi)
 {
-
         if (centre.y>OuterBounds.top+OuterBounds.height)
             centre = sf::Vector2f(centre.x, OuterBounds.top+OuterBounds.height);
         if (centre.x>OuterBounds.left+OuterBounds.width)

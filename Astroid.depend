@@ -135,7 +135,7 @@
 	"Status.hpp"
 	"IntroState.hpp"
 
-1553720049 d:\documenten\bgp\astroid\include\gameobjectmanager.hpp
+1553804290 d:\documenten\bgp\astroid\include\gameobjectmanager.hpp
 	<memory>
 	"SFML/System/Clock.hpp"
 	"GameObject.hpp"
@@ -496,12 +496,12 @@
 	"Enemy.hpp"
 	"Cruiser.hpp"
 
-1553719037 source:d:\documenten\bgp\astroid\src\state.cpp
+1553720030 source:d:\documenten\bgp\astroid\src\state.cpp
 	"State.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
 
-1553718567 source:d:\documenten\bgp\astroid\src\statemachine.cpp
+1553719868 source:d:\documenten\bgp\astroid\src\statemachine.cpp
 	"StateMachine.hpp"
 	<iostream>
 	<memory>
@@ -1001,7 +1001,7 @@
 	"Armor.hpp"
 	"Shield.hpp"
 
-1553633966 source:d:\documenten\bgp\astroid\src\health.cpp
+1553803378 source:d:\documenten\bgp\astroid\src\health.cpp
 	"Health.hpp"
 	"Armor.hpp"
 	"Shield.hpp"
