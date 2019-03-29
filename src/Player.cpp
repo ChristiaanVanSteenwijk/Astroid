@@ -37,13 +37,3 @@ Player::~Player()
     //dtor
     m_machine.setNextState(Status::_intro);
 }
-
-void Player::SetPosition(sf::Vector2f vec)
-{
-    m_position=vec;
-    if(_visibility)
-        _visibility->SetPosition(vec);
-
-    if(_weapons)
-        _weapons->SetPosition(vec);
-}

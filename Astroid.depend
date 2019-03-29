@@ -438,12 +438,12 @@
 	<string>
 	<vector>
 
-1539808037 d:\documenten\bgp\astroid\include\player.hpp
+1553866764 d:\documenten\bgp\astroid\include\player.hpp
 	<math.h>
 	"Ship.hpp"
 	"Gun.hpp"
 
-1553633994 source:d:\documenten\bgp\astroid\src\gameobjectmanager.cpp
+1553804293 source:d:\documenten\bgp\astroid\src\gameobjectmanager.cpp
 	"GameObjectManager.hpp"
 	<iostream>
 
@@ -480,7 +480,7 @@
 	"BackGround.hpp"
 	"State.hpp"
 
-1552850959 source:d:\documenten\bgp\astroid\src\player.cpp
+1553866766 source:d:\documenten\bgp\astroid\src\player.cpp
 	"Player.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
@@ -489,14 +489,14 @@
 	"MissileLauncher.hpp"
 	"WeaponSystemWithFeedback.hpp"
 
-1553718951 source:d:\documenten\bgp\astroid\src\playstate.cpp
+1553866608 source:d:\documenten\bgp\astroid\src\playstate.cpp
 	"PlayState.hpp"
 	"State.hpp"
 	"Player.hpp"
 	"Enemy.hpp"
 	"Cruiser.hpp"
 
-1553720030 source:d:\documenten\bgp\astroid\src\state.cpp
+1553804328 source:d:\documenten\bgp\astroid\src\state.cpp
 	"State.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
@@ -524,7 +524,7 @@
 	"Health.hpp"
 	"Auras.hpp"
 
-1552947899 source:d:\documenten\bgp\astroid\src\ship.cpp
+1553866143 source:d:\documenten\bgp\astroid\src\ship.cpp
 	"Ship.hpp"
 	"GameObjectManager.hpp"
 	"CollisionObject.hpp"
@@ -1001,10 +1001,11 @@
 	"Armor.hpp"
 	"Shield.hpp"
 
-1553803378 source:d:\documenten\bgp\astroid\src\health.cpp
+1553866571 source:d:\documenten\bgp\astroid\src\health.cpp
 	"Health.hpp"
 	"Armor.hpp"
 	"Shield.hpp"
+	<iostream>
 
 1525812018 d:\programs\sfml\sfml\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -1531,7 +1532,7 @@
 	<string>
 	<memory>
 
-1553633692 source:d:\documenten\bgp\astroid\src\gameobject.cpp
+1553866564 source:d:\documenten\bgp\astroid\src\gameobject.cpp
 	<iostream>
 	<SFML/Graphics/Transform.hpp>
 	"GameObject.hpp"

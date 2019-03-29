@@ -1,10 +1,10 @@
 #include "Health.hpp"
 #include "Armor.hpp"
 #include "Shield.hpp"
-
+#include <iostream>
 
 Health::Health(unsigned int health, unsigned int regen)
-    :_health(health), max_health(health), h_regen(regen), feedback(50.f,10.f),
+    :_health(health), max_health(health), h_regen(regen), feedback(100.f,15.f),
     ShowHealth(feedback), ShowArmor(feedback), ShowShield(feedback),
     DisplayHealth(feedback), DisplayArmor(feedback), DisplayShield(feedback)
 {
@@ -32,14 +32,15 @@ void Health::collision(unsigned int damage, unsigned int armorpenetration, bool 
 
 void Health::SetPosition(sf::Vector2f vec)
 {
+    vec -= sf::Vector2f(50,100);
     ShowHealth.setPosition(vec);
     DisplayHealth.setPosition(vec);
 
-    vec -= sf::Vector2f(10,2);
+    vec -= sf::Vector2f(0,20);
     ShowArmor.setPosition(vec);
     DisplayArmor.setPosition(vec);
 
-    vec -= sf::Vector2f(10,2);
+    vec -= sf::Vector2f(0,20);
     ShowShield.setPosition(vec);
     DisplayShield.setPosition(vec);
 }
@@ -61,7 +62,6 @@ void Health::Update(sf::Time dt)
             _armor->Update(dt);
 
         IncreaseHealth(h_regen*dt.asMilliseconds());
-
         _timer-=_reset;
     }
 }
@@ -69,14 +69,14 @@ void Health::Update(sf::Time dt)
 void Health::DrawFeedback(sf::RenderTarget& target)
 {
     s_health=GetHealth()*100.f/getMaxHealth();
-    v_health=sf::Vector2f(s_health,20);
+    v_health=sf::Vector2f(s_health,10);
     DisplayHealth.setSize(v_health);
     target.draw(ShowHealth);
     target.draw(DisplayHealth);
     if (_armor)
     {
         s_armor=_armor->GethitPoints()*100.f/_armor->GetMaxhitPoints();
-        v_armor=sf::Vector2f(s_health,20);
+        v_armor=sf::Vector2f(s_health,10);
         DisplayArmor.setSize(v_armor);
         target.draw(ShowArmor);
         target.draw(DisplayArmor);
@@ -84,12 +84,11 @@ void Health::DrawFeedback(sf::RenderTarget& target)
     if (_shield)
     {
         s_shield=_shield->GetShield()*100.f/_shield->GetMaxShield();
-        v_shield=sf::Vector2f(s_shield,20);
+        v_shield=sf::Vector2f(s_shield,10);
         DisplayShield.setSize(v_shield);
         target.draw(ShowShield);
         target.draw(DisplayShield);
     }
-
 }
 
 unsigned int Health::GetHealth()

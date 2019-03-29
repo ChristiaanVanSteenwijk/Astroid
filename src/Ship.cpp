@@ -21,7 +21,7 @@ Ship::~Ship()
 
 void Ship::setID(unsigned long int id)
 {
-    _ID=id;
+    GameObject::setID(id);
     _weapons->SetOwner(id);
     _auras->SetOwner(id);
 }
