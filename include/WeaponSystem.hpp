@@ -4,6 +4,8 @@
 #include <map>
 #include <memory>
 
+#include <SFML/Graphics/RenderTarget.hpp>
+
 #include "WeaponEmplacement.hpp"
 
 class WeaponSystem
@@ -21,6 +23,7 @@ class WeaponSystem
         virtual void Fire(sf::Vector2f direction);
                 void ChangeState(unsigned int slot);
         virtual void setUp(){};
+        virtual void DrawFeedback(sf::RenderTarget& _target){};
 
         template <typename W, typename... Args>
             void Emplace(unsigned int slot, Args&&... args);

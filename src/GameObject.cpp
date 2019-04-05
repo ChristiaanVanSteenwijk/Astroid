@@ -72,4 +72,7 @@ void GameObject::DrawFeedback(sf::RenderTarget& _target)
 {
     if (_healt && _visibility)
         _healt->DrawFeedback(_target);
+
+    if (_weapons && _visibility)
+        _weapons->DrawFeedback(_target);
 }

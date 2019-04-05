@@ -15,6 +15,8 @@ WeaponSystemWithFeedback::WeaponSystemWithFeedback(std::string font )
     _aft.setFillColor(sf::Color::Red );
     _font.loadFromFile(font);
     _text.setFont(_font);
+    _weaponview.setViewport(sf::FloatRect(0.4, 0.9, 0.4, 0.2));
+    _text.setCharacterSize(100);
 }
 
 WeaponSystemWithFeedback::~WeaponSystemWithFeedback()
@@ -30,9 +32,14 @@ void WeaponSystemWithFeedback::setUp()
     _slots.assign(_size, _text);
 }
 
-void WeaponSystemWithFeedback::draw(sf::RenderTarget& target)
+void WeaponSystemWithFeedback::DrawFeedback(sf::RenderTarget& target)
 {
+    sf::View temp = target.getView();
+    target.setView(_weaponview);
+
     int i=0, j=0, k=0;
+    _slots.clear();
+
     for (auto it : _back)
     {
         it.setPosition(x*i,0);
@@ -41,14 +48,14 @@ void WeaponSystemWithFeedback::draw(sf::RenderTarget& target)
     }
 
     float width[_size];
-    for (auto it : _weapons)
+    for (_weapon=_weapons.begin(); _weapon != _weapons.end(); _weapon++)
     {
-        auto loc = _slots.begin();
-        width[j] = it.second->Givefeedback()*x;
-        _text.setString(std::to_string(it.first));
-        _slots.insert(loc,_text);
-        ++loc;
+        width[j] = (*_weapon).second->Givefeedback()*x;
+        _text.setString(std::to_string((*_weapon).first));
+        _slots.push_back(_text);
         j++;
+
+        //different iterator here, I thought it caused an issue with the drawing order.
     }
 
     for (auto it : _status)
@@ -60,6 +67,7 @@ void WeaponSystemWithFeedback::draw(sf::RenderTarget& target)
         _slots[k].setPosition(x*k,0);
         target.draw(_slots[k]);
 
-        k++;
+        ++k;
     }
+    target.setView(temp);
 }

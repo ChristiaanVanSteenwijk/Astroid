@@ -13,7 +13,7 @@ class WeaponSystemWithFeedback : public WeaponSystem
 
         void setUp();
 
-        void draw(sf::RenderTarget& target);
+        void DrawFeedback(sf::RenderTarget& target);
 
     protected:
 
@@ -25,10 +25,13 @@ class WeaponSystemWithFeedback : public WeaponSystem
 
     std::vector<sf::RectangleShape> _back, _status;
     std::vector<sf::Text> _slots;
+    std::multimap<unsigned int, std::shared_ptr<WeaponEmplacement>>::iterator _weapon;
+
     sf::RectangleShape _aft = sf::RectangleShape(sf::Vector2f(x, y));
     sf::RectangleShape _front = sf::RectangleShape(sf::Vector2f(x, y));
     sf::Font _font;
     sf::Text _text;
+    sf::View _weaponview;
 };
 
 #endif // WEAPONSYSTEMWITHFEEDBACK_H
