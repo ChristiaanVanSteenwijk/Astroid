@@ -23,21 +23,29 @@ void Armor::Update(sf::Time dt)
 
 void Armor::increaceArmor(unsigned int val)
 {
-    if (m_hitPoints + val > max_hitpoints)
-        m_hitPoints=max_hitpoints;
-    else if (m_hitPoints-val<0)
+    if (m_hitPoints <= val)                         // not using the end result as a condition
         m_hitPoints=0;
+    else if (m_hitPoints >= max_hitpoints - val)    // to avoid going trough 0 or the max
+        m_hitPoints=max_hitpoints;
     else
         m_hitPoints+=val;
+
+}
+
+bool Armor::exists()
+{
+    if (m_hitPoints > 0)
+        return true;
+    else
+        return false;
 }
 
 unsigned int Armor::collision(unsigned int damage, unsigned int penetration)
 {
     if (penetration<m_Armor)
     {
-        unsigned int temp=m_hitPoints;
         increaceArmor(-damage);
-        damage-=temp;
+        damage=0;
     }
     return damage;
 }

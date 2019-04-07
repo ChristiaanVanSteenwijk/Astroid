@@ -21,10 +21,10 @@ Health::~Health() noexcept
 
 void Health::collision(unsigned int damage, unsigned int armorpenetration, bool ignoreShield)
 {
-    if (_shield)
+    if (_shield && _shield->exists())
         damage = _shield->collision(damage, ignoreShield);
 
-    if (_armor)
+    if (_armor && _armor->exists())
         damage = _armor->collision(damage, armorpenetration);
 
     DecreaseHealth(damage);
@@ -73,7 +73,7 @@ void Health::DrawFeedback(sf::RenderTarget& target)
     DisplayHealth.setSize(v_health);
     target.draw(ShowHealth);
     target.draw(DisplayHealth);
-    if (_armor)
+    if (_armor && _armor->exists())
     {
         s_armor=_armor->GethitPoints()*100.f/_armor->GetMaxhitPoints();
         v_armor=sf::Vector2f(s_health,10);
@@ -81,7 +81,7 @@ void Health::DrawFeedback(sf::RenderTarget& target)
         target.draw(ShowArmor);
         target.draw(DisplayArmor);
     }
-    if (_shield)
+    if (_shield && _shield->exists())
     {
         s_shield=_shield->GetShield()*100.f/_shield->GetMaxShield();
         v_shield=sf::Vector2f(s_shield,10);

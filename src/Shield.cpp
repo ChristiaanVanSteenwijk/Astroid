@@ -69,3 +69,12 @@ void Shield::Update(sf::Time dt)
     if (s_regen>0)
         shieldEffective = true;
 }
+
+
+bool Shield::exists()
+{
+    if (_hitpoints > 0)
+        return true;
+    else
+        return false;
+}

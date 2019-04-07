@@ -127,7 +127,7 @@
 1484252197 d:\programs\sfml\sfml-2.4.1\include\sfml\system\noncopyable.hpp
 	<SFML/System/Export.hpp>
 
-1553723177 d:\documenten\bgp\astroid\include\statemachine.hpp
+1554582330 d:\documenten\bgp\astroid\include\statemachine.hpp
 	<memory>
 	<stack>
 	<string>
@@ -489,7 +489,7 @@
 	"MissileLauncher.hpp"
 	"WeaponSystemWithFeedback.hpp"
 
-1553870208 source:d:\documenten\bgp\astroid\src\playstate.cpp
+1554641134 source:d:\documenten\bgp\astroid\src\playstate.cpp
 	"PlayState.hpp"
 	"State.hpp"
 	"Player.hpp"
@@ -976,7 +976,7 @@
 
 1526239314 d:\documenten\bgp\astroid\include\status.hpp
 
-1552951347 source:d:\documenten\bgp\astroid\src\enemy.cpp
+1554642343 source:d:\documenten\bgp\astroid\src\enemy.cpp
 	"Enemy.hpp"
 	<iostream>
 	"stepneuron.hpp"
@@ -1001,7 +1001,7 @@
 	"Armor.hpp"
 	"Shield.hpp"
 
-1553870428 source:d:\documenten\bgp\astroid\src\health.cpp
+1554642327 source:d:\documenten\bgp\astroid\src\health.cpp
 	"Health.hpp"
 	"Armor.hpp"
 	"Shield.hpp"
@@ -1500,10 +1500,10 @@
 1530970384 d:\documenten\bgp\astroid\include\stepneuron.hpp
 	"neuron.hpp"
 
-1552951386 d:\documenten\bgp\astroid\include\shield.hpp
+1554642274 d:\documenten\bgp\astroid\include\shield.hpp
 	<SFML/System/Time.hpp>
 
-1552949712 source:d:\documenten\bgp\astroid\src\shield.cpp
+1554642377 source:d:\documenten\bgp\astroid\src\shield.cpp
 	"Shield.hpp"
 
 1536091961 source:d:\documenten\bgp\astroid\src\tilemap.cpp
@@ -1607,7 +1607,7 @@
 1547999681 d:\documenten\bgp\astroid\include\radar.hpp
 	"Aura.hpp"
 
-1554500380 source:d:\documenten\bgp\astroid\src\weaponsystemwithfeedback.cpp
+1554500649 source:d:\documenten\bgp\astroid\src\weaponsystemwithfeedback.cpp
 	"WeaponSystemWithFeedback.hpp"
 	<list>
 	<SFML/Graphics/RectangleShape.hpp>
@@ -1617,9 +1617,9 @@
 	<SFML\Graphics.hpp>
 	"WeaponSystem.hpp"
 
-1552948490 source:d:\documenten\bgp\astroid\src\armor.cpp
+1554642103 source:d:\documenten\bgp\astroid\src\armor.cpp
 	"Armor.hpp"
 
-1552951289 d:\documenten\bgp\astroid\include\armor.hpp
+1554642048 d:\documenten\bgp\astroid\include\armor.hpp
 	<SFML/System/Time.hpp>
 

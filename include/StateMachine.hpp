@@ -67,7 +67,7 @@ private:
     sf::Clock m_clock;
     sf::Time accumulator=sf::Time::Zero;    //left over time from the update function
     sf::Time frametime;
-    sf::Time timestep=sf::milliseconds(50); // for the update function
+    sf::Time timestep=sf::milliseconds(30); // for the update function
     sf::Color alpha=sf::Color::White;
 //	DataBase Bootjes = DataBase("Ships.db");
     unsigned int SCREEN_WIDTH = 1500;

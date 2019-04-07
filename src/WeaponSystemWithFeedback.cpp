@@ -10,7 +10,7 @@ WeaponSystemWithFeedback::WeaponSystemWithFeedback(std::string font )
     WeaponSystem();
 
     _front.setOutlineThickness(5.f);
-    _front.setOutlineColor(sf::Color::Blue);
+    _front.setOutlineColor(sf::Color::Blue);    //easier for colorblind people to see the difference as opposed to green and red
     _front.setFillColor(sf::Color::Blue );
     _aft.setFillColor(sf::Color::Red );
     _font.loadFromFile(font);

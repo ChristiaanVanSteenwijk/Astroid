@@ -12,8 +12,8 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
 {
     //ctor
     // see GameObject for the different parts
-    _healt = std::unique_ptr<Health> (new Health(50, 3));
-    _healt->EmplaceArmor<Armor>(50, 10);
+    _healt = std::unique_ptr<Health> (new Health(20, 0));
+    _healt->EmplaceShield<Shield>(3, 10, 1);
 
     _me = std::unique_ptr<MassEngine> (new MassEngine(40, 50, 50, 0.3));
     _me->SetRotation(90+angle);

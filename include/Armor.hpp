@@ -13,7 +13,7 @@ class Armor
         unsigned int GetArmor() { return m_Armor; }
 
         void SetArmor(unsigned int val) { m_Armor = val; }
-        unsigned int GethitPoints() { return m_hitPoints; }
+        unsigned int GethitPoints() {return m_hitPoints; }
         unsigned int GetMaxhitPoints() {return max_hitpoints; }
         void SethitPoints(unsigned int val);
 
@@ -22,6 +22,7 @@ class Armor
 
         virtual void Update(sf::Time dt);
         virtual unsigned int collision(unsigned int damage, unsigned int penetration);
+        virtual bool exists();
     protected:
         unsigned int m_Armor, a_regen, m_hitPoints, max_hitpoints;
 };
