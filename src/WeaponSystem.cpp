@@ -34,15 +34,15 @@ void WeaponSystem::ChangeState(unsigned int slot)
 
 void WeaponSystem::SetCoordinate(sf::Vector2f direction)
 {
-    for (auto it = _weapons.begin(); it != _weapons.end(); it++)
+    for (auto it = _weapons.begin(); it != _weapons.end(); ++it)
         it->second->SetCoordinate(direction);
 }
 
 void WeaponSystem::Update(sf::Time dt, sf::Vector2f pos)
 {
-    for (auto it = _weapons.begin(); it != _weapons.end(); it++)
+    for (auto it = _weapons.begin(); it != _weapons.end(); ++it)
          it->second->Update(dt, pos);
-        //needs to move with the ship or entity that caries the weapon
+        //needs to move with the ship or entity that carries the weapon
 }
 
 

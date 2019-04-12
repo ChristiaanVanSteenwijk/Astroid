@@ -25,6 +25,8 @@ class Armor
         virtual bool exists();
     protected:
         unsigned int m_Armor, a_regen, m_hitPoints, max_hitpoints;
+        sf::Time _timer=sf::seconds(1.f), _reset = sf::seconds(1.f);
+
 };
 
 #endif // ARMOR_H

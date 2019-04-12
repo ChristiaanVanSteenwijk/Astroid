@@ -26,7 +26,7 @@ class WeaponEmplacement
         void Update(sf::Time dt, sf::Vector2f vec= sf::Vector2f(0,0));
         float Givefeedback();
         virtual void Fire(sf::Vector2f dir = sf::Vector2f(0,0));
-        virtual void SetCoordinate(sf::Vector2f destination){};
+        void SetCoordinate(sf::Vector2f destination){};
 
         void SetPosition(sf::Vector2f pos= sf::Vector2f(0,0));
         void SetRelPosition(sf::Vector2f pos= sf::Vector2f(0,0));

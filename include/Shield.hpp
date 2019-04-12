@@ -23,6 +23,7 @@ class Shield
     protected:
         unsigned int _shield, max_shield, _hitpoints, s_regen;
         bool shieldEffective = true;
+        sf::Time _timer=sf::seconds(1.f), _reset = sf::seconds(1.f);
 };
 
 #endif // SHIELD_H

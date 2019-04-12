@@ -53,7 +53,7 @@ void Health::setRegen(unsigned int regen)
 void Health::Update(sf::Time dt)
 {
     _timer+=dt;
-    if (_timer>_reset)
+    if (_timer>=_reset)
     {
         if (_shield)
             _shield->Update(dt);
@@ -61,7 +61,9 @@ void Health::Update(sf::Time dt)
         if (_armor)
             _armor->Update(dt);
 
-        IncreaseHealth(h_regen*dt.asMilliseconds());
+        if (_timer>sf::seconds(1.f))
+            IncreaseHealth(h_regen);
+
         _timer-=_reset;
     }
 }

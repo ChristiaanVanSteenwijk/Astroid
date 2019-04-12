@@ -13,7 +13,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
     //ctor
     // see GameObject for the different parts
     _healt = std::unique_ptr<Health> (new Health(20, 0));
-    _healt->EmplaceShield<Shield>(3, 10, 1);
+    _healt->EmplaceShield<Shield>(3, 10, 5);
 
     _me = std::unique_ptr<MassEngine> (new MassEngine(40, 50, 50, 0.3));
     _me->SetRotation(90+angle);
@@ -23,7 +23,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
     _weapons->ChangeState(1);
 
     _brain= std::unique_ptr<neuralnetwork> (new neuralnetwork(5, {5,3}));
-
+/*
     _brain->Emplace<sigmoid>(0,5);
     _brain->Emplace<stepneuron>(1,3);
 
@@ -39,7 +39,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
 
     _brain->setBias(0, 1,-180);
     _brain->setBias(0, 4,-180);
-
+*/
     _auras =std::unique_ptr<Auras> (new Auras(m_position));
     _auras->Add("Radar", std::shared_ptr<Radar>(new Radar(1000.f)));
 }

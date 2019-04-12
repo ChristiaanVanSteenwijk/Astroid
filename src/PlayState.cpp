@@ -16,7 +16,7 @@ PlayState::PlayState( StateMachine& machine, sf::RenderWindow& _window, sf::View
 
  //   m_context.EmplaceName<Cruiser>("Cruiser", sf::Vector2f((Width*2/3), Height*.5), m_context, "img/cruiser.png", 180); 1366, 768
 
-    m_context.EmplaceName<Enemy>("Enemy", sf::Vector2f(Width*2/3,Height*.2), m_context, "img/alien4.png", 270);
+    m_context.EmplaceName<Enemy>("Enemy", sf::Vector2f(Width*3/4,Height*.2), m_context, "img/alien4.png", 270);
 
     m_view.reset(sf::FloatRect(0, 0, 2000, 4000));
     m_view.setCenter(m_context.Access("Player")->_visibility->GetPosition());

@@ -63,11 +63,6 @@ sf::Vector2f MissileLauncher::GetCoordinate()
     return temp;
 }
 
-void MissileLauncher::SetCoordinate(sf::Vector2f dir)
-{
-    m_destinations.push_back(dir);
-}
-
 void MissileLauncher::Reload()
 {
     if (m_ammo>0)

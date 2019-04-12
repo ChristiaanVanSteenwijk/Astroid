@@ -36,7 +36,10 @@ void WeaponEmplacement::Update(sf::Time dt, sf::Vector2f vec)
     switch (_feedback)
     {
     case weaponFeedback::reload:
-        _FeedBackValue =  _timer.asSeconds()/_reload.asSeconds();
+        if (readyToFire)
+            _FeedBackValue=1;
+        else
+            _FeedBackValue =  _timer.asSeconds()/_reload.asSeconds();
         break;
     case weaponFeedback::heat:
         _FeedBackValue = _temprature/max_temperature;
@@ -45,7 +48,7 @@ void WeaponEmplacement::Update(sf::Time dt, sf::Vector2f vec)
         _FeedBackValue = m_ammo/max_ammo;
         break;
     default:
-        _FeedBackValue=-1;
+        _FeedBackValue=0;
         break;
     }
 

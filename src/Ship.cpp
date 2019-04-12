@@ -34,10 +34,9 @@ void Ship::Update(sf::Time dt)
     _visibility->SetRotation(angle);
     _collisionGeometry = Move(speed);
     _weapons->Update(dt, speed);
-    float rotAngle = angle - _me->GetRotation()+_angle;
-    rotAngle *=(M_PI/180);
 
     HandleCollissions();
+    _healt->Update(dt);
 
     if (_healt->GetHealth()==0)
         m_context.MarkForDestruction(_ID);

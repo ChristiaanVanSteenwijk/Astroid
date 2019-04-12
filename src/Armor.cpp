@@ -18,7 +18,14 @@ Armor::Armor(const Armor& other)
 
 void Armor::Update(sf::Time dt)
 {
-    increaceArmor(a_regen*dt.asMilliseconds());
+    _timer+=dt;
+    if (_timer>=_reset)
+    {
+        if (_timer>sf::seconds(1.f))
+            increaceArmor(a_regen);
+
+        _timer-=_reset;
+    }
 }
 
 void Armor::increaceArmor(unsigned int val)

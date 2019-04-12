@@ -15,7 +15,6 @@ public:
     MissileLauncher(GameObjectManager& context, sf::Vector2f vec, unsigned int ammo, unsigned int damage, unsigned int armorpen);
     ~MissileLauncher();
     void Fire(sf::Vector2f location);
-    void SetCoordinate(sf::Vector2f location);
     bool HasCoordinates();
     void ClearCoordinate();
     sf::Vector2f GetCoordinate();

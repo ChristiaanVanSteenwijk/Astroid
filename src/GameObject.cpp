@@ -31,7 +31,7 @@ void GameObject::SetPosition(sf::Vector2f vec)
         _healt->SetPosition(vec);
 }
 
-void GameObject::Update(sf::Time elapsedTime)
+void GameObject::Update(sf::Time dt)
 {
 
 }

@@ -489,7 +489,7 @@
 	"MissileLauncher.hpp"
 	"WeaponSystemWithFeedback.hpp"
 
-1554641134 source:d:\documenten\bgp\astroid\src\playstate.cpp
+1555079400 source:d:\documenten\bgp\astroid\src\playstate.cpp
 	"PlayState.hpp"
 	"State.hpp"
 	"Player.hpp"
@@ -524,7 +524,7 @@
 	"Health.hpp"
 	"Auras.hpp"
 
-1553869743 source:d:\documenten\bgp\astroid\src\ship.cpp
+1555082955 source:d:\documenten\bgp\astroid\src\ship.cpp
 	"Ship.hpp"
 	"GameObjectManager.hpp"
 	"CollisionObject.hpp"
@@ -976,7 +976,7 @@
 
 1526239314 d:\documenten\bgp\astroid\include\status.hpp
 
-1554642343 source:d:\documenten\bgp\astroid\src\enemy.cpp
+1555079796 source:d:\documenten\bgp\astroid\src\enemy.cpp
 	"Enemy.hpp"
 	<iostream>
 	"stepneuron.hpp"
@@ -1001,7 +1001,7 @@
 	"Armor.hpp"
 	"Shield.hpp"
 
-1554642327 source:d:\documenten\bgp\astroid\src\health.cpp
+1555080051 source:d:\documenten\bgp\astroid\src\health.cpp
 	"Health.hpp"
 	"Armor.hpp"
 	"Shield.hpp"
@@ -1428,11 +1428,11 @@
 	<cmath>
 	<iostream>
 
-1551821853 d:\documenten\bgp\astroid\include\weaponemplacement.hpp
+1555085306 d:\documenten\bgp\astroid\include\weaponemplacement.hpp
 	<SFML/System/Vector2.hpp>
 	<SFML/System/Time.hpp>
 
-1551821857 source:d:\documenten\bgp\astroid\src\weaponemplacement.cpp
+1555085105 source:d:\documenten\bgp\astroid\src\weaponemplacement.cpp
 	"WeaponEmplacement.hpp"
 	"GameObjectManager.hpp"
 	<iostream>
@@ -1447,14 +1447,14 @@
 	"Shot.hpp"
 	<iostream>
 
-1552859584 source:d:\documenten\bgp\astroid\src\missilelauncher.cpp
+1555085306 source:d:\documenten\bgp\astroid\src\missilelauncher.cpp
 	"MissileLauncher.hpp"
 	"GameObject.hpp"
 	"GameObjectManager.hpp"
 	"Missile.hpp"
 	<iostream>
 
-1550526524 d:\documenten\bgp\astroid\include\missilelauncher.hpp
+1555085306 d:\documenten\bgp\astroid\include\missilelauncher.hpp
 	<deque>
 	<SFML/Graphics.hpp>
 	<SFML/System/Clock.hpp>
@@ -1500,11 +1500,12 @@
 1530970384 d:\documenten\bgp\astroid\include\stepneuron.hpp
 	"neuron.hpp"
 
-1554642274 d:\documenten\bgp\astroid\include\shield.hpp
+1555077307 d:\documenten\bgp\astroid\include\shield.hpp
 	<SFML/System/Time.hpp>
 
-1554642377 source:d:\documenten\bgp\astroid\src\shield.cpp
+1555079945 source:d:\documenten\bgp\astroid\src\shield.cpp
 	"Shield.hpp"
+	<iostream>
 
 1536091961 source:d:\documenten\bgp\astroid\src\tilemap.cpp
 	"TileMap.hpp"
@@ -1532,7 +1533,7 @@
 	<string>
 	<memory>
 
-1554325750 source:d:\documenten\bgp\astroid\src\gameobject.cpp
+1555080332 source:d:\documenten\bgp\astroid\src\gameobject.cpp
 	<iostream>
 	<SFML/Graphics/Transform.hpp>
 	"GameObject.hpp"
@@ -1562,7 +1563,7 @@
 	<SFML/Graphics/RenderTarget.hpp>
 	"WeaponEmplacement.hpp"
 
-1551611636 source:d:\documenten\bgp\astroid\src\weaponsystem.cpp
+1555083516 source:d:\documenten\bgp\astroid\src\weaponsystem.cpp
 	"WeaponSystem.hpp"
 	<math.h>
 	<iostream>
@@ -1617,9 +1618,9 @@
 	<SFML\Graphics.hpp>
 	"WeaponSystem.hpp"
 
-1554642103 source:d:\documenten\bgp\astroid\src\armor.cpp
+1555080712 source:d:\documenten\bgp\astroid\src\armor.cpp
 	"Armor.hpp"
 
-1554642048 d:\documenten\bgp\astroid\include\armor.hpp
+1555080779 d:\documenten\bgp\astroid\include\armor.hpp
 	<SFML/System/Time.hpp>
 

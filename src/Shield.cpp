@@ -1,5 +1,5 @@
 #include "Shield.hpp"
-
+#include <iostream>
 
 Shield::Shield(unsigned int Shield, unsigned int hp, unsigned int regen):
     _shield(Shield), max_shield(Shield), _hitpoints(hp), s_regen(regen)
@@ -65,9 +65,14 @@ void Shield::setRegen(unsigned int regen)
 
 void Shield::Update(sf::Time dt)
 {
-    IncreaseShield(s_regen*dt.asMicroseconds());
-    if (s_regen>0)
-        shieldEffective = true;
+    _timer+=dt;
+    if (_timer>_reset)
+    {
+        if (s_regen>0 && _timer>sf::seconds(1.f))
+            IncreaseShield(s_regen*_timer.asSeconds());
+        _timer-=_reset;
+    }
+    shieldEffective = true;
 }
 
 
