@@ -3,6 +3,7 @@
 #include "stepneuron.hpp"
 #include "sigmoid.hpp"
 #include "MissileLauncher.hpp"
+#define M_PI acos(-1.0)
 
 Cruiser::Cruiser(GameObjectManager& context, std::string filename, float angle) :
     Ship(context, filename, angle)

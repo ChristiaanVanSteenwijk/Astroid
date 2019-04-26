@@ -23,9 +23,9 @@ Player::Player(GameObjectManager& context, std::string filename, float angle, St
 
     _weapons = std::unique_ptr<WeaponSystemWithFeedback> (new WeaponSystemWithFeedback());
 
-    _weapons->Emplace<Gun>(1, m_context, sf::Vector2f(0,-8), sf::seconds(1));
+    _weapons->Emplace<Gun>(1, m_context, sf::Vector2f(0,-80), sf::seconds(1));
     _weapons->Emplace<Gun>(1, m_context, sf::Vector2f(0, 0), sf::seconds(1));
-    _weapons->Emplace<Gun>(1, m_context, sf::Vector2f(0, 8), sf::seconds(1));
+    _weapons->Emplace<Gun>(1, m_context, sf::Vector2f(0, 80), sf::seconds(1));
     _weapons->Emplace<MissileLauncher>(2, m_context, sf::Vector2f(0, 0), 80, 5, 50);
     _weapons->ChangeState(1);
     _weapons->setUp();

@@ -1,5 +1,5 @@
 #include <math.h>
-
+#define M_PI acos(-1.0)
 #include "Missile.hpp"
 #include <iostream>
 
@@ -71,7 +71,6 @@ void Missile::Update(sf::Time dt)
     if (out[0] >= 0.2)
     {
         m_launcher.ClearCoordinate();
-  //      std::cout << "got close " <<std::endl;
     }
 
     _me->Update(dt);
@@ -88,22 +87,22 @@ void Missile::HandleCollissions()
 {
     for (std::shared_ptr<GameObject> _collision : _collisionGeometry)
     {
-     if(_collision->getID()!=_ID)
-    {
-        switch (_collision->Type)
+        if(_collision->getID()!=_ID)
         {
-        case CollisionObject::_Ship:
-        case CollisionObject::_Missile:
-            if (m_owner != _collision->getID())
+            switch (_collision->Type)
+            {
+            case CollisionObject::_Ship:
+            case CollisionObject::_Missile:
+                if (m_owner != _collision->getID())
                 {
                     _collision->_healt->collision(_damage, _armorpen);
                     m_context.MarkForDestruction(_ID);
                 }
-            break;
-        default:
-            break;
+                break;
+            default:
+                break;
+            }
         }
-    }
     }
     _collisionGeometry.clear();
 }

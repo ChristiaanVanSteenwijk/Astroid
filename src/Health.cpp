@@ -52,20 +52,18 @@ void Health::setRegen(unsigned int regen)
 
 void Health::Update(sf::Time dt)
 {
-    _timer+=dt;
+    _timer+=dt;             //update the time with the timestep
     if (_timer>=_reset)
     {
-        if (_shield)
-            _shield->Update(dt);
-
-        if (_armor)
-            _armor->Update(dt);
-
-        if (_timer>sf::seconds(1.f))
-            IncreaseHealth(h_regen);
-
-        _timer-=_reset;
+        IncreaseHealth(h_regen);
+        _timer-=_reset;     // leftover time is already in the timer
     }
+
+    if (_shield)
+        _shield->Update(dt);
+
+    if (_armor)
+        _armor->Update(dt);
 }
 
 void Health::DrawFeedback(sf::RenderTarget& target)

@@ -66,10 +66,10 @@ void Shield::setRegen(unsigned int regen)
 void Shield::Update(sf::Time dt)
 {
     _timer+=dt;
+
     if (_timer>_reset)
     {
-        if (s_regen>0 && _timer>sf::seconds(1.f))
-            IncreaseShield(s_regen*_timer.asSeconds());
+        IncreaseShield(s_regen);
         _timer-=_reset;
     }
     shieldEffective = true;

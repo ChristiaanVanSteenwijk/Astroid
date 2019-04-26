@@ -480,7 +480,7 @@
 	"BackGround.hpp"
 	"State.hpp"
 
-1553870366 source:d:\documenten\bgp\astroid\src\player.cpp
+1556270465 source:d:\documenten\bgp\astroid\src\player.cpp
 	"Player.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
@@ -976,9 +976,10 @@
 
 1526239314 d:\documenten\bgp\astroid\include\status.hpp
 
-1555079796 source:d:\documenten\bgp\astroid\src\enemy.cpp
+1556273057 source:d:\documenten\bgp\astroid\src\enemy.cpp
 	"Enemy.hpp"
 	<iostream>
+	<math.h>
 	"stepneuron.hpp"
 	"sigmoid.hpp"
 	"Gun.hpp"
@@ -994,14 +995,14 @@
 
 1538832014 d:\documenten\bgp\astroid\include\collisionobject.hpp
 
-1553637460 d:\documenten\bgp\astroid\include\health.hpp
+1556271631 d:\documenten\bgp\astroid\include\health.hpp
 	<memory>
 	<SFML\System\Time.hpp>
 	<SFML\Graphics.hpp>
 	"Armor.hpp"
 	"Shield.hpp"
 
-1555080051 source:d:\documenten\bgp\astroid\src\health.cpp
+1556271492 source:d:\documenten\bgp\astroid\src\health.cpp
 	"Health.hpp"
 	"Armor.hpp"
 	"Shield.hpp"
@@ -1500,10 +1501,10 @@
 1530970384 d:\documenten\bgp\astroid\include\stepneuron.hpp
 	"neuron.hpp"
 
-1555077307 d:\documenten\bgp\astroid\include\shield.hpp
+1556270695 d:\documenten\bgp\astroid\include\shield.hpp
 	<SFML/System/Time.hpp>
 
-1555079945 source:d:\documenten\bgp\astroid\src\shield.cpp
+1556271142 source:d:\documenten\bgp\astroid\src\shield.cpp
 	"Shield.hpp"
 	<iostream>
 
@@ -1544,7 +1545,7 @@
 	"GameObject.hpp"
 	<iostream>
 
-1552951474 source:d:\documenten\bgp\astroid\src\missile.cpp
+1556272958 source:d:\documenten\bgp\astroid\src\missile.cpp
 	<math.h>
 	"Missile.hpp"
 	<iostream>
@@ -1568,7 +1569,7 @@
 	<math.h>
 	<iostream>
 
-1552951347 source:d:\documenten\bgp\astroid\src\cruiser.cpp
+1556272975 source:d:\documenten\bgp\astroid\src\cruiser.cpp
 	"Cruiser.hpp"
 	<iostream>
 	"stepneuron.hpp"
@@ -1623,4 +1624,541 @@
 
 1555080779 d:\documenten\bgp\astroid\include\armor.hpp
 	<SFML/System/Time.hpp>
+
+1512588912 source:d:\documenten\bgp\astroid\lua\lapi.c
+	"lprefix.h"
+	<stdarg.h>
+	<string.h>
+	"lua.h"
+	"lapi.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lgc.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+	"lundump.h"
+	"lvm.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lprefix.h
+
+1528912697 d:\documenten\bgp\astroid\lua\lua.h
+	<stdarg.h>
+	<stddef.h>
+	"luaconf.h"
+
+1492626597 d:\documenten\bgp\astroid\lua\luaconf.h
+	<limits.h>
+	<stddef.h>
+	<stdint.h>
+	<assert.h>
+
+1492626042 d:\documenten\bgp\astroid\lua\lapi.h
+	"llimits.h"
+	"lstate.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\llimits.h
+	<limits.h>
+	<stddef.h>
+	"lua.h"
+
+1492627174 d:\documenten\bgp\astroid\lua\lstate.h
+	"lua.h"
+	"lobject.h"
+	"ltm.h"
+	"lzio.h"
+	<signal.h>
+
+1492627174 d:\documenten\bgp\astroid\lua\lobject.h
+	<stdarg.h>
+	"llimits.h"
+	"lua.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\ltm.h
+	"lobject.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lzio.h
+	"lua.h"
+	"lmem.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lmem.h
+	<stddef.h>
+	"llimits.h"
+	"lua.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\ldebug.h
+	"lstate.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\ldo.h
+	"lobject.h"
+	"lstate.h"
+	"lzio.h"
+
+1492627174 d:\documenten\bgp\astroid\lua\lfunc.h
+	"lobject.h"
+
+1492627174 d:\documenten\bgp\astroid\lua\lgc.h
+	"lobject.h"
+	"lstate.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lstring.h
+	"lgc.h"
+	"lobject.h"
+	"lstate.h"
+
+1527194345 d:\documenten\bgp\astroid\lua\ltable.h
+	"lobject.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lundump.h
+	"llimits.h"
+	"lobject.h"
+	"lzio.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lvm.h
+	"ldo.h"
+	"lobject.h"
+	"ltm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lauxlib.c
+	"lprefix.h"
+	<errno.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	<sys/wait.h>
+
+1492626042 d:\documenten\bgp\astroid\lua\lauxlib.h
+	<stddef.h>
+	<stdio.h>
+	"lua.h"
+
+1492627174 source:d:\documenten\bgp\astroid\lua\lbaselib.c
+	"lprefix.h"
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lualib.h
+	"lua.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lbitlib.c
+	"lprefix.h"
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lcode.c
+	"lprefix.h"
+	<math.h>
+	<stdlib.h>
+	"lua.h"
+	"lcode.h"
+	"ldebug.h"
+	"ldo.h"
+	"lgc.h"
+	"llex.h"
+	"lmem.h"
+	"lobject.h"
+	"lopcodes.h"
+	"lparser.h"
+	"lstring.h"
+	"ltable.h"
+	"lvm.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lcode.h
+	"llex.h"
+	"lobject.h"
+	"lopcodes.h"
+	"lparser.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\llex.h
+	"lobject.h"
+	"lzio.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lopcodes.h
+	"llimits.h"
+
+1492626042 d:\documenten\bgp\astroid\lua\lparser.h
+	"llimits.h"
+	"lobject.h"
+	"lzio.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lcorolib.c
+	"lprefix.h"
+	<stdlib.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lctype.c
+	"lprefix.h"
+	"lctype.h"
+	<limits.h>
+
+1365796127 d:\documenten\bgp\astroid\lua\lctype.h
+	"lua.h"
+	<limits.h>
+	"llimits.h"
+	<ctype.h>
+
+1492626042 source:d:\documenten\bgp\astroid\lua\ldblib.c
+	"lprefix.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1499710910 source:d:\documenten\bgp\astroid\lua\ldebug.c
+	"lprefix.h"
+	<stdarg.h>
+	<stddef.h>
+	<string.h>
+	"lua.h"
+	"lapi.h"
+	"lcode.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lobject.h"
+	"lopcodes.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+	"lvm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\ldo.c
+	"lprefix.h"
+	<setjmp.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lapi.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lgc.h"
+	"lmem.h"
+	"lobject.h"
+	"lopcodes.h"
+	"lparser.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+	"lundump.h"
+	"lvm.h"
+	"lzio.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\ldump.c
+	"lprefix.h"
+	<stddef.h>
+	"lua.h"
+	"lobject.h"
+	"lstate.h"
+	"lundump.h"
+
+1492627174 source:d:\documenten\bgp\astroid\lua\lfunc.c
+	"lprefix.h"
+	<stddef.h>
+	"lua.h"
+	"lfunc.h"
+	"lgc.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+
+1504199727 source:d:\documenten\bgp\astroid\lua\lgc.c
+	"lprefix.h"
+	<string.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lgc.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\linit.c
+	"lprefix.h"
+	<stddef.h>
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
+
+1492626597 source:d:\documenten\bgp\astroid\lua\liolib.c
+	"lprefix.h"
+	<ctype.h>
+	<errno.h>
+	<locale.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+	<sys/types.h>
+
+1492626042 source:d:\documenten\bgp\astroid\lua\llex.c
+	"lprefix.h"
+	<locale.h>
+	<string.h>
+	"lua.h"
+	"lctype.h"
+	"ldebug.h"
+	"ldo.h"
+	"lgc.h"
+	"llex.h"
+	"lobject.h"
+	"lparser.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"lzio.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lmathlib.c
+	"lprefix.h"
+	<stdlib.h>
+	<math.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lmem.c
+	"lprefix.h"
+	<stddef.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lgc.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\loadlib.c
+	"lprefix.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+	<dlfcn.h>
+	<windows.h>
+
+1492626597 source:d:\documenten\bgp\astroid\lua\lobject.c
+	"lprefix.h"
+	<locale.h>
+	<math.h>
+	<stdarg.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lctype.h"
+	"ldebug.h"
+	"ldo.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+	"lstring.h"
+	"lvm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lopcodes.c
+	"lprefix.h"
+	<stddef.h>
+	"lopcodes.h"
+
+1492626597 source:d:\documenten\bgp\astroid\lua\loslib.c
+	"lprefix.h"
+	<errno.h>
+	<locale.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+	<unistd.h>
+
+1493493100 source:d:\documenten\bgp\astroid\lua\lparser.c
+	"lprefix.h"
+	<string.h>
+	"lua.h"
+	"lcode.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"llex.h"
+	"lmem.h"
+	"lobject.h"
+	"lopcodes.h"
+	"lparser.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+
+1492627174 source:d:\documenten\bgp\astroid\lua\lstate.c
+	"lprefix.h"
+	<stddef.h>
+	<string.h>
+	"lua.h"
+	"lapi.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lgc.h"
+	"llex.h"
+	"lmem.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+	<time.h>
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lstring.c
+	"lprefix.h"
+	<string.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+	"lstring.h"
+
+1492626597 source:d:\documenten\bgp\astroid\lua\lstrlib.c
+	"lprefix.h"
+	<ctype.h>
+	<float.h>
+	<limits.h>
+	<locale.h>
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+	<math.h>
+
+1528478571 source:d:\documenten\bgp\astroid\lua\ltable.c
+	"lprefix.h"
+	<math.h>
+	<limits.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lgc.h"
+	"lmem.h"
+	"lobject.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"lvm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\ltablib.c
+	"lprefix.h"
+	<limits.h>
+	<stddef.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+	<time.h>
+
+1492627174 source:d:\documenten\bgp\astroid\lua\ltm.c
+	"lprefix.h"
+	<string.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lobject.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+	"lvm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lundump.c
+	"lprefix.h"
+	<string.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lmem.h"
+	"lobject.h"
+	"lstring.h"
+	"lundump.h"
+	"lzio.h"
+
+1492626597 source:d:\documenten\bgp\astroid\lua\lutf8lib.c
+	"lprefix.h"
+	<assert.h>
+	<limits.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"lauxlib.h"
+	"lualib.h"
+
+1492627174 source:d:\documenten\bgp\astroid\lua\lvm.c
+	"lprefix.h"
+	<float.h>
+	<limits.h>
+	<math.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"lua.h"
+	"ldebug.h"
+	"ldo.h"
+	"lfunc.h"
+	"lgc.h"
+	"lobject.h"
+	"lopcodes.h"
+	"lstate.h"
+	"lstring.h"
+	"ltable.h"
+	"ltm.h"
+	"lvm.h"
+
+1492626042 source:d:\documenten\bgp\astroid\lua\lzio.c
+	"lprefix.h"
+	<string.h>
+	"lua.h"
+	"llimits.h"
+	"lmem.h"
+	"lstate.h"
+	"lzio.h"
+
+1556270044 source:d:\documenten\bgp\astroid\src\script.cpp
+	"Script.hpp"
+
+1556273661 d:\documenten\bgp\astroid\include\script.hpp
+	<string>
+	"../Lua/lua.hpp"
+
+1103766784 d:\documenten\bgp\astroid\lua\lua.hpp
+	"lua.h"
+	"lualib.h"
+	"lauxlib.h"
 

@@ -1,5 +1,8 @@
 #include "Enemy.hpp"
+
 #include <iostream>
+#include <math.h>
+
 #include "stepneuron.hpp"
 #include "sigmoid.hpp"
 #include "Gun.hpp"
@@ -13,7 +16,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
     //ctor
     // see GameObject for the different parts
     _healt = std::unique_ptr<Health> (new Health(20, 0));
-    _healt->EmplaceShield<Shield>(3, 10, 5);
+    _healt->EmplaceShield<Shield>(3, 10, 1);
 
     _me = std::unique_ptr<MassEngine> (new MassEngine(40, 50, 50, 0.3));
     _me->SetRotation(90+angle);
@@ -23,7 +26,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
     _weapons->ChangeState(1);
 
     _brain= std::unique_ptr<neuralnetwork> (new neuralnetwork(5, {5,3}));
-/*
+
     _brain->Emplace<sigmoid>(0,5);
     _brain->Emplace<stepneuron>(1,3);
 
@@ -39,7 +42,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
 
     _brain->setBias(0, 1,-180);
     _brain->setBias(0, 4,-180);
-*/
+
     _auras =std::unique_ptr<Auras> (new Auras(m_position));
     _auras->Add("Radar", std::shared_ptr<Radar>(new Radar(1000.f)));
 }
@@ -76,10 +79,10 @@ void Enemy::Update(sf::Time elapsedTime)
     targets.clear();
     sf::Vector2f temp =_visibility->GetCenter() - T1;
     float r1 = sqrt(pow(temp.x, 2)+pow(temp.y,2));
-    float t1 = atan2(temp.x, temp.y)*180/M_PI+_me->GetRotation()+90;
+    float t1 = atan2(temp.x, temp.y)*180/3.14+_me->GetRotation()+90;
     temp =_visibility->GetCenter() - T2;
     float r2 = sqrt(pow(temp.x, 2)+pow(temp.y,2));
-    float t2 = atan2(temp.x, temp.y)*180/M_PI+_me->GetRotation()+90;
+    float t2 = atan2(temp.x, temp.y)*180/3.14+_me->GetRotation()+90;
     // atan2 is from math.h so it uses radians, 0 is straight up and ccw is positive
     // GetRotation is from sfml and uses degrees, 0 is to the right and cw is positive
     // the difference between the angles, despite the +, should go towards 180 degrees, say between 179 to 181 rather than 1 and 359 for control reasons

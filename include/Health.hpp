@@ -42,8 +42,8 @@ class Health
         unsigned int _health, max_health, h_regen;
 
 
-        sf::Time _reset= sf::seconds(1);
-        sf::Time _timer= sf::seconds(1);
+        sf::Time _reset= sf::Time::Zero;     //start at zero
+        sf::Time _timer= sf::seconds(1.f);  // 1 second as it's easier for computing, accuracy comes from the loop
 
         sf::Vector2f feedback;
         sf::RectangleShape ShowHealth, ShowArmor, ShowShield, DisplayHealth, DisplayArmor, DisplayShield;
