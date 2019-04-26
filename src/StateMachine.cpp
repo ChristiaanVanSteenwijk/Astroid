@@ -6,13 +6,14 @@
 #include "State.hpp"
 #include "IntroState.hpp"
 #include "MenuState.hpp"
-#include "PlayState.hpp"
+#include "SpaceCombatState.hpp"
 #include "DataBase.hpp"
 
 StateMachine::StateMachine()
 : m_resume{ false }
 , m_running{ false }
 , m_context(sf::FloatRect(0,0, 1, 1))
+, m_database("database.ldb")
 {
    	// Create render window
 	m_window.create( sf::VideoMode{SCREEN_WIDTH, SCREEN_HEIGHT}, "Engine Test version lost count", sf::Style::Default);
@@ -26,7 +27,7 @@ StateMachine::StateMachine()
 
     n_view.reset(s_next.getLocalBounds());
 	// Initialize the engine;
-	m_states.push(std::move( build<PlayState>(*this, m_window, m_view, m_context, false)));// should be intro state unless debugging an other state or debugging with another state.
+	m_states.push(std::move( build<SpaceCombatState>(*this, m_window, m_view, m_context, false)));// should be intro state unless debugging an other state or debugging with another state.
 	// send the first state to the stack
     m_running = true;
     setNextState(Status::_null);
@@ -125,8 +126,8 @@ void StateMachine::changeState()
         temp = build<IntroState>(*this, m_window, m_view, m_context, false);
         newstate=true;
         break;
-    case Status::_play:
-       temp = build<PlayState>(*this, m_window, m_view, m_context, false);
+    case Status::_spaceCombat:
+       temp = build<SpaceCombatState>(*this, m_window, m_view, m_context, false);
        newstate=true;
         break;
     case Status::_menu:

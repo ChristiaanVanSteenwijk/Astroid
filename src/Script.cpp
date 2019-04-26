@@ -4,15 +4,16 @@ Script::Script()
 {
     //ctor
 
-    L = luaL_newstate();//(f, ar);
+    L = luaL_newstate();
     luaL_openlibs(L);
 }
 
 Script::~Script()
 {
     //dtor
-    lua_pop(L, 1);  /* Take the returned value out of the stack */
-    lua_close(L);   /* Cya, Lua */
+    int n = lua_gettop(L);
+    lua_pop(L, n);   // Take the returned value out of the stack
+    lua_close(L);   // Close Lua
 }
 
 void swap(Script& first, Script& second)
@@ -67,27 +68,27 @@ void Script::loadFile(std::string filename)
     /* By what name is the script going to reference our table? */
     lua_setglobal(L, "script");
 }
-
+/*
 void Script::loadFile(char* filename)
 {
     status = luaL_loadfile(L, filename);
     if (status)
     {
-        /* If something went wrong, error message is at the top of */
-        /* the stack */
+         If something went wrong, error message is at the top of
+         the stack
         fprintf(stderr, "Couldn't load file: %s\n", lua_tostring(L, -1));
         exit(1);
     }
-    /*
+
      * Ok, now here we go: We pass data to the lua script on the stack.
      * That is, we first have to prepare Lua's virtual stack the way we
      * want the script to receive it, then ask Lua to run it.
-     */
-    lua_newtable(L);    /* We will pass a table */
-    /* By what name is the script going to reference our table? */
+
+    lua_newtable(L);   //  We will pass a table
+     By what name is the script going to reference our table?
     lua_setglobal(L, "script");
 }
-
+*/
 void Script::run()
 {
     /* Ask Lua to run our little script */

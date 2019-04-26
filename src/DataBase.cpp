@@ -1,20 +1,25 @@
 #include "DataBase.hpp"
 
-DataBase::DataBase(std::string name)
+DataBase::DataBase(std::string name):
+    _name(name)
 {
     //ctor
     rc = sqlite3_open(name.c_str() , &db);
-    //create a database or open a link to it
-    _name = name;
+   // _name = name;
 
     if( rc )
-    {
       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-    }
+
     else
-   {
       fprintf(stderr, "Opened database successfully\n");
-   }
+
+}
+
+DataBase::~DataBase()
+{
+    //dtor
+    sqlite3_finalize(stmt);
+    sqlite3_close(db);
 }
 
 void swap(DataBase& first, DataBase& second)
@@ -33,45 +38,43 @@ void swap(DataBase& first, DataBase& second)
         swap(first.datatype, second.datatype);
 }
 
+DataBase::DataBase(DataBase& other)  // passed by value
+{
+     swap(*this, other); // nothrow swap
+}
+
+DataBase& DataBase::operator=(DataBase& other)  //copy assignment
+{
+    swap(*this, other); // (2)
+    return *this;
+}
+
 DataBase::DataBase(DataBase&& other)            //move constructor
     :DataBase(this->_name)
 {
     swap(*this, other);
 }
 
-DataBase& DataBase::operator=(DataBase other)  //copy assignment
+DataBase& DataBase::operator=(DataBase&& other)  //move assignment
+  //  :DataBase(this->_name)
 {
     swap(*this, other); // (2)
     return *this;
 }
-DataBase::~DataBase()
-{
-    //dtor
-    // finalize the last statement to prevent memory leaks,
-    // should not be used and is a harmless no op in this case
-    sqlite3_finalize(stmt);
 
-    // close the database
-    sqlite3_close(db);
-}
 
-int DataBase::callback(void *NotUsed, int argc, char **argv, char **azColName)
+int DataBase::callback(void *Data, int argc, char **argv, char **azColName)
 {
-    // call back function to use with execute commands,
-    // prints the output
     int i;
     for(i = 0; i<argc; i++)
-        {
-            printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-        }
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+
     printf("\n");
     return 0;
 }
 
 void DataBase::execute(std::string sql)
 {
-    // prepare, repeat until done and finalize a statment
-    // for debugging or insertions mostly
     rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
     if (rc != SQLITE_OK)
     {
@@ -80,19 +83,34 @@ void DataBase::execute(std::string sql)
     }
 }
 
+void DataBase::RunFile(std::string filename)
+{
+   myfile.open(filename.c_str());
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      execute(line);
+    }
+    myfile.close();
+  }
+
+  else std::cout << "Unable to open file";
+
+}
+
 void DataBase::prepare(std::string statement)
 {
-    sqlite3_finalize(stmt); //cleans up the last statement, SHOULD be redundant
-
     rs = sqlite3_prepare_v2(db, statement.c_str(),-1, &stmt,NULL);
-    // string is converterd to c string since these are not automatically interchanged to save memory
+}
+
+void DataBase::finalize()
+{
+    sqlite3_finalize(stmt);
 }
 
 void DataBase::step()
 {
-    // take one step for a prepared statement
-    // rs stores the row
-    // also readies the output, see Below
     rs = sqlite3_step(stmt);
     if (rs == SQLITE_DONE)
     {
@@ -105,18 +123,9 @@ void DataBase::step()
     }
 }
 
-void DataBase::finalize()
+void DataBase::column(int i)
 {
-    sqlite3_finalize(stmt);
-    //clear up the last statement
-}
-
-// Below
-int DataBase::GetDatatype(int i)
-{
-    // checks what the datatype is of the last step
     datatype = sqlite3_column_type(stmt,i);
-    return datatype;
 }
 
 int DataBase::column_int(int i)

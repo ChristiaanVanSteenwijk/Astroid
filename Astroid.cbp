@@ -50,7 +50,6 @@
 			<Add directory="D:/Programs/SFML/SFML/lib" />
 			<Add directory="../../../Programs/sqlite/bin" />
 		</Linker>
-		<Unit filename="Lua/Makefile" />
 		<Unit filename="Lua/lapi.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -193,7 +192,6 @@
 		<Unit filename="include/MenuState.hpp" />
 		<Unit filename="include/Missile.hpp" />
 		<Unit filename="include/MissileLauncher.hpp" />
-		<Unit filename="include/PlayState.hpp" />
 		<Unit filename="include/Player.hpp" />
 		<Unit filename="include/QuadTree.hpp" />
 		<Unit filename="include/Radar.hpp" />
@@ -202,6 +200,7 @@
 		<Unit filename="include/Shield.hpp" />
 		<Unit filename="include/Ship.hpp" />
 		<Unit filename="include/Shot.hpp" />
+		<Unit filename="include/SpaceCombatState.hpp" />
 		<Unit filename="include/State.hpp" />
 		<Unit filename="include/StateMachine.hpp" />
 		<Unit filename="include/Status.hpp" />
@@ -231,7 +230,6 @@
 		<Unit filename="src/MenuState.cpp" />
 		<Unit filename="src/Missile.cpp" />
 		<Unit filename="src/MissileLauncher.cpp" />
-		<Unit filename="src/PlayState.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/QuadTree.cpp" />
 		<Unit filename="src/Radar.cpp" />
@@ -240,6 +238,7 @@
 		<Unit filename="src/Shield.cpp" />
 		<Unit filename="src/Ship.cpp" />
 		<Unit filename="src/Shot.cpp" />
+		<Unit filename="src/SpaceCombatState.cpp" />
 		<Unit filename="src/State.cpp" />
 		<Unit filename="src/StateMachine.cpp" />
 		<Unit filename="src/TileMap.cpp" />

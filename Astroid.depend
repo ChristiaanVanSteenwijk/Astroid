@@ -2,14 +2,14 @@
 1526213339 source:d:\documenten\bgp\astroid\src\application.cpp
 	"Application.hpp"
 
-1526208563 d:\documenten\bgp\astroid\include\application.hpp
+1556281360 d:\documenten\bgp\astroid\include\application.hpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	<SFML/System.hpp>
 	<SFML/Main.hpp>
 	<SFML/Window.hpp>
 	"IntroState.hpp"
-	"PlayState.hpp"
+	"SpaceCombatState.hpp"
 	"StateMachine.hpp"
 	"GameObjectManager.hpp"
 	"DataBase.hpp"
@@ -127,13 +127,14 @@
 1484252197 d:\programs\sfml\sfml-2.4.1\include\sfml\system\noncopyable.hpp
 	<SFML/System/Export.hpp>
 
-1554582330 d:\documenten\bgp\astroid\include\statemachine.hpp
+1556292213 d:\documenten\bgp\astroid\include\statemachine.hpp
 	<memory>
 	<stack>
 	<string>
 	"State.hpp"
 	"Status.hpp"
 	"IntroState.hpp"
+	"DataBase.hpp"
 
 1553807890 d:\documenten\bgp\astroid\include\gameobjectmanager.hpp
 	<memory>
@@ -501,14 +502,14 @@
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
 
-1553723468 source:d:\documenten\bgp\astroid\src\statemachine.cpp
+1556292413 source:d:\documenten\bgp\astroid\src\statemachine.cpp
 	"StateMachine.hpp"
 	<iostream>
 	<memory>
 	"State.hpp"
 	"IntroState.hpp"
 	"MenuState.hpp"
-	"PlayState.hpp"
+	"SpaceCombatState.hpp"
 	"DataBase.hpp"
 
 1530093731 source:d:\documenten\bgp\astroid\src\visiblegameobject.cpp
@@ -530,13 +531,15 @@
 	"CollisionObject.hpp"
 	<iostream>
 
-1537608307 source:d:\documenten\bgp\astroid\src\database.cpp
+1556293614 source:d:\documenten\bgp\astroid\src\database.cpp
 	"DataBase.hpp"
 
-1537392673 d:\documenten\bgp\astroid\include\database.hpp
+1556315262 d:\documenten\bgp\astroid\include\database.hpp
+	<memory>
 	<string>
 	<cstdio>
 	<iostream>
+	<fstream>
 	"sqlite3.h"
 
 1509831950 d:\documenten\bgp\astroid\include\sqlite3.hpp
@@ -974,7 +977,7 @@
 	"GameObject.hpp"
 	"GameObjectManager.hpp"
 
-1526239314 d:\documenten\bgp\astroid\include\status.hpp
+1556281443 d:\documenten\bgp\astroid\include\status.hpp
 
 1556273057 source:d:\documenten\bgp\astroid\src\enemy.cpp
 	"Enemy.hpp"
@@ -1424,7 +1427,7 @@
 	<SFML/System/Time.hpp>
 	<SFML/System/Vector2.hpp>
 
-1546179912 source:d:\documenten\bgp\astroid\src\massengine.cpp
+1556281307 source:d:\documenten\bgp\astroid\src\massengine.cpp
 	"MassEngine.hpp"
 	<cmath>
 	<iostream>
@@ -2150,10 +2153,10 @@
 	"lstate.h"
 	"lzio.h"
 
-1556270044 source:d:\documenten\bgp\astroid\src\script.cpp
+1556290968 source:d:\documenten\bgp\astroid\src\script.cpp
 	"Script.hpp"
 
-1556273661 d:\documenten\bgp\astroid\include\script.hpp
+1556290851 d:\documenten\bgp\astroid\include\script.hpp
 	<string>
 	"../Lua/lua.hpp"
 
@@ -2161,4 +2164,27 @@
 	"lua.h"
 	"lualib.h"
 	"lauxlib.h"
+
+1556281194 source:d:\documenten\bgp\astroid\src\spacecombatstate.cpp
+	"SpaceCombatState.hpp"
+	"State.hpp"
+	"Player.hpp"
+	"Enemy.hpp"
+	"Cruiser.hpp"
+
+1556281229 d:\documenten\bgp\astroid\include\spacecombatstate.hpp
+	<memory>
+	<iostream>
+	"StateMachine.hpp"
+	"Application.hpp"
+	"DataBase.hpp"
+	<SFML/Graphics.hpp>
+	<SFML/Window/Event.hpp>
+
+1556292220 source:d:\documenten\bgp\astroid\src\luaspacecombadstate.cpp
+	"LuaSpaceCombadState.hpp"
+
+1556291855 d:\documenten\bgp\astroid\include\luaspacecombadstate.hpp
+	"SpaceCombatState.hpp"
+	"Script.hpp"
 

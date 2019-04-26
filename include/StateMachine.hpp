@@ -8,12 +8,25 @@
 #include "State.hpp"
 #include "Status.hpp"
 #include "IntroState.hpp"
+
+#include "DataBase.hpp"
+
 //
 namespace sf
 {
 	class RenderWindow;
 	class Event;
 }
+
+enum struct Status
+{
+    _null,
+    _intro,
+    _menu,
+    _play,
+    _spaceCombat
+};
+
 class State;
 class GameObjectManager;
 
@@ -51,8 +64,7 @@ public:
 
 private:
 
-	bool m_resume;
-	bool m_running;
+	bool m_resume, m_running;
 
     Status NextState=Status::_null;
 
@@ -69,7 +81,9 @@ private:
     sf::Time frametime;
     sf::Time timestep=sf::milliseconds(30); // for the update function
     sf::Color alpha=sf::Color::White;
-//	DataBase Bootjes = DataBase("Ships.db");
+
+	DataBase m_database;
+
     unsigned int SCREEN_WIDTH = 1500;
     unsigned int SCREEN_HEIGHT = 1000;
     float LEVEL_WIDTH = 4500;

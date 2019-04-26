@@ -9,7 +9,7 @@
 #include <SFML/Window.hpp>
 
 #include "IntroState.hpp"
-#include "PlayState.hpp"
+#include "SpaceCombatState.hpp"
 #include "StateMachine.hpp"
 #include "GameObjectManager.hpp"
 #include "DataBase.hpp"

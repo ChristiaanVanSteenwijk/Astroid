@@ -1,5 +1,6 @@
 #include "MassEngine.hpp"
 #include <cmath>
+#define M_PI acos(-1)
 #include <iostream>
 
 MassEngine::MassEngine()
