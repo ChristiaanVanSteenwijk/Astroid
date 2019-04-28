@@ -6,10 +6,10 @@
 #include <string>
 
 #include "State.hpp"
-#include "Status.hpp"
 #include "IntroState.hpp"
 
 #include "DataBase.hpp"
+#include "Script.hpp"
 
 //
 namespace sf
@@ -56,8 +56,8 @@ public:
 
     void changeState();
 
-	template <typename _state>
-	static std::unique_ptr<_state> build( StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace = true );
+	template <typename S>
+	void build( StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace = true );
 
     unsigned int getHeight();
     unsigned int getWidth();
@@ -83,6 +83,7 @@ private:
     sf::Color alpha=sf::Color::White;
 
 	DataBase m_database;
+	Script m_script;
 
     unsigned int SCREEN_WIDTH = 1500;
     unsigned int SCREEN_HEIGHT = 1000;
@@ -90,13 +91,29 @@ private:
     float LEVEL_HEIGHT = 3000;
 
     // The stack of states
+    std::unique_ptr<State> _state;
 	std::stack<std::unique_ptr<State>> m_states;
 };
 
-template <typename _state>
-std::unique_ptr<_state> StateMachine::build(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace )
+template <typename S>
+void StateMachine::build(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace )
 {
-	return std::unique_ptr<_state>( new _state( machine, window, view, _context, _replace ) );
+   _state = std::unique_ptr<S>( new S( machine, window, view, _context, _replace ) );
+
+    if( _state->isReplacing() )   // clear the last state IF it's replaced
+        m_states.pop();
+
+   m_states.push(std::move(_state));
+
 }
 
 #endif // GAMEENGINE_HPP
+ /*   static int create_account(lua_State *L) {
+      double balance = luaL_checknumber(L, 1);
+      Account *a = new Account(balance);
+      lua_boxpointer(L, a);
+      luaL_getmetatable(L, className);
+      lua_setmetatable(L, -2);
+      return 1;
+    }
+*/

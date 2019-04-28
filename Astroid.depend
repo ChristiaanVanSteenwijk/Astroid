@@ -18,11 +18,10 @@
 	"State.hpp"
 	"BackGround.hpp"
 
-1553722551 d:\documenten\bgp\astroid\include\state.hpp
+1556395945 d:\documenten\bgp\astroid\include\state.hpp
 	<memory>
 	"SFML/System/Time.hpp"
 	"SFML/Graphics.hpp"
-	"Status.hpp"
 
 1484252197 d:\programs\sfml\sfml-2.4.1\include\sfml\system\time.hpp
 	<SFML/System/Export.hpp>
@@ -127,14 +126,14 @@
 1484252197 d:\programs\sfml\sfml-2.4.1\include\sfml\system\noncopyable.hpp
 	<SFML/System/Export.hpp>
 
-1556292213 d:\documenten\bgp\astroid\include\statemachine.hpp
+1556399008 d:\documenten\bgp\astroid\include\statemachine.hpp
 	<memory>
 	<stack>
 	<string>
 	"State.hpp"
-	"Status.hpp"
 	"IntroState.hpp"
 	"DataBase.hpp"
+	"Script.hpp"
 
 1553807890 d:\documenten\bgp\astroid\include\gameobjectmanager.hpp
 	<memory>
@@ -502,7 +501,7 @@
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
 
-1556292413 source:d:\documenten\bgp\astroid\src\statemachine.cpp
+1556398208 source:d:\documenten\bgp\astroid\src\statemachine.cpp
 	"StateMachine.hpp"
 	<iostream>
 	<memory>
@@ -531,7 +530,7 @@
 	"CollisionObject.hpp"
 	<iostream>
 
-1556293614 source:d:\documenten\bgp\astroid\src\database.cpp
+1556315352 source:d:\documenten\bgp\astroid\src\database.cpp
 	"DataBase.hpp"
 
 1556315262 d:\documenten\bgp\astroid\include\database.hpp
@@ -2153,10 +2152,10 @@
 	"lstate.h"
 	"lzio.h"
 
-1556290968 source:d:\documenten\bgp\astroid\src\script.cpp
+1556304118 source:d:\documenten\bgp\astroid\src\script.cpp
 	"Script.hpp"
 
-1556290851 d:\documenten\bgp\astroid\include\script.hpp
+1556295863 d:\documenten\bgp\astroid\include\script.hpp
 	<string>
 	"../Lua/lua.hpp"
 

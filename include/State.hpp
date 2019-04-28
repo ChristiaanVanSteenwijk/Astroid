@@ -5,8 +5,6 @@
 #include "SFML/System/Time.hpp"
 #include "SFML/Graphics.hpp"
 
-#include "Status.hpp"
-
 class StateMachine;
 class GameObjectManager;
 

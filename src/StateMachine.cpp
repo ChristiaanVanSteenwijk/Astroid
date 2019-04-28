@@ -14,6 +14,7 @@ StateMachine::StateMachine()
 , m_running{ false }
 , m_context(sf::FloatRect(0,0, 1, 1))
 , m_database("database.ldb")
+//, m_script()
 {
    	// Create render window
 	m_window.create( sf::VideoMode{SCREEN_WIDTH, SCREEN_HEIGHT}, "Engine Test version lost count", sf::Style::Default);
@@ -27,7 +28,7 @@ StateMachine::StateMachine()
 
     n_view.reset(s_next.getLocalBounds());
 	// Initialize the engine;
-	m_states.push(std::move( build<SpaceCombatState>(*this, m_window, m_view, m_context, false)));// should be intro state unless debugging an other state or debugging with another state.
+	build<SpaceCombatState>(*this, m_window, m_view, m_context, false);// should be intro state unless debugging an other state or debugging with another state.
 	// send the first state to the stack
     m_running = true;
     setNextState(Status::_null);
@@ -115,38 +116,26 @@ void StateMachine::setNextState(Status s)
 }
 
 void StateMachine::changeState()
-
 {
     // build a new state if this is requested
-    std::unique_ptr<State> temp;
-    bool newstate = false;
     switch (NextState)
     {
     case Status::_intro:
-        temp = build<IntroState>(*this, m_window, m_view, m_context, false);
-        newstate=true;
+        build<IntroState>(*this, m_window, m_view, m_context, false);
         break;
     case Status::_spaceCombat:
-       temp = build<SpaceCombatState>(*this, m_window, m_view, m_context, false);
-       newstate=true;
+       build<SpaceCombatState>(*this, m_window, m_view, m_context, false);
         break;
     case Status::_menu:
-        temp = build<MenuState>(*this, m_window, m_view, m_context, false);
-        newstate=true;
+        build<MenuState>(*this, m_window, m_view, m_context, false);
         break;
     case Status::_null:
     default:
         break;
     }
 
-    if( temp->isReplacing() )   // clear the last state IF it's replaced
-        m_states.pop();
-
     if (!m_states.empty())
         m_states.top()->resume();
-
-    if (newstate)
-        m_states.push(std::move(temp)); // move the new state to the stack
 
     setNextState(Status::_null);        // clear the request for a new state
 }
