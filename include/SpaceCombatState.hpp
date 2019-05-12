@@ -4,19 +4,21 @@
 #include <memory>
 #include <iostream>
 
-#include "StateMachine.hpp"
-#include "Application.hpp"
-#include "DataBase.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window/Event.hpp>
+
+#include "StateMachine.hpp"
 
 class SpaceCombatState : public State
 {
 public:
-	SpaceCombatState(StateMachine& machine, sf::RenderWindow& m_window, sf::View& m_view, GameObjectManager& _context, bool _replace = false);
+	SpaceCombatState(StateMachine& _machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace = false);
     ~SpaceCombatState();
 	void pause();
 	void resume();
+
+	int PlaceShip(lua_State* L);
+
 protected:
 	void handleEvent(sf::Event event);
 

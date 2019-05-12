@@ -28,7 +28,7 @@ StateMachine::StateMachine()
 
     n_view.reset(s_next.getLocalBounds());
 	// Initialize the engine;
-	build<SpaceCombatState>(*this, m_window, m_view, m_context, false);// should be intro state unless debugging an other state or debugging with another state.
+	build<SpaceCombatState>(false);// should be intro state unless debugging an other state or debugging with another state.
 	// send the first state to the stack
     m_running = true;
     setNextState(Status::_null);
@@ -121,13 +121,13 @@ void StateMachine::changeState()
     switch (NextState)
     {
     case Status::_intro:
-        build<IntroState>(*this, m_window, m_view, m_context, false);
+        build<IntroState>(false);
         break;
     case Status::_spaceCombat:
-       build<SpaceCombatState>(*this, m_window, m_view, m_context, false);
+       build<SpaceCombatState>(false);
         break;
     case Status::_menu:
-        build<MenuState>(*this, m_window, m_view, m_context, false);
+        build<MenuState>(false);
         break;
     case Status::_null:
     default:

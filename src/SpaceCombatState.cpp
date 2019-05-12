@@ -4,20 +4,24 @@
 #include "Enemy.hpp"
 #include "Cruiser.hpp"
 
-SpaceCombatState::SpaceCombatState( StateMachine& machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace )
-: State{ machine, _window, _view, _context, _replace }
+SpaceCombatState::SpaceCombatState( StateMachine& _machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace )
+: State{ _machine, _window, _view, _context, _replace }
 {
 	std::cout << "SpaceCombatState Init" << std::endl;
     float Width  = 1000;
     float Height = 1000;
     m_context.reSize(sf::FloatRect(0.f,0.f,Height,Width));
 
-    m_context.EmplaceName<Player>("Player", sf::Vector2f(500, 500), m_context, "img/blue1.png", 270, machine);
+    m_context.EmplaceName<Player>("Player", sf::Vector2f(500, 500), m_context, "img/blue1.png", 270, _machine);
 
  //   m_context.EmplaceName<Cruiser>("Cruiser", sf::Vector2f((Width*2/3), Height*.5), m_context, "img/cruiser.png", 180); 1366, 768
 
     m_context.EmplaceName<Enemy>("Enemy", sf::Vector2f(Width*3/4,Height*.2), m_context, "img/alien4.png", 270);
-
+ /*   lua_State* L = machine.m_script.getState();
+    machine.m_script.registerFunction("PlaceShip", (PlaceShip)(L));
+    machine.m_script.loadFile("SpaceCombatFirst.lua");
+    machine.m_script.run();
+*/
     m_view.reset(sf::FloatRect(0, 0, 2000, 4000));
     m_view.setCenter(m_context.Access("Player")->_visibility->GetPosition());
 
@@ -30,6 +34,18 @@ SpaceCombatState::~SpaceCombatState()
    // m_context.Remove("Cruiser");
     m_context.Remove("Enemy");
 
+}
+
+int SpaceCombatState::PlaceShip(lua_State* L)
+{
+    std::string name = lua_tostring(L, 1);
+    double x = lua_tonumber(L, 2);
+    double y = lua_tonumber(L, 3);
+    sf::Vector2f vec = sf::Vector2f((float)x, (float)y);
+    std::string image = lua_tostring(L, 4);
+    m_context.EmplaceName<Enemy>(name, vec, m_context, image, 270);
+
+    return 0;
 }
 
 void SpaceCombatState::pause()

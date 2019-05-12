@@ -26,12 +26,16 @@ WeaponEmplacement::WeaponEmplacement(const WeaponEmplacement& other) : m_context
 void WeaponEmplacement::Update(sf::Time dt, sf::Vector2f vec)
 {
     position+=vec;
-    _timer+=dt;
+
     if (_timer>_reload)
     {
         UpdateFunction();
         readyToFire=true;
         _timer-=_reload;
+    }
+    else
+    {
+        _timer+=dt;
     }
     switch (_feedback)
     {
@@ -39,7 +43,7 @@ void WeaponEmplacement::Update(sf::Time dt, sf::Vector2f vec)
         if (readyToFire)
             _FeedBackValue=1;
         else
-            _FeedBackValue =  _timer.asSeconds()/_reload.asSeconds();
+            _FeedBackValue = _timer.asSeconds()/_reload.asSeconds();
         break;
     case weaponFeedback::heat:
         _FeedBackValue = _temprature/max_temperature;

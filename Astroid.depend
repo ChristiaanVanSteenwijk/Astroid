@@ -14,11 +14,11 @@
 	"GameObjectManager.hpp"
 	"DataBase.hpp"
 
-1553722551 d:\documenten\bgp\astroid\include\introstate.hpp
+1557606206 d:\documenten\bgp\astroid\include\introstate.hpp
 	"State.hpp"
 	"BackGround.hpp"
 
-1556395945 d:\documenten\bgp\astroid\include\state.hpp
+1557606072 d:\documenten\bgp\astroid\include\state.hpp
 	<memory>
 	"SFML/System/Time.hpp"
 	"SFML/Graphics.hpp"
@@ -126,7 +126,7 @@
 1484252197 d:\programs\sfml\sfml-2.4.1\include\sfml\system\noncopyable.hpp
 	<SFML/System/Export.hpp>
 
-1556399008 d:\documenten\bgp\astroid\include\statemachine.hpp
+1557606466 d:\documenten\bgp\astroid\include\statemachine.hpp
 	<memory>
 	<stack>
 	<string>
@@ -447,7 +447,7 @@
 	"GameObjectManager.hpp"
 	<iostream>
 
-1553722551 source:d:\documenten\bgp\astroid\src\introstate.cpp
+1557606308 source:d:\documenten\bgp\astroid\src\introstate.cpp
 	"IntroState.hpp"
 	"StateMachine.hpp"
 	<SFML/Graphics/RenderWindow.hpp>
@@ -467,7 +467,7 @@
 1526327616 source:d:\documenten\bgp\astroid\src\main.cpp
 	"StateMachine.hpp"
 
-1553722551 source:d:\documenten\bgp\astroid\src\menustate.cpp
+1557606110 source:d:\documenten\bgp\astroid\src\menustate.cpp
 	"MenuState.hpp"
 	<SFML/Graphics/RenderWindow.hpp>
 	<SFML/Window/Event.hpp>
@@ -476,7 +476,7 @@
 	<memory>
 	<iostream>
 
-1553722551 d:\documenten\bgp\astroid\include\menustate.hpp
+1557606194 d:\documenten\bgp\astroid\include\menustate.hpp
 	"BackGround.hpp"
 	"State.hpp"
 
@@ -496,12 +496,12 @@
 	"Enemy.hpp"
 	"Cruiser.hpp"
 
-1553807928 source:d:\documenten\bgp\astroid\src\state.cpp
+1557606046 source:d:\documenten\bgp\astroid\src\state.cpp
 	"State.hpp"
 	"GameObjectManager.hpp"
 	"StateMachine.hpp"
 
-1556398208 source:d:\documenten\bgp\astroid\src\statemachine.cpp
+1557606478 source:d:\documenten\bgp\astroid\src\statemachine.cpp
 	"StateMachine.hpp"
 	<iostream>
 	<memory>
@@ -533,7 +533,7 @@
 1556315352 source:d:\documenten\bgp\astroid\src\database.cpp
 	"DataBase.hpp"
 
-1556315262 d:\documenten\bgp\astroid\include\database.hpp
+1556659861 d:\documenten\bgp\astroid\include\database.hpp
 	<memory>
 	<string>
 	<cstdio>
@@ -2152,33 +2152,31 @@
 	"lstate.h"
 	"lzio.h"
 
-1556304118 source:d:\documenten\bgp\astroid\src\script.cpp
+1557598384 source:d:\documenten\bgp\astroid\src\script.cpp
 	"Script.hpp"
 
-1556295863 d:\documenten\bgp\astroid\include\script.hpp
+1557601906 d:\documenten\bgp\astroid\include\script.hpp
 	<string>
 	"../Lua/lua.hpp"
 
-1103766784 d:\documenten\bgp\astroid\lua\lua.hpp
+1557602226 d:\documenten\bgp\astroid\lua\lua.hpp
 	"lua.h"
 	"lualib.h"
 	"lauxlib.h"
 
-1556281194 source:d:\documenten\bgp\astroid\src\spacecombatstate.cpp
+1557606308 source:d:\documenten\bgp\astroid\src\spacecombatstate.cpp
 	"SpaceCombatState.hpp"
 	"State.hpp"
 	"Player.hpp"
 	"Enemy.hpp"
 	"Cruiser.hpp"
 
-1556281229 d:\documenten\bgp\astroid\include\spacecombatstate.hpp
+1557606208 d:\documenten\bgp\astroid\include\spacecombatstate.hpp
 	<memory>
 	<iostream>
-	"StateMachine.hpp"
-	"Application.hpp"
-	"DataBase.hpp"
 	<SFML/Graphics.hpp>
 	<SFML/Window/Event.hpp>
+	"StateMachine.hpp"
 
 1556292220 source:d:\documenten\bgp\astroid\src\luaspacecombadstate.cpp
 	"LuaSpaceCombadState.hpp"

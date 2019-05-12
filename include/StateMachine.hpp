@@ -57,10 +57,13 @@ public:
     void changeState();
 
 	template <typename S>
-	void build( StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace = true );
+	void build(bool _replace = true );
 
     unsigned int getHeight();
     unsigned int getWidth();
+
+    DataBase m_database;
+	Script m_script;
 
 private:
 
@@ -82,9 +85,6 @@ private:
     sf::Time timestep=sf::milliseconds(30); // for the update function
     sf::Color alpha=sf::Color::White;
 
-	DataBase m_database;
-	Script m_script;
-
     unsigned int SCREEN_WIDTH = 1500;
     unsigned int SCREEN_HEIGHT = 1000;
     float LEVEL_WIDTH = 4500;
@@ -96,9 +96,13 @@ private:
 };
 
 template <typename S>
-void StateMachine::build(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& _context, bool _replace )
+void StateMachine::build(bool _replace )
 {
-   _state = std::unique_ptr<S>( new S( machine, window, view, _context, _replace ) );
+    //size_t size, lua_State* L, const char* metatableName,
+    size_t size = 500;
+    const char* metatableName = "bla";
+    lua_State* L = m_script.getState();
+   _state = std::unique_ptr<S>( new S( *this, m_window, m_view, m_context, _replace ) );
 
     if( _state->isReplacing() )   // clear the last state IF it's replaced
         m_states.pop();

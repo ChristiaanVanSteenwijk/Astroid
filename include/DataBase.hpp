@@ -14,10 +14,11 @@ class DataBase
     public:
         DataBase(std::string name = "database.ldb"); //Ctor
         friend void swap(DataBase& first, DataBase& second);    //swap
-        DataBase(DataBase& other);              //Copy Ctor
+
+        DataBase(DataBase& other);             //Copy Ctor
         DataBase& operator=(DataBase& other); //copy assignment
 
-        DataBase(DataBase&& other);  //move constructor
+        DataBase(DataBase&& other);       //move constructor
         DataBase& operator=(DataBase&&); //move assignment
 
         ~DataBase();
@@ -39,12 +40,12 @@ class DataBase
 
     protected:
         std::string _name, line;
-        sqlite3 *db;
+        sqlite3* db;
         sqlite3_stmt* stmt;
-        char *zErrMsg = 0;
+        char* zErrMsg = 0;
         int rc;
         int rs;
-        char *sql;
+        char* sql;
         int datatype =0;
 
         std::ifstream myfile;
