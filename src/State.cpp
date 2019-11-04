@@ -1,31 +1,57 @@
 #include "State.hpp"
-
+#include <assert.h>
 #include "GameObjectManager.hpp"
 #include "StateMachine.hpp"
 
-State::State( StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& m_context, bool _replace)
-: m_machine{ machine }
-, m_window{ window }
-, m_view{ view }
-, m_replacing{ _replace }
-, m_context { m_context }
+State::State(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& context, Script& script, std::string& Script, DataBase& database, bool _replace)
+: m_machine { machine }
+, m_window { window }
+, m_view { view }
+, m_replacing { _replace }
+, m_script { script }
+, m_context { context }
+, n_script { Script }
+, m_database { database }
 {
-    //, size_t size, lua_State* L, const char* metatableName
-  /*  void* ptr = lua_newuserdata(L, size);
-    luaL_getmetatable(L, metatableName);
-    // assert(lua_istable(L, -1)) if you're paranoid
-    lua_setmetatable(L, -2);
-   // return ptr; */
+  //  m_context = context;
 }
 
 std::unique_ptr<State> State::next()
 {
 	return std::move(m_next);
 }
-/*
-void* operator new(size_t size, lua_State* L, const char* metatableName)
+
+void swap(State& first, State& second)
 {
-*/
+    // enable ADL (not necessary in our case, but good practice)
+    using std::swap;
+
+    swap(first.m_next, second.m_next);
+}
+
+State::State(State& other)  // passed by value
+    :State(m_machine, m_window, m_view, m_context, m_script, n_script, m_database, m_replacing)
+{
+     swap(*this, other); // nothrow swap
+}
+
+State& State::operator=(State& other)  //copy assignment
+{
+    swap(*this, other); // (2)
+    return *this;
+}
+
+State::State(State&& other)            //move constructor
+    :State(m_machine, m_window, m_view, m_context, m_script, n_script, m_database, m_replacing)
+{
+    swap(*this, other);
+}
+
+State& State::operator=(State&& other)  //move assignment
+{
+    swap(*this, other); // (2)
+    return *this;
+}
 
 bool State::isReplacing()
 {
@@ -46,9 +72,3 @@ void  State::drawFeedback(sf::RenderTarget& target)
 {
     m_context.DrawFeedBack(m_view, target);
 }
-/*
-int State::PlaceGameObject(lua_State* L)
-{
-
-    return 0;
-}*/

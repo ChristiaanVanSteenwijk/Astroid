@@ -14,9 +14,10 @@ class GameObjectManager : public QuadTree
         ~GameObjectManager();
 
         friend void swap(GameObjectManager& first, GameObjectManager& second); // nothrow
-        GameObjectManager& operator=(GameObjectManager other); // (1)
-        GameObjectManager(GameObjectManager&& other);// move constructor
-
+        GameObjectManager(GameObjectManager& other);              //Copy Ctor
+        GameObjectManager& operator=(GameObjectManager& other);  //copy assignment
+        GameObjectManager(GameObjectManager&& other);           //move constructor
+        GameObjectManager& operator=(GameObjectManager&&);     //move assignment
         void reSize(sf::FloatRect rect);
 
         void Draw(sf::View& view, sf::RenderTarget& _target);

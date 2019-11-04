@@ -51,207 +51,454 @@
 			<Add directory="D:/Programs/SFML/SFML/lib" />
 			<Add directory="../../../Programs/sqlite/bin" />
 		</Linker>
+		<Unit filename="Lua/Luna.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/Lunar.hpp">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lapi.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lapi.h" />
+		<Unit filename="Lua/lapi.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lauxlib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lauxlib.h" />
+		<Unit filename="Lua/lauxlib.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lbaselib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lbitlib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lcode.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lcode.h" />
+		<Unit filename="Lua/lcode.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lcorolib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lctype.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lctype.h" />
+		<Unit filename="Lua/lctype.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/ldblib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/ldebug.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/ldebug.h" />
+		<Unit filename="Lua/ldebug.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/ldo.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/ldo.h" />
+		<Unit filename="Lua/ldo.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/ldump.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lfunc.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lfunc.h" />
+		<Unit filename="Lua/lfunc.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lgc.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lgc.h" />
+		<Unit filename="Lua/lgc.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/linit.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/liolib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/llex.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/llex.h" />
-		<Unit filename="Lua/llimits.h" />
+		<Unit filename="Lua/llex.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/llimits.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lmathlib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lmem.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lmem.h" />
+		<Unit filename="Lua/lmem.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/loadlib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lobject.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lobject.h" />
+		<Unit filename="Lua/lobject.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lopcodes.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lopcodes.h" />
+		<Unit filename="Lua/lopcodes.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/loslib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lparser.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lparser.h" />
-		<Unit filename="Lua/lprefix.h" />
+		<Unit filename="Lua/lparser.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/lprefix.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lstate.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lstate.h" />
+		<Unit filename="Lua/lstate.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lstring.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lstring.h" />
+		<Unit filename="Lua/lstring.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lstrlib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/ltable.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/ltable.h" />
+		<Unit filename="Lua/ltable.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/ltablib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/ltm.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/ltm.h" />
-		<Unit filename="Lua/lua.h" />
-		<Unit filename="Lua/lua.hpp" />
-		<Unit filename="Lua/luaconf.h" />
-		<Unit filename="Lua/lualib.h" />
+		<Unit filename="Lua/ltm.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/lua.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/lua.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/luaconf.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Lua/luak.hpp" />
+		<Unit filename="Lua/lualib.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lundump.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lundump.h" />
+		<Unit filename="Lua/lundump.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lutf8lib.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
 		<Unit filename="Lua/lvm.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lvm.h" />
+		<Unit filename="Lua/lvm.h">
+			<Option target="Debug" />
+		</Unit>
 		<Unit filename="Lua/lzio.c">
 			<Option compilerVar="CC" />
+			<Option target="Debug" />
 		</Unit>
-		<Unit filename="Lua/lzio.h" />
-		<Unit filename="include/Armor.hpp" />
-		<Unit filename="include/Aura.hpp" />
-		<Unit filename="include/Auras.hpp" />
-		<Unit filename="include/BackGround.hpp" />
-		<Unit filename="include/CollisionObject.hpp" />
-		<Unit filename="include/Cruiser.hpp" />
-		<Unit filename="include/DataBase.hpp" />
-		<Unit filename="include/Enemy.hpp" />
-		<Unit filename="include/GameObject.hpp" />
-		<Unit filename="include/GameObjectManager.hpp" />
-		<Unit filename="include/Gun.hpp" />
-		<Unit filename="include/Health.hpp" />
-		<Unit filename="include/IntroState.hpp" />
-		<Unit filename="include/MassEngine.hpp" />
-		<Unit filename="include/MenuState.hpp" />
-		<Unit filename="include/Missile.hpp" />
-		<Unit filename="include/MissileLauncher.hpp" />
-		<Unit filename="include/Player.hpp" />
-		<Unit filename="include/QuadTree.hpp" />
-		<Unit filename="include/Radar.hpp" />
-		<Unit filename="include/RandomNeuron.hpp" />
-		<Unit filename="include/Script.hpp" />
-		<Unit filename="include/Shield.hpp" />
-		<Unit filename="include/Ship.hpp" />
-		<Unit filename="include/Shot.hpp" />
-		<Unit filename="include/SpaceCombatState.hpp" />
-		<Unit filename="include/State.hpp" />
-		<Unit filename="include/StateMachine.hpp" />
-		<Unit filename="include/Status.hpp" />
-		<Unit filename="include/TileMap.hpp" />
-		<Unit filename="include/Visibility.hpp" />
-		<Unit filename="include/WeaponEmplacement.hpp" />
-		<Unit filename="include/WeaponSystem.hpp" />
-		<Unit filename="include/WeaponSystemWithFeedback.hpp" />
-		<Unit filename="include/neuralnetwork.hpp" />
-		<Unit filename="include/neuron.hpp" />
-		<Unit filename="include/sigmoid.hpp" />
-		<Unit filename="include/sqlite3.h" />
-		<Unit filename="include/stepneuron.hpp" />
-		<Unit filename="src/Armor.cpp" />
-		<Unit filename="src/Aura.cpp" />
-		<Unit filename="src/Auras.cpp" />
-		<Unit filename="src/BackGround.cpp" />
-		<Unit filename="src/Cruiser.cpp" />
-		<Unit filename="src/DataBase.cpp" />
-		<Unit filename="src/Enemy.cpp" />
-		<Unit filename="src/GameObject.cpp" />
-		<Unit filename="src/GameObjectManager.cpp" />
-		<Unit filename="src/Gun.cpp" />
-		<Unit filename="src/Health.cpp" />
-		<Unit filename="src/IntroState.cpp" />
-		<Unit filename="src/MassEngine.cpp" />
-		<Unit filename="src/MenuState.cpp" />
-		<Unit filename="src/Missile.cpp" />
-		<Unit filename="src/MissileLauncher.cpp" />
-		<Unit filename="src/Player.cpp" />
-		<Unit filename="src/QuadTree.cpp" />
-		<Unit filename="src/Radar.cpp" />
-		<Unit filename="src/RandomNeuron.cpp" />
-		<Unit filename="src/Script.cpp" />
-		<Unit filename="src/Shield.cpp" />
-		<Unit filename="src/Ship.cpp" />
-		<Unit filename="src/Shot.cpp" />
-		<Unit filename="src/SpaceCombatState.cpp" />
-		<Unit filename="src/State.cpp" />
-		<Unit filename="src/StateMachine.cpp" />
-		<Unit filename="src/TileMap.cpp" />
-		<Unit filename="src/Visibility.cpp" />
-		<Unit filename="src/WeaponEmplacement.cpp" />
-		<Unit filename="src/WeaponSystem.cpp" />
-		<Unit filename="src/WeaponSystemWithFeedback.cpp" />
-		<Unit filename="src/main.cpp" />
-		<Unit filename="src/neuralnetwork.cpp" />
-		<Unit filename="src/neuron.cpp" />
-		<Unit filename="src/sigmoid.cpp" />
-		<Unit filename="src/stepneuron.cpp" />
+		<Unit filename="Lua/lzio.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Scripts/SpaceCombatFirst.lua">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="Scripts/default.lua">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Armor.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Aura.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Auras.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/BackGround.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/CollisionObject.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Cruiser.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/DataBase.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Enemy.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/GameObject.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/GameObjectManager.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Gun.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Health.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/IntroState.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/MassEngine.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/MenuState.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Missile.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/MissileLauncher.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Player.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/QuadTree.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Radar.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/RandomNeuron.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Script.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Shield.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Ship.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Shot.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/SpaceCombatState.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/State.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/StateMachine.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/TileMap.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/Visibility.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/WeaponEmplacement.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/WeaponSystem.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/WeaponSystemWithFeedback.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/neuralnetwork.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/neuron.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/sigmoid.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/sqlite3.h">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="include/stepneuron.hpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Armor.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Aura.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Auras.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/BackGround.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Cruiser.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/DataBase.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Enemy.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/GameObject.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/GameObjectManager.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Gun.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Health.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/IntroState.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/MassEngine.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/MenuState.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Missile.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/MissileLauncher.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Player.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/QuadTree.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Radar.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/RandomNeuron.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Script.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Shield.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Ship.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Shot.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/SpaceCombatState.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/State.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/StateMachine.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/TileMap.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/Visibility.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/WeaponEmplacement.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/WeaponSystem.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/WeaponSystemWithFeedback.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/main.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/neuralnetwork.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/neuron.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/sigmoid.cpp">
+			<Option target="Debug" />
+		</Unit>
+		<Unit filename="src/stepneuron.cpp">
+			<Option target="Debug" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

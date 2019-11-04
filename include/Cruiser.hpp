@@ -3,7 +3,6 @@
 
 #include "Ship.hpp"
 
-
 class Cruiser : public Ship
 {
     public:
@@ -13,8 +12,8 @@ class Cruiser : public Ship
 
     protected:
     private:
-      float _velocity;
-       float _max_velocity;
+        float _velocity;
+        float _max_velocity;
         float _min_velocity;
         float _rotation;
         float _accelaration;

@@ -10,14 +10,14 @@
 #include "DataBase.hpp"
 
 StateMachine::StateMachine()
-: m_resume{ false }
-, m_running{ false }
-, m_context(sf::FloatRect(0,0, 1, 1))
+: m_script()
 , m_database("database.ldb")
-//, m_script()
+, m_context(sf::FloatRect(0,0, 1, 1))
+, m_resume{ false }
+, m_running{ false }
 {
    	// Create render window
-	m_window.create( sf::VideoMode{SCREEN_WIDTH, SCREEN_HEIGHT}, "Engine Test version lost count", sf::Style::Default);
+	m_window.create( sf::VideoMode{SCREEN_WIDTH, SCREEN_HEIGHT}, "Needs a new title...", sf::Style::Default);
 	sf::Vector2u _size = sf::Vector2u(1040, 768);
 	m_window.setSize(_size);
     r_next.create(1040, 768);
@@ -27,12 +27,12 @@ StateMachine::StateMachine()
     s_gui.setTexture(r_gui.getTexture());
 
     n_view.reset(s_next.getLocalBounds());
-	// Initialize the engine;
-	build<SpaceCombatState>(false);// should be intro state unless debugging an other state or debugging with another state.
-	// send the first state to the stack
+	// Initialize the engine; Status S, std::string _name = "void", std::string _script = "default.lua"
+	chooseNextState(Status::_spaceCombat, "SpaceCombatFirst", "Scripts/SpaceCombatFirst.lua");
+    ChangeState();
+    // send the first state to the stack
     m_running = true;
-    setNextState(Status::_null);
-
+   // chooseNextState(Status::_null);
 	std::cout << "StateMachine Init" << std::endl;
 }
 
@@ -66,13 +66,13 @@ void StateMachine::run()
 
             //Change the state if necessary
             if (NextState != Status::_null)
-                changeState();
+                ChangeState();
 
-            Draw();
+            Draw(); //draw to the render textures
         }
-        Render();
+        Render(); // render to the window (on screen)
 	}
-	// Leaving the scope of State-machine will cleanup the engine
+	// Leaving the scope of State-machine will clean up the engine
 }
 
 void StateMachine::Draw()
@@ -100,7 +100,7 @@ void StateMachine::Render()
     m_window.clear();                // clear the window, standard part of the drawing cycle
     m_window.draw(s_previous);      // draw the previous view here
     m_window.draw(s_next);         // draw the next frame with transparency "alpha"
-    m_window.draw(s_gui);         // not working yet
+    m_window.draw(s_gui);         // draw ingame info not handled by the game object manager
     m_window.display();          // display the scene, standard part of the cycle
 }
 
@@ -109,13 +109,16 @@ void StateMachine::lastState()
     m_resume = true;
 }
 
-void StateMachine::setNextState(Status s)
+void StateMachine::chooseNextState(Status s, std::string _name, std::string _script)
 {
     NextState = s;
     // only set the next state as a value since we do not want to change from one state to another unpredictably
+
+    n_script = _script;
+    state_name = _name.c_str();
 }
 
-void StateMachine::changeState()
+void StateMachine::ChangeState()
 {
     // build a new state if this is requested
     switch (NextState)
@@ -124,11 +127,20 @@ void StateMachine::changeState()
         build<IntroState>(false);
         break;
     case Status::_spaceCombat:
-       build<SpaceCombatState>(false);
+        build<SpaceCombatState>(false);
+        (m_states.top())->methods.push_back({"placeShip", m_states.top()->func1});
+        //, m_states.top()->luaPlaceShip); {std::string name; mfp mfunc;} RegType;
+           // Script_declare_method(0,0)
+     //   (m_states.top())->methods.push_back(0);
+       // m_script.Register<SpaceCombatState>(*this, m_window, m_view, m_context, m_script, n_script, m_database, false);
         break;
     case Status::_menu:
         build<MenuState>(false);
-        break;
+    /*    m_states.top()::methods =
+        {
+            Script_declare_method(0, 0)
+        };
+    */    break;
     case Status::_null:
     default:
         break;
@@ -137,7 +149,7 @@ void StateMachine::changeState()
     if (!m_states.empty())
         m_states.top()->resume();
 
-    setNextState(Status::_null);        // clear the request for a new state
+    chooseNextState(Status::_null);        // clear the request for a new state
 }
 
 void StateMachine::update(sf::Time dt)
@@ -145,7 +157,6 @@ void StateMachine::update(sf::Time dt)
 	// Let the context, GameObjectManager, update the game
 	m_context.UpdateAll(dt);
 }
-
 
 void StateMachine::handleEvents(sf::Event event)
 {

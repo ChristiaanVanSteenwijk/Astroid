@@ -35,5 +35,5 @@ Player::Player(GameObjectManager& context, std::string filename, float angle, St
 Player::~Player()
 {
     //dtor
-    m_machine.setNextState(Status::_intro);
+    m_machine.chooseNextState(Status::_intro);
 }

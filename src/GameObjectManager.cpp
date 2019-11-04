@@ -27,7 +27,6 @@ void swap(GameObjectManager& first, GameObjectManager& second)
         swap(first._Object, second._Object);
         swap(first.m_object, second.m_object);
         swap(first._Objects, second._Objects);
-        swap(first._Objects, second._Objects);
         swap(first.collisionGeom, second.collisionGeom);
         swap(first._ID, second._ID);
         swap(first._moving_ID, second._moving_ID);
@@ -35,10 +34,14 @@ void swap(GameObjectManager& first, GameObjectManager& second)
       //  swap(first.QuadTree, second.QuadTree);
 }
 
-GameObjectManager& GameObjectManager::operator=(GameObjectManager other)
+GameObjectManager::GameObjectManager(GameObjectManager& other)              //Copy Ctor
+   : GameObjectManager(QuadTree::getBounds()) // initialize via default constructor, C++11 and later
+{
+     swap(*this, other); // nothrow swap
+}
+GameObjectManager& GameObjectManager::operator=(GameObjectManager& other)
 {
     swap(*this, other); // (2)
-
     return *this;
 }
 
@@ -46,6 +49,12 @@ GameObjectManager::GameObjectManager(GameObjectManager&& other)
    : GameObjectManager(QuadTree::getBounds()) // initialize via default constructor, C++11 and later
 {
     swap(*this, other);
+}
+
+GameObjectManager& GameObjectManager::operator=(GameObjectManager&& other)  //move assignment
+{
+    swap(*this, other); // (2)
+    return *this;
 }
 
 void GameObjectManager::reSize(sf::FloatRect rect)

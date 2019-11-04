@@ -11,7 +11,7 @@
 #include "DataBase.hpp"
 #include "Script.hpp"
 
-//
+
 namespace sf
 {
 	class RenderWindow;
@@ -52,22 +52,20 @@ public:
 	bool running() {return m_running;}
 	void quit() {m_running = false;}
 
-    void setNextState(Status S);
-
-    void changeState();
+    void chooseNextState(Status S, std::string _name = "void", std::string _script = "default.lua");
 
 	template <typename S>
-	void build(bool _replace = true );
+        void build(bool _replace = true );
 
     unsigned int getHeight();
     unsigned int getWidth();
 
-    DataBase m_database;
 	Script m_script;
+    DataBase m_database;
 
 private:
 
-	bool m_resume, m_running;
+    void ChangeState();
 
     Status NextState=Status::_null;
 
@@ -76,6 +74,11 @@ private:
     sf::Sprite s_next, s_previous, s_gui;
     sf::View m_view, n_view;
     GameObjectManager m_context;
+
+    std::string n_script;
+    std::string state_name;
+
+	bool m_resume, m_running;
 
     sf::Event m_event;
 
@@ -91,33 +94,19 @@ private:
     float LEVEL_HEIGHT = 3000;
 
     // The stack of states
-    std::unique_ptr<State> _state;
+    std::unique_ptr<State> m_state;
 	std::stack<std::unique_ptr<State>> m_states;
 };
 
 template <typename S>
-void StateMachine::build(bool _replace )
+void StateMachine::build(bool _replace)
 {
-    //size_t size, lua_State* L, const char* metatableName,
-    size_t size = 500;
-    const char* metatableName = "bla";
-    lua_State* L = m_script.getState();
-   _state = std::unique_ptr<S>( new S( *this, m_window, m_view, m_context, _replace ) );
-
-    if( _state->isReplacing() )   // clear the last state IF it's replaced
+    m_state =std::unique_ptr<S> (new(m_script.getLuaState(), state_name) S(*this, m_window, m_view, m_context, m_script, n_script, m_database, _replace));
+    m_state->m_context = m_context;
+    if( _replace)   // clear the last state IF it's replaced
         m_states.pop();
 
-   m_states.push(std::move(_state));
-
+    m_states.push(std::move(m_state));
 }
 
 #endif // GAMEENGINE_HPP
- /*   static int create_account(lua_State *L) {
-      double balance = luaL_checknumber(L, 1);
-      Account *a = new Account(balance);
-      lua_boxpointer(L, a);
-      luaL_getmetatable(L, className);
-      lua_setmetatable(L, -2);
-      return 1;
-    }
-*/

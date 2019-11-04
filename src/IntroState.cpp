@@ -7,8 +7,8 @@
 #include <iostream>
 #include <memory>
 
-IntroState::IntroState(StateMachine& _machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace)
-: State{ _machine, _window, _view, _context, _replace }
+IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& context, Script& script, std::string& Script, DataBase& database, bool _replace)
+: State{machine, window, view, context, script, Script, database, _replace}
 {
     m_context.EmplaceName<BackGround>("Intro", sf::Vector2f(0.f,0.f), m_context, "img/intro.bmp");
 	sf::FloatRect rect = m_context.Find("Intro")->_visibility->GetBoundingRect();
@@ -44,10 +44,10 @@ switch(event.type)
             switch(event.key.code)
             {
             case sf::Keyboard::Escape:
-                m_machine.setNextState(Status::_menu);
+                m_machine.chooseNextState(Status::_menu);
                 break;
             default:
-                m_machine.setNextState(Status::_play);
+                m_machine.chooseNextState(Status::_play);
                 break;
             }
             break;

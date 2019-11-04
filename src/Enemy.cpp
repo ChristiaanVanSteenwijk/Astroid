@@ -36,7 +36,7 @@ Enemy::Enemy(GameObjectManager& context, std::string filename, float angle) :
     _brain->setWeights(0, 3, {.3,.3, 0, 1, 0, 0});  //range2
     _brain->setWeights(0, 4, {.3, 0,.3, 0, 1, 0});  //angle3
 
-    _brain->setWeights(1, 0, { .2,  0, 1 });   //turn right
+    _brain->setWeights(1, 0, { .2,  0,-10});   //turn right
     _brain->setWeights(1, 1, { .2,  7, 1 });   //accelerate
     _brain->setWeights(1, 2, { .1,  2, 0 });   //fire
 

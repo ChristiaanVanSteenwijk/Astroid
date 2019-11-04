@@ -9,8 +9,8 @@
 #include <memory>
 #include <iostream>
 
-MenuState::MenuState( StateMachine& _machine, sf::RenderWindow& _window, sf::View& _view, GameObjectManager& _context, bool _replace )
-: State{ _machine, _window, _view, _context, _replace }
+MenuState::MenuState(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& context, Script& script, std::string& Script, DataBase& database, bool _replace)
+: State{machine, window, view, context, script, Script, database, _replace}
 {
     m_context.EmplaceName<BackGround> ("Menupic", sf::Vector2f(0.f,0.f), m_context, "img/menu.bmp");
 	std::cout << "MenuState Init" << std::endl;

@@ -20,19 +20,23 @@ Cruiser::Cruiser(GameObjectManager& context, std::string filename, float angle) 
     _weapons->ChangeState(1);
 
     _brain= std::unique_ptr<neuralnetwork> (new neuralnetwork(4, {3,5}));
+    _brain= std::unique_ptr<neuralnetwork> (new neuralnetwork(5, {5,3}));
 
-    _brain->Emplace<sigmoid>(0,3);
-    _brain->Emplace<stepneuron>(1,5);
+    _brain->Emplace<sigmoid>(0,5);
+    _brain->Emplace<stepneuron>(1,3);
 
-    _brain->setWeights(0, 0, {.3,  0,  0, 1});  //timer
-    _brain->setWeights(0, 1, {.3,  1,  0, 0});  //range
-    _brain->setWeights(0, 2, {.3,  0,  1, 0});  //angle
+    _brain->setWeights(0, 0, {.3, 0, 0, 0, 0, 1});  //timer
+    _brain->setWeights(0, 1, {.3, 1, 0, 0, 0, 0});  //range1
+    _brain->setWeights(0, 2, {.3, 0, 1, 0, 0, 0});  //angle1
+    _brain->setWeights(0, 3, {.3,.3, 0, 1, 0, 0});  //range2
+    _brain->setWeights(0, 4, {.3, 0,.3, 0, 1, 0});  //angle3
 
-    _brain->setWeights(1, 0, { .2,  0, 15});   //turn right
-    _brain->setWeights(1, 1, { .2,  0,-15});   //turn left
-    _brain->setWeights(1, 2, { .2,  7, 1 });   //accelerate
-    _brain->setWeights(1, 3, { .1, -7,-1 });   //decelerate
-    _brain->setWeights(1, 4, { .1,  2, 0 });   //fire
+    _brain->setWeights(1, 0, { .2,  0,-10});   //turn right
+    _brain->setWeights(1, 1, { .2,  7, 1 });   //accelerate
+    _brain->setWeights(1, 2, { .1,  2, 0 });   //fire
+
+    _brain->setBias(0, 1,-180);
+    _brain->setBias(0, 4,-180);
 }
 
 Cruiser::~Cruiser()

@@ -2,22 +2,29 @@
 #define STATE_HPP
 
 #include <memory>
+
 #include "SFML/System/Time.hpp"
 #include "SFML/Graphics.hpp"
+#include "Script.hpp"
+#include "DataBase.hpp"
 
 class StateMachine;
 class GameObjectManager;
 class lua_State;
 
-class State
+class State : public Scriptable
 {
 public:
-    State(StateMachine& machine, sf::RenderWindow& window, sf::View& m_view, GameObjectManager& _context, bool replace = false);
+    State(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& context, Script& script, std::string& Script, DataBase& database, bool _replace = false);
 	virtual ~State() = default;
-   // void* operator new(size_t size, lua_State* L, const char* metatableName); size_t size, lua_State* L, const char* metatableName,
 
-	State (const State& ) = delete;
-	State& operator= ( const State& ) = delete;
+    friend void swap(State& first, State& second);    //swap
+
+    State(State& other);             //Copy Ctor
+    State& operator=(State& other); //copy assignment
+
+    State(State&& other);       //move constructor
+    State& operator=(State&&); //move assignment
 
 	virtual void pause() = 0;
 	virtual void resume() = 0;
@@ -30,19 +37,22 @@ public:
     void drawFeedback(sf::RenderTarget& target);
 
 	std::unique_ptr<State> next();
+	//virtual void register_table(lua_State* L, struct _struct){};
 
 	bool isReplacing();
-
-	//int PlaceGameObject(lua_State* L);
+    GameObjectManager& m_context;
 
 protected:
     StateMachine& m_machine;
     sf::RenderWindow& m_window;
     sf::View& m_view;
-  //  sf::RenderTexture& r_next; commented out since the state machine passes the textures to the drawing function directly
 
-	bool m_replacing = false;
-    GameObjectManager& m_context;
+	Script m_script;
+    std::string n_script;
+
+    DataBase m_database;
+
+	bool m_replacing;
 
 	std::unique_ptr<State> m_next;
 };

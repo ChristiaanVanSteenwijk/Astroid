@@ -49,8 +49,8 @@ void Missile::Update(sf::Time dt)
 
     float r = sqrt(pow(direction.x, 2)+pow(direction.y,2));
     float t = atan2(direction.x, direction.y)*180/M_PI+_me->GetRotation()+90;
-    // atan2 is from math.h so it uses radians, 0 is straight up and ccw is positive
-    // GetRotation is from sfml and uses degrees, 0 is to the right and cw is positive
+    // atan2 is from math.h so it uses radians, 0 is straight up and ccw is positive, right handed coördinate system
+    // GetRotation is from sfml and uses degrees, 0 is to the right and cw is positive, left handed coördinate system
     // the difference between the angles, despite the +, should go towards 180 degrees, say between 179 to 181 rather than 1 and 359 for control reasons
 
     if (t>360)
