@@ -24,7 +24,8 @@ enum struct Status
     _intro,
     _menu,
     _play,
-    _spaceCombat
+    _spaceCombat,
+    _texteditor
 };
 
 class State;
@@ -101,7 +102,7 @@ private:
 template <typename S>
 void StateMachine::build(bool _replace)
 {
-    m_state =std::unique_ptr<S> (new(m_script.getLuaState(), state_name) S(*this, m_window, m_view, m_context, m_script, n_script, m_database, _replace));
+    m_state =std::unique_ptr<S> (new S(*this, m_window, m_view, m_context, m_script, n_script, m_database, _replace)); //m_script.getLuaState(), state_name
     m_state->m_context = m_context;
     if( _replace)   // clear the last state IF it's replaced
         m_states.pop();

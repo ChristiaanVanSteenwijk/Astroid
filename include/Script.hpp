@@ -78,6 +78,8 @@ class Script
         void push(lua_CFunction n){lua_pushcfunction(L, n);};
         void push(void* s){lua_pushlightuserdata(L, s);};
       //  void push(T t){lua_pushobject(L, t);};
+
+      void CheckStack();
 };
 
 template <typename... Ts>
@@ -106,7 +108,6 @@ template <class Object, typename... Args>
 struct Scriptable
 {
     void* operator new(size_t _size, lua_State* L, std::string metatableName);
-
 
  //   Scriptable(std::string metatableName);
     void setfield(lua_State* L, std::string Table, std::string index, int (*f)(lua_State*));

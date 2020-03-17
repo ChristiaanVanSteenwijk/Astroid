@@ -12,7 +12,7 @@ class StateMachine;
 class GameObjectManager;
 class lua_State;
 
-class State : public Scriptable
+class State //: public Scriptable
 {
 public:
     State(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& context, Script& script, std::string& Script, DataBase& database, bool _replace = false);
@@ -37,22 +37,20 @@ public:
     void drawFeedback(sf::RenderTarget& target);
 
 	std::unique_ptr<State> next();
-	//virtual void register_table(lua_State* L, struct _struct){};
+
+    GameObjectManager& m_context;
 
 	bool isReplacing();
-    GameObjectManager& m_context;
 
 protected:
     StateMachine& m_machine;
     sf::RenderWindow& m_window;
     sf::View& m_view;
 
+	bool m_replacing;
+    DataBase m_database;
 	Script m_script;
     std::string n_script;
-
-    DataBase m_database;
-
-	bool m_replacing;
 
 	std::unique_ptr<State> m_next;
 };

@@ -7,6 +7,7 @@
 #include "IntroState.hpp"
 #include "MenuState.hpp"
 #include "SpaceCombatState.hpp"
+#include "TextEditor.hpp"
 #include "DataBase.hpp"
 
 StateMachine::StateMachine()
@@ -128,21 +129,15 @@ void StateMachine::ChangeState()
         break;
     case Status::_spaceCombat:
         build<SpaceCombatState>(false);
-        (m_states.top())->methods.push_back({"placeShip", m_states.top()->func1});
-        //, m_states.top()->luaPlaceShip); {std::string name; mfp mfunc;} RegType;
-           // Script_declare_method(0,0)
-     //   (m_states.top())->methods.push_back(0);
-       // m_script.Register<SpaceCombatState>(*this, m_window, m_view, m_context, m_script, n_script, m_database, false);
         break;
     case Status::_menu:
         build<MenuState>(false);
-    /*    m_states.top()::methods =
-        {
-            Script_declare_method(0, 0)
-        };
-    */    break;
+    break;
+    case Status::_texteditor:
+        build<TextEditor>(false);
     case Status::_null:
     default:
+
         break;
     }
 

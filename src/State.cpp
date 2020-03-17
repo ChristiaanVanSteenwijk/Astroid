@@ -12,9 +12,7 @@ State::State(StateMachine& machine, sf::RenderWindow& window, sf::View& view, Ga
 , m_context { context }
 , n_script { Script }
 , m_database { database }
-{
-  //  m_context = context;
-}
+{}
 
 std::unique_ptr<State> State::next()
 {

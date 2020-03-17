@@ -358,6 +358,7 @@
 		<Unit filename="include/StateMachine.hpp">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="include/TextEditor.hpp" />
 		<Unit filename="include/TileMap.hpp">
 			<Option target="Debug" />
 		</Unit>
@@ -469,6 +470,7 @@
 		<Unit filename="src/StateMachine.cpp">
 			<Option target="Debug" />
 		</Unit>
+		<Unit filename="src/TextEditor.cpp" />
 		<Unit filename="src/TileMap.cpp">
 			<Option target="Debug" />
 		</Unit>

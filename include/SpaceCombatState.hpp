@@ -9,7 +9,6 @@
 
 #include "StateMachine.hpp"
 
-class lua_State;
 
 class SpaceCombatState : public State
 {
@@ -20,13 +19,12 @@ public:
 	void resume();
     int func1(lua_State* L);
 
+private:
+    sf::Vector2f direction;
 protected:
 	void handleEvent(sf::Event event);
     void placeShip(std::string _name, float x, float y, float angle, std::string _image);
 	void placePlayer(std::string _name, float x, float y, float angle, std::string _image);
-
-private:
-    sf::Vector2f direction;
 };
 
 #endif // SpaceCombatState_HPP

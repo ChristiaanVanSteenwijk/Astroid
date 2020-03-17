@@ -62,8 +62,7 @@ DataBase& DataBase::operator=(DataBase&& other)  //move assignment
     return *this;
 }
 
-
-int DataBase::callback(void *Data, int argc, char **argv, char **azColName)
+int DataBase::Callback(void *Data, int argc, char **argv, char **azColName)
 {
     int i;
     for(i = 0; i<argc; i++)
@@ -73,9 +72,9 @@ int DataBase::callback(void *Data, int argc, char **argv, char **azColName)
     return 0;
 }
 
-void DataBase::execute(std::string sql)
+void DataBase::Execute(std::string _input)
 {
-    rc = sqlite3_exec(db, sql.c_str(), callback, 0, &zErrMsg);
+    rc = sqlite3_exec(db, _input.c_str(), Callback, 0, &zErrMsg);
     if (rc != SQLITE_OK)
     {
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -85,31 +84,29 @@ void DataBase::execute(std::string sql)
 
 void DataBase::RunFile(std::string filename)
 {
-   myfile.open(filename.c_str());
-  if (myfile.is_open())
-  {
-    while ( getline (myfile,line) )
+    myfile.open(filename.c_str());
+    if (myfile.is_open())
     {
-      execute(line);
+        while ( getline (myfile, _line) )
+            _command+=_line;
+
+        myfile.close();
+        Execute(_command.c_str());
     }
-    myfile.close();
-  }
-
-  else std::cout << "Unable to open file";
-
+    else std::cout << "Unable to open file";
 }
 
-void DataBase::prepare(std::string statement)
+void DataBase::Prepare(std::string statement)
 {
     rs = sqlite3_prepare_v2(db, statement.c_str(),-1, &stmt,NULL);
 }
 
-void DataBase::finalize()
+void DataBase::Finalize()
 {
     sqlite3_finalize(stmt);
 }
 
-void DataBase::step()
+void DataBase::Step()
 {
     rs = sqlite3_step(stmt);
     if (rs == SQLITE_DONE)
@@ -123,22 +120,22 @@ void DataBase::step()
     }
 }
 
-void DataBase::column(int i)
+void DataBase::Column(int i)
 {
     datatype = sqlite3_column_type(stmt,i);
 }
 
-int DataBase::column_int(int i)
+int DataBase::Column_int(int i)
 {
     return sqlite3_column_int(stmt,i);
 }
 
-int64_t DataBase::column_int64(int i)
+int64_t DataBase::Column_int64(int i)
 {
     return sqlite3_column_int64(stmt,i);
 }
 
-const unsigned char* DataBase::column_string(int i)
+const unsigned char* DataBase::Column_string(int i)
 {
     return sqlite3_column_text(stmt,i);
     //return sName(reinterpret_cast<char*>(text));

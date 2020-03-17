@@ -1,4 +1,5 @@
 #include "Script.hpp"
+#include <iostream>
 
 Script::Script()
 {
@@ -153,32 +154,40 @@ void Script::setfield(std::string Table, std::string index, double value)
         lua_pop(L, -1);
 }
 
-
 float Script::PullNumber(std::string Table, std::string key)
 {
     float result;
-    lua_setglobal(L, Table.c_str());
-    lua_pushstring(L, key.c_str());
-    lua_gettable(L, -2);
+    lua_getglobal(L, Table.c_str());
+    lua_getfield(L, 1, key.c_str());
     if (!lua_isnumber(L, -1))
         perror("invalid component");
     result = (float)lua_tonumber(L, -1);
-    lua_pop(L, 1);  // remove number
+    lua_pop(L, -1);  // remove number
     return result;
 }
 
 std::string Script::PullString(std::string Table, std::string key)
 {
     std::string result;
-    lua_setglobal(L, Table.c_str());
+    lua_getglobal(L, Table.c_str());
     lua_pushstring(L, key.c_str());
     lua_gettable(L, -2);
     if (!lua_isstring(L, -1))
         perror("invalid component");
     result = (std::string)lua_tostring(L, -1);
     lua_pop(L, 1);  // remove number
+
     return result;
 };
+
+void Script::CheckStack()
+{
+    int n =  lua_gettop(L);
+    for (int i = 0; i <= n; i++)
+        std::cout << i << " " <<lua_typename(L, lua_type(L, i)) << std::endl;
+
+    std::cout << std::endl;
+}
 
 void* Scriptable::operator new(size_t _size, lua_State* L, std::string metatableName)
 {
@@ -196,3 +205,4 @@ void Scriptable::setfield(lua_State* L, std::string Table, std::string index, in
     lua_settable(L, -3);
     lua_pop(L, -1);
 }
+

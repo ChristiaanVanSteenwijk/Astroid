@@ -4,7 +4,6 @@
 #include "Enemy.hpp"
 #include "Cruiser.hpp"
 #include "Script.hpp"
-#include "..\Lua\lua.hpp"
 
 SpaceCombatState::SpaceCombatState(StateMachine& machine, sf::RenderWindow& window, sf::View& view, GameObjectManager& context, Script& script, std::string& Script, DataBase& database, bool _replace)
 : State{machine, window, view, context, script, Script, database, _replace}
@@ -16,18 +15,21 @@ SpaceCombatState::SpaceCombatState(StateMachine& machine, sf::RenderWindow& wind
 
     placePlayer("Player", 500.f, 500.f, 0.f, "img/blue1.png");
 
-    placeShip("Enemy", Width, Height, 0.f, "img/alien4.png");
+    m_script.executeScript(Script);
+    std::string name = m_script.PullString("Target", "Name");
+    float x = m_script.PullNumber("Target", "x");
+    float y = m_script.PullNumber("Target", "y");
+    float angle = m_script.PullNumber("Target", "angle");
+    std::string image = m_script.PullString("Target", "Image");
+    placeShip(name, x, y, angle, image);
+
     m_view.reset(sf::FloatRect(0, 0, 2000, 4000));
     m_view.setCenter(m_context.Access("Player")->_visibility->GetPosition());
 }
 
 SpaceCombatState::~SpaceCombatState()
 {
-    m_context.Remove("Player");
-
-   // m_context.Remove("Cruiser");
-    m_context.Remove("Enemy");
-
+    m_context.Clear();
 }
 
 void SpaceCombatState::pause()
